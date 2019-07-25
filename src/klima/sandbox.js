@@ -20,7 +20,7 @@ export default class Sandbox {
     /**
      * @param {String} text
      */
-    showSomeTextInHTML(text) {
+    showTextInHTML(text) {
         this.$workspace.append(`<h1>${text}</h1>`); //tak kozystasz ze zmiennych klasowych
     }
 }

@@ -10,7 +10,7 @@ $(document).ready(function () {
     klimaSandbox.init();
 
     const text = 'witam i o wlosy pytam';
-    klimaSandbox.showSomeTextInHTML(text);
+    klimaSandbox.showTextInHTML(text);
 
     console.log('asfasf');
 });
