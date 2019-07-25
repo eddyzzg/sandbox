@@ -11,9 +11,6 @@ $(document).ready(function () {
 
     const text = 'witam i o wlosy pytam';
     klimaSandbox.showSomeTextInHTML(text);
-
-    console.log('test');
-    console.log('test');
 });
 
 
