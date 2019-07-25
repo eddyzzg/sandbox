@@ -23,4 +23,8 @@ export default class Sandbox {
     showTextInHTML(text) {
         this.$workspace.append(`<h1>${text}</h1>`); //tak kozystasz ze zmiennych klasowych
     }
+
+    showAvatar(svg) {
+        this.$workspace.append(`<div class="avatar-container">${svg}</div>`);
+    }
 }

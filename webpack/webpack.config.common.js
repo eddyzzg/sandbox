@@ -18,19 +18,34 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: 'babel-loader'
-            }
-            // ,
-            // {
-            //     test: /\.(hbs)$/,
-            //     loader: 'handlebars-loader',
-            //     options: {
-            //         helperDirs: path(__dirname, 'src', 'handlebars', 'helpers'),
-            //         precompileOptions: {
-            //             knownHelpersOnly: false
-            //         }
-            //     },
-            //     exclude: /node_modules/
-            // }
+            },
+            {
+                test: /\.css$/,
+                use: [{
+                    loader: 'style-loader' // creates style nodes from JS strings
+                }, {
+                    loader: 'css-loader', // translates CSS into CommonJS
+                    options: {
+                        sourceMap: true
+                    }
+                }]
+            },
+            {
+                test: /\.less$/,
+                use: [{
+                    loader: 'style-loader' // creates style nodes from JS strings
+                }, {
+                    loader: 'css-loader', // translates CSS into CommonJS
+                    options: {
+                        sourceMap: true
+                    }
+                }, {
+                    loader: 'less-loader', // compiles Less to CSS
+                    options: {
+                        sourceMap: true
+                    }
+                }]
+            },
         ]
     }
 };
