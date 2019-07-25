@@ -13,6 +13,7 @@ $(document).ready(function () {
     klimaSandbox.showSomeTextInHTML(text);
 
     console.log('test');
+    console.log('test');
 });
 
 
