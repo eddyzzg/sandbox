@@ -1,13 +1,8 @@
 import testModule from './module-a';
 import KlimaSandbox from './klima/sandbox'
-import Avatars from '@dicebear/avatars';
-import sprites from '@dicebear/avatars-male-sprites';
+import FaceGenerator from "./faces/FaceGenerator";
 
 import './style.less';
-
-let options = {};
-let avatars = new Avatars(sprites(options));
-let svg = avatars.create('custom-seed');
 
 testModule.test();
 
@@ -19,7 +14,7 @@ $(document).ready(function () {
     const text = 'witam i o wlosy pytam';
     klimaSandbox.showTextInHTML(text);
 
-    klimaSandbox.showAvatar(svg);
+    klimaSandbox.showAvatar(FaceGenerator.generateFace());
 
     console.log('asfasf');
 });

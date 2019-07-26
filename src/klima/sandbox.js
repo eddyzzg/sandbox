@@ -1,3 +1,5 @@
+import FaceGenerator from "../faces/FaceGenerator";
+
 export default class Sandbox {
 
     /**
@@ -21,10 +23,24 @@ export default class Sandbox {
      * @param {String} text
      */
     showTextInHTML(text) {
-        this.$workspace.append(`<h1>${text}</h1>`); //tak kozystasz ze zmiennych klasowych
+        this.$workspace.append(`<h1>${text}</h1><button id="faceGen">Generuj morde</button>`); //tak kozystasz ze zmiennych klasowych
+
+        this.$workspace.find('#faceGen').click(() => {
+            this.showAvatar(FaceGenerator.generateFace());
+        });
     }
 
+    /**
+     * @param {String} svg
+     */
     showAvatar(svg) {
-        this.$workspace.append(`<div class="avatar-container">${svg}</div>`);
+        let html = `<div class="avatar-container">${svg}</div>`;
+        let $avatarContainer = this.$workspace.find('.avatar-container');
+        if ($avatarContainer.length) {
+            $avatarContainer.empty();
+            $avatarContainer.html(svg);
+        } else {
+            this.$workspace.append(html);
+        }
     }
 }
