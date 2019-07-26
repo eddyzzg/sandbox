@@ -4,9 +4,7 @@
     <list default="true" id="7d3d3ed9-da38-4e0b-bfc0-ff2834e03693" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/klima/sandbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/klima/sandbox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/style.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/style.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/avatars.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/avatars.less" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -127,7 +125,7 @@
       <option name="presentableId" value="Default" />
       <updated>1564051502175</updated>
       <workItem from="1564051505841" duration="2827000" />
-      <workItem from="1564057837809" duration="15095000" />
+      <workItem from="1564057837809" duration="15325000" />
     </task>
     <task id="LOCAL-00001" summary="t">
       <created>1564057867467</created>
@@ -164,7 +162,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564130468872</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="HANDLEBARS &amp; UTF8">
+      <created>1564131153388</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1564131153388</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -42,8 +42,10 @@ export default class Sandbox {
         this.$workspace.find('.face-container').html(svg);
     }
 
-    showName() {
-        const name = NamesGenerator.generateName();
+    /**
+     * @param {String} name
+     */
+    showName(name) {
         this.$workspace.find('.name-container').html(name);
     }
 }
