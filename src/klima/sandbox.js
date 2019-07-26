@@ -1,5 +1,6 @@
 import FaceGenerator from "../faces/FaceGenerator";
 import NamesGenerator from "../names/NamesGenerator";
+import tmp from './tmp.hbs';
 
 export default class Sandbox {
 
@@ -9,7 +10,7 @@ export default class Sandbox {
     constructor($workspace) {
         console.log('W tym momentcie masz zinstancjonowany plik');
 
-        this.$workspace = $workspace; //tak przypisujesz zmienna z parametru do przestrzeni klasy
+        this.$workspace = $workspace.find('.content-container'); //tak przypisujesz zmienna z parametru do przestrzeni klasy
 
         this.isInit = false; //tak deklarujesz zmienne w przestrzeni klasy
 
@@ -18,6 +19,8 @@ export default class Sandbox {
 
     init() {
         console.log('Teraz wywolales metode init klasy Sandbox');
+
+        this.$workspace.html(tmp());
 
         this.$workspace.find('#faceGen').click(() => {
             this.showFace(FaceGenerator.generateFace());
