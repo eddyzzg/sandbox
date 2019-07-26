@@ -28,7 +28,7 @@ export default class SquadManager {
                                         <div class="player"></div>
                                     </div>
                                 </div>`;
-            pitchGrid.addWidget(playerHTML, 0, 0, 3, 2, true);
+            pitchGrid.addWidget(playerHTML, 0, 0, 1, 4, true);
         });
     }
 }
