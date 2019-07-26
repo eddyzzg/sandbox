@@ -44,7 +44,6 @@ export default class Sandbox {
 
     showName() {
         const name = NamesGenerator.generateName();
-    debugger
-        this.$workspace.find('.name-container').html(`<input class="name" value="${name}">`);
+        this.$workspace.find('.name-container').html(name);
     }
 }

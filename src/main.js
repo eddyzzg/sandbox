@@ -4,6 +4,7 @@ import FaceGenerator from "./faces/FaceGenerator";
 import WORKSPACE_TMP from './Workspace.hbs';
 
 import './style.less';
+import NamesGenerator from "./names/NamesGenerator";
 
 testModule.test();
 
@@ -22,8 +23,8 @@ $(document).ready(function () {
 
     const text = 'GENERATOR';
     klimaSandbox.showTextInHTML(text);
-
     klimaSandbox.showFace(FaceGenerator.generateFace());
+    klimaSandbox.showName(NamesGenerator.generateName());
 });
 
 
