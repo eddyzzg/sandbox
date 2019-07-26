@@ -1,6 +1,7 @@
 'use strict';
 
 const path = require('path');
+const {resolve} = require('path');
 
 module.exports = {
     entry: {
@@ -45,6 +46,17 @@ module.exports = {
                         sourceMap: true
                     }
                 }]
+            },
+            {
+                test: /\.(hbs)$/,
+                loader: 'handlebars-loader',
+                options: {
+                    helperDirs: resolve(__dirname, 'src', 'handlebars', 'helpers'),
+                    precompileOptions: {
+                        knownHelpersOnly: false
+                    }
+                },
+                exclude: /node_modules/
             },
         ]
     }

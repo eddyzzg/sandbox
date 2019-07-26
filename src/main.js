@@ -1,22 +1,29 @@
 import testModule from './module-a';
 import KlimaSandbox from './klima/sandbox'
 import FaceGenerator from "./faces/FaceGenerator";
+import WORKSPACE_TMP from './Workspace.hbs';
 
 import './style.less';
 
 testModule.test();
 
+global.API = {};
+
+function createWorkspace() {
+    return $('body').html(WORKSPACE_TMP());
+}
+
 $(document).ready(function () {
+    createWorkspace();
     const $WORKSPACE = $('body');
+
     const klimaSandbox = new KlimaSandbox($WORKSPACE);
     klimaSandbox.init();
 
-    const text = 'witam i o wlosy pytam';
+    const text = 'GENERATOR';
     klimaSandbox.showTextInHTML(text);
 
-    klimaSandbox.showAvatar(FaceGenerator.generateFace());
-
-    console.log('asfasf');
+    klimaSandbox.showFace(FaceGenerator.generateFace());
 });
 
 

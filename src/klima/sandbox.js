@@ -1,4 +1,5 @@
 import FaceGenerator from "../faces/FaceGenerator";
+import NamesGenerator from "../names/NamesGenerator";
 
 export default class Sandbox {
 
@@ -17,30 +18,33 @@ export default class Sandbox {
 
     init() {
         console.log('Teraz wywolales metode init klasy Sandbox');
+
+        this.$workspace.find('#faceGen').click(() => {
+            this.showFace(FaceGenerator.generateFace());
+        });
+        this.$workspace.find('#nameGen').click(() => {
+            let nameString = NamesGenerator.generateName();
+            this.showName(nameString);
+        });
     }
 
     /**
      * @param {String} text
      */
     showTextInHTML(text) {
-        this.$workspace.append(`<h1>${text}</h1><button id="faceGen">Generuj morde</button>`); //tak kozystasz ze zmiennych klasowych
-
-        this.$workspace.find('#faceGen').click(() => {
-            this.showAvatar(FaceGenerator.generateFace());
-        });
+        this.$workspace.find(`.title-container`).html(`${text}`);  //tak kozystasz ze zmiennych klasowych
     }
 
     /**
      * @param {String} svg
      */
-    showAvatar(svg) {
-        let html = `<div class="avatar-container">${svg}</div>`;
-        let $avatarContainer = this.$workspace.find('.avatar-container');
-        if ($avatarContainer.length) {
-            $avatarContainer.empty();
-            $avatarContainer.html(svg);
-        } else {
-            this.$workspace.append(html);
-        }
+    showFace(svg) {
+        this.$workspace.find('.face-container').html(svg);
+    }
+
+    showName() {
+        const name = NamesGenerator.generateName();
+    debugger
+        this.$workspace.find('.name-container').html(`<input class="name" value="${name}">`);
     }
 }
