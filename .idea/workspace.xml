@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7d3d3ed9-da38-4e0b-bfc0-ff2834e03693" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/names/names.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/names/surnames.json" afterDir="false" />
+    <list default="true" id="7d3d3ed9-da38-4e0b-bfc0-ff2834e03693" name="Default Changelist" comment="names database moved to json's">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/names/NamesGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/names/NamesGenerator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Workspace.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Workspace.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/klima/sandbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/klima/sandbox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/squad/SquadManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/SquadManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/style.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/squadManager.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/squadManager.less" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -137,7 +140,7 @@
       <updated>1564051502175</updated>
       <workItem from="1564051505841" duration="2827000" />
       <workItem from="1564057837809" duration="29373000" />
-      <workItem from="1564468910768" duration="15654000" />
+      <workItem from="1564468910768" duration="19252000" />
     </task>
     <task id="LOCAL-00001" summary="t">
       <created>1564057867467</created>
@@ -230,7 +233,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564480679706</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="names database moved to json's">
+      <created>1564488035987</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1564488035987</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -255,6 +265,7 @@
     <MESSAGE value="Random face generator" />
     <MESSAGE value="HANDLEBARS &amp; UTF8" />
     <MESSAGE value="GRIDSTACK ADDED" />
-    <option name="LAST_COMMIT_MESSAGE" value="GRIDSTACK ADDED" />
+    <MESSAGE value="names database moved to json's" />
+    <option name="LAST_COMMIT_MESSAGE" value="names database moved to json's" />
   </component>
 </project>

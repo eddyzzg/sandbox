@@ -10,7 +10,7 @@ export default class Sandbox {
     constructor($workspace) {
         console.log('W tym momentcie masz zinstancjonowany plik');
 
-        this.$workspace = $workspace.find('.content-container'); //tak przypisujesz zmienna z parametru do przestrzeni klasy
+        this.$workspace = $workspace; //tak przypisujesz zmienna z parametru do przestrzeni klasy
 
         this.isInit = false; //tak deklarujesz zmienne w przestrzeni klasy
 

@@ -6,7 +6,7 @@ export default class SquadManager {
 
     constructor($workspace) {
         /** @type {jQuery} */
-        this.$workspace = $workspace.find('.content-container');
+        this.$workspace = $workspace;
 
         /** @type {Object} */
         this.gridOptions = {
@@ -42,7 +42,11 @@ export default class SquadManager {
         this.setPitchGrid($pitch.data('gridstack'));
 
         this.$workspace.find('.add-player').click(() => {
-            this.addPlayerToPitch()
+            self.addPlayerToPitch();
+        debugger
+            const $faceGenContainer = getFaceGeneratorContainer(self.$workspace);
+            $faceGenContainer.find('#nameGen').click();
+            $faceGenContainer.find('#faceGen').click();
         });
 
         $pitch.on('added', (event, items) => {
@@ -101,7 +105,7 @@ export default class SquadManager {
                 position = 'RD';
             }
 
-        } else if (positionOnGrid.left > 0 && positionOnGrid.left < 50) {
+        } else if (positionOnGrid.left >= 0 && positionOnGrid.left < 50) {
             $playerPosition.addClass('goal-keeper');
             position = 'GK';
         }
@@ -110,14 +114,24 @@ export default class SquadManager {
     }
 
     addPlayerToPitch() {
-        const playerHTML = this.createPlayer();
+        const generatedName = getFaceGeneratorContainer(this.$workspace).find('.name-container').html();
+        const playerHTML = this.createPlayer(generatedName);
         this.pitchGrid.addWidget(playerHTML, 0, 0, 3, 6, true);
     }
 
     /**
+     * @param name {String}
      * @return {String}
      */
-    createPlayer() {
-        return elementWrapper({id: new Date().getTime(), name: NamesGenerator.generateName(), position: 'RES'});
+    createPlayer(name = NamesGenerator.generateName()) {
+        return elementWrapper({id: new Date().getTime(), name, position: 'RES'});
     }
+}
+
+/**
+ * @param {jQuery} $workspace
+ * @return {*|jQuery}
+ */
+function getFaceGeneratorContainer($workspace) {
+    return $workspace.closest('.content-container').find('.face-generator-container');
 }
