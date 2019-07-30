@@ -3,10 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="7d3d3ed9-da38-4e0b-bfc0-ff2834e03693" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/squad/SquadManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/SquadManager.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/squad/element_wrapper.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/element_wrapper.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/squad/tmp.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/tmp.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/gridstack.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/gridstack.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/squadManager.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/squadManager.less" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -118,9 +117,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.build:production" />
         <item itemvalue="npm.watch" />
         <item itemvalue="npm.build:development" />
-        <item itemvalue="npm.build:production" />
         <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
@@ -137,7 +136,7 @@
       <updated>1564051502175</updated>
       <workItem from="1564051505841" duration="2827000" />
       <workItem from="1564057837809" duration="29373000" />
-      <workItem from="1564468910768" duration="5440000" />
+      <workItem from="1564468910768" duration="10372000" />
     </task>
     <task id="LOCAL-00001" summary="t">
       <created>1564057867467</created>
@@ -216,7 +215,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564473674833</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="GRIDSTACK ADDED">
+      <created>1564475471187</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1564475471187</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

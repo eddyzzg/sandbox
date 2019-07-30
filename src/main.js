@@ -14,12 +14,13 @@ testModule.test();
 global.API = {};
 
 function createWorkspace() {
-    return $('body').html(WORKSPACE_TMP());
+    const $body = $('body');
+    $body.html(WORKSPACE_TMP());
+    return $body;
 }
 
 $(document).ready(function () {
-    createWorkspace();
-    const $WORKSPACE = $('body');
+    const $WORKSPACE = createWorkspace();
 
     $WORKSPACE.find('.menu .generator').click(() => {
         const klimaSandbox = new KlimaSandbox($WORKSPACE);
