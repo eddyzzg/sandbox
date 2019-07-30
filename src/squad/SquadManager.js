@@ -1,4 +1,5 @@
 import tmp from './tmp.hbs';
+import elementWrapper from './element_wrapper.hbs';
 
 export default class SquadManager {
     constructor($workspace) {
@@ -10,25 +11,13 @@ export default class SquadManager {
 
         const $pitch = this.$workspace.find('.pitch');
         $pitch.gridstack({
-            "minWidth": 320,
-            "width": "12",
-            "cellHeight": "10",
-            "verticalMargin": 0,
-            "animate": true,
-            "float": true,
-            "resizable": {
-                "handles": "e, se, s, sw, w"
-            }
+            float: true
         });
         const pitchGrid = $pitch.data('gridstack');
 
         this.$workspace.find('.add-player').click(() => {
-            const playerHTML = `<div>
-                                    <div class="grid-stack-item-content">
-                                        <div class="player"></div>
-                                    </div>
-                                </div>`;
-            pitchGrid.addWidget(playerHTML, 0, 0, 1, 4, true);
+            const playerHTML = elementWrapper({id: new Date().getTime()});
+            pitchGrid.addWidget($(playerHTML), undefined, undefined, 1, 1, true);
         });
     }
 }
