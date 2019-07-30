@@ -11,6 +11,5 @@ export default class NamesGenerator {
 }
 
 function getRandomValue(arr) {
-debugger
     return arr[Math.floor(Math.random() * arr.length)]
 }

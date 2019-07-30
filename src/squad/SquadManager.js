@@ -43,7 +43,7 @@ export default class SquadManager {
 
         this.$workspace.find('.add-player').click(() => {
             self.addPlayerToPitch();
-        debugger
+
             const $faceGenContainer = getFaceGeneratorContainer(self.$workspace);
             $faceGenContainer.find('#nameGen').click();
             $faceGenContainer.find('#faceGen').click();

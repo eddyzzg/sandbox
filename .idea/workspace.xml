@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7d3d3ed9-da38-4e0b-bfc0-ff2834e03693" name="Default Changelist" comment="names database moved to json's">
+    <list default="true" id="7d3d3ed9-da38-4e0b-bfc0-ff2834e03693" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Workspace.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Workspace.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/klima/sandbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/klima/sandbox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/klima/tmp.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/klima/tmp.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/names/NamesGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/names/NamesGenerator.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/squad/SquadManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/SquadManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/squad/tmp.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/tmp.hbs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/style.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/style.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/squadManager.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/squadManager.less" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -140,7 +139,7 @@
       <updated>1564051502175</updated>
       <workItem from="1564051505841" duration="2827000" />
       <workItem from="1564057837809" duration="29373000" />
-      <workItem from="1564468910768" duration="19252000" />
+      <workItem from="1564468910768" duration="23161000" />
     </task>
     <task id="LOCAL-00001" summary="t">
       <created>1564057867467</created>
@@ -240,7 +239,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564488035987</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="facegenerator and squadManager assigned for tests">
+      <created>1564491822547</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1564491822547</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,6 +272,7 @@
     <MESSAGE value="HANDLEBARS &amp; UTF8" />
     <MESSAGE value="GRIDSTACK ADDED" />
     <MESSAGE value="names database moved to json's" />
-    <option name="LAST_COMMIT_MESSAGE" value="names database moved to json's" />
+    <MESSAGE value="facegenerator and squadManager assigned for tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="facegenerator and squadManager assigned for tests" />
   </component>
 </project>
