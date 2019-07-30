@@ -1,10 +1,16 @@
-import * as faker from 'faker/locale/pl';
+import names from './names';
+import surnames from './surnames';
 
 export default class NamesGenerator {
     static generateName() {
-        let firstName = faker.name.firstName('male');
-        let lastName = faker.name.lastName('male');
+        const firstName = getRandomValue(names);
+        const lastName = getRandomValue(surnames);
 
         return `${firstName} ${lastName}`;
     }
+}
+
+function getRandomValue(arr) {
+debugger
+    return arr[Math.floor(Math.random() * arr.length)]
 }

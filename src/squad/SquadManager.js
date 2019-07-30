@@ -49,6 +49,10 @@ export default class SquadManager {
         });
 
         $pitch.on('dragstop', (event, item) => {
+            if (item.position.left < 0 || item.position.top > 600) {
+                self.pitchGrid.update(item.helper, 0, 0, 3, 6);
+
+            }
             self.setPosition(item.helper, item.position);
         });
     }
@@ -58,46 +62,51 @@ export default class SquadManager {
      * @param {Object} positionOnGrid
      */
     setPosition($player, positionOnGrid) {
+        const $playerPosition = $player.find('.position');
         let position;
+
+        //remove all clesses expect 'postion'
+        $playerPosition.attr('class', 'position');
+
         if (positionOnGrid.left > 600) {
-            $player.addClass('forward');
+            $playerPosition.addClass('forward');
 
             if (positionOnGrid.top > 0 && positionOnGrid.top < 125) {
                 position = 'LF';
             } else if (positionOnGrid.top > 125 && positionOnGrid.top < 375) {
                 position = 'F';
-            } else if (positionOnGrid.top > 375 && positionOnGrid.top < 500) {
+            } else if (positionOnGrid.top > 375) {
                 position = 'RF';
             }
 
-        } else if (positionOnGrid.left > 400 && positionOnGrid.left < 600) {
-            $player.addClass('midfielder');
+        } else if (positionOnGrid.left > 300 && positionOnGrid.left < 600) {
+            $playerPosition.addClass('midfielder');
 
             if (positionOnGrid.top > 0 && positionOnGrid.top < 125) {
                 position = 'LM';
             } else if (positionOnGrid.top > 125 && positionOnGrid.top < 375) {
                 position = 'CM';
-            } else if (positionOnGrid.top > 375 && positionOnGrid.top < 500) {
+            } else if (positionOnGrid.top > 375) {
                 position = 'RM';
             }
 
-        } else if (positionOnGrid.left > 50 && positionOnGrid.left < 400) {
-            $player.addClass('defender');
+        } else if (positionOnGrid.left > 50 && positionOnGrid.left < 300) {
+            $playerPosition.addClass('defender');
 
             if (positionOnGrid.top > 0 && positionOnGrid.top < 125) {
                 position = 'LD';
             } else if (positionOnGrid.top > 125 && positionOnGrid.top < 375) {
                 position = 'CD';
-            } else if (positionOnGrid.top > 375 && positionOnGrid.top < 500) {
+            } else if (positionOnGrid.top > 375) {
                 position = 'RD';
             }
 
         } else if (positionOnGrid.left > 0 && positionOnGrid.left < 50) {
-            $player.addClass('goal-keeper');
+            $playerPosition.addClass('goal-keeper');
             position = 'GK';
         }
 
-        $player.find('.position').html(position);
+        $playerPosition.html(position);
     }
 
     addPlayerToPitch() {

@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7d3d3ed9-da38-4e0b-bfc0-ff2834e03693" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/names/names.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/names/surnames.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/names/NamesGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/names/NamesGenerator.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/squad/SquadManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/SquadManager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/squad/element_wrapper.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/element_wrapper.hbs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/squadManager.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/squadManager.less" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -55,11 +56,11 @@
       <recent name="C:\WORKSPACE\sandbox\sandbox" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\WORKSPACE\sandbox\sandbox\src\names" />
       <recent name="C:\WORKSPACE\sandbox\sandbox\src\styles" />
       <recent name="C:\WORKSPACE\sandbox\sandbox\src\squad\img" />
       <recent name="C:\WORKSPACE\sandbox\sandbox\public" />
       <recent name="C:\WORKSPACE\sandbox\sandbox\src\squad" />
-      <recent name="C:\WORKSPACE\sandbox\sandbox\src\img" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -117,8 +118,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.build:production" />
         <item itemvalue="npm.watch" />
+        <item itemvalue="npm.build:production" />
         <item itemvalue="npm.build:development" />
         <item itemvalue="npm.start" />
       </list>
@@ -136,7 +137,7 @@
       <updated>1564051502175</updated>
       <workItem from="1564051505841" duration="2827000" />
       <workItem from="1564057837809" duration="29373000" />
-      <workItem from="1564468910768" duration="10372000" />
+      <workItem from="1564468910768" duration="15654000" />
     </task>
     <task id="LOCAL-00001" summary="t">
       <created>1564057867467</created>
@@ -222,7 +223,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564475471187</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="GRIDSTACK ADDED">
+      <created>1564480679706</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1564480679706</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
