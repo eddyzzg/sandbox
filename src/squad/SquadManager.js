@@ -1,5 +1,6 @@
 import tmp from './tmp.hbs';
 import elementWrapper from './element_wrapper.hbs';
+import NamesGenerator from "../names/NamesGenerator";
 
 export default class SquadManager {
     constructor($workspace) {
@@ -24,7 +25,7 @@ export default class SquadManager {
         const pitchGrid = $pitch.data('gridstack');
 
         this.$workspace.find('.add-player').click(() => {
-            const playerHTML = elementWrapper({id: new Date().getTime()});
+            const playerHTML = elementWrapper({id: new Date().getTime(), name: NamesGenerator.generateName()});
             pitchGrid.addWidget($(playerHTML), undefined, undefined, 2, 6, true);
         });
     }
