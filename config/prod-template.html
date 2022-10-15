@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Streamsoft VERTO</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="shortcut icon" type="image/png" th:href="@{/favicon.png}"/>
+    <meta name="viewport" content="width=device-width"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link type="text/css" rel="stylesheet" href="external-libs/fonts.css?ver=1">
+
+    <!-- VERTO-LOADER -->
+    <link rel="stylesheet" href="external-libs/next/styles/verto-loader.css"/>
+    <!-- Specific css for IE9 and less -->
+    <!--[if IE]>
+    <link rel="stylesheet" href="external-libs/next/styles/ie/verto-loader.css">
+    <![endif]-->
+
+    <link rel="stylesheet" href="external-libs/bootstrap-3.3.4-dist/css/bootstrap-customized.css"/>
+    <script src="external-libs/next/constColors.js"></script>
+
+    <%= htmlWebpackPlugin.options.contextPath %>
+</head>
+<div id="combobox-selectpicker-target-container-next" class="notranslate"></div>
+<div class="menu-click-container">
+
+    <body>
+    <span style="position: absolute; top: -50px">Złożony widok HTML. Tą stronę można przetłumaczyć.</span>
+    <div id="global-notifier"></div>
+
+    <!-- Main Page -->
+    <div id="main-page-container">
+
+        <div id="main-container"></div>
+
+        <div class="modal-storage"></div>
+
+    </div>
+    <div id="verto-loader-container">
+        <div class="verto-loader"></div>
+        <div class="verto-loader-text">
+            <div class="logo" style="float:left;">Streamsoft</div>
+            <div class="logo1">Verto</div>
+        </div>
+    </div>
+
+    <input type="file" name="file" id="file" style="display:none;"/>
+    <a id="fileDownload" style="display:none;"></a>
+
+    <form id="report-params-container" action="/next-www/custom/prints/report" method="post"
+          style="display: none;"></form>
+
+    <% for (var css in htmlWebpackPlugin.files.css) { %>
+    <link rel="stylesheet" property="stylesheet" href="<%= htmlWebpackPlugin.files.css[css] %>"/>
+    <% } %>
+    <link href="external-libs/animation/animate.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="external-libs/bootstrap-customized/grid100.css"/>
+    <link rel="stylesheet" href="external-libs/next/styles/bootstrap.vertical-tabs.min.css"/>
+    <link rel="stylesheet" href="external-libs/starter/css/hover.css"/>
+    <link rel="stylesheet" href="external-libs/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link href="external-libs/kendoui/styles/kendo.common-bootstrap.min.css" rel="stylesheet"/>
+    <link href="external-libs/kendoui/styles/kendo.metro.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="external-libs/lightbox2/css/lightbox.css"/>
+    <link href="external-libs/pickerjs/picker.min.css" rel="stylesheet">
+
+    <script src="holder.js"></script>
+    <script src="external-libs/jquery/dist/jquery.min.js"></script>
+    <script src="external-libs/bootstrap-3.3.4-dist/js/bootstrap.js" defer="defer"></script>
+    <script src="external-libs/lightbox2/js/lightbox.js" defer="defer"></script>
+    <script src="external-libs/babel-standalone@6.26.0/babel.min.js" defer="defer"></script>
+    <script src="external-libs/jquery.tabbable/jquery.tabbable.min.js"></script>
+    <script src="external-libs/next/measureTextLib.js"></script>
+
+    <!-- add plugin for bootstrap modals -->
+    <script src="external-libs/bootstrap-dialog/js/bootstrap-dialog.js" defer="defer"></script>
+
+    <!-- xml to json converter -->
+    <script src="external-libs/jquery.xml2json.js" defer="defer"></script>
+
+    <!-- Kendo UI combined JavaScript -->
+    <script src="external-libs/kendoui/js/kendo.all.min.js" defer="defer"></script>
+    <script src="external-libs/kendoui/js/messages/kendo.messages.pl-PL.min.js" defer="defer"></script>
+    <script src="external-libs/kendoui/js/cultures/kendo.culture.pl-PL.min.js" defer="defer"></script>
+
+    <!-- DASHBOARD -->
+    <script src="external-libs/starter/js/html5shiv.js" defer="defer"></script>
+    <script src="external-libs/starter/js/respond.min.js" defer="defer"></script>
+    <script src="external-libs/starter/js/jquery.sparkline.js" defer="defer"></script>
+    <script src="external-libs/nprogress/nprogress.js" defer="defer"></script>
+    <script src="external-libs/animation/AnimationEvents.js" defer="defer"></script>
+    <script src="external-libs/pickerjs/picker.min.js" defer="defer"></script>
+
+    <script>
+        function initJSONParser(e){var t=function(e,t){this.keySize=e/32,this.iterationCount=t};t.prototype.generateKey=function(t,r){return e.PBKDF2(r,e.enc.Hex.parse(t),{keySize:this.keySize,iterations:this.iterationCount})},t.prototype.encrypt=function(t,r,n,i){var o=this.generateKey(t,n);return e.AES.encrypt(i,o,{iv:e.enc.Hex.parse(r)}).ciphertext.toString(e.enc.Base64)},t.prototype.decrypt=function(t,r,n,i){var o=this.generateKey(t,n),a=e.lib.CipherParams.create({ciphertext:e.enc.Base64.parse(i)});return e.AES.decrypt(a,o,{iv:e.enc.Hex.parse(r)}).toString(e.enc.Utf8)};global.prepareJSONRequest=function(r){var n=e.lib.WordArray.random(16).toString(e.enc.Hex),i=e.lib.WordArray.random(16).toString(e.enc.Hex);return{sha:n,jwt:i,kerberos:new t(128,100).encrypt(i,n,appVersion,JSON.stringify(r))}}}
+        function secondsToDhms(o){o=Number(o);let r=Math.floor(o/86400),t=Math.floor(o%86400/3600),h=Math.floor(o%3600/60),f=Math.floor(o%60),l=r>0?r+"d ":"",a=t>0?t+"h ":"",e=h>0?h+"m ":"",n=f>0?f+"s":"";return""!==l?""!==a?l+a:""!==e?l+e:""!==n?l+n:l:""!==a?""!==e?a+e:""!==n?a+n:a:""!==e?""!==n?e+n:e:""!==n?n:""}
+    </script>
+    <script>
+        $(document).ready(function () {
+            kendo.culture("pl-PL");
+        });
+    </script>
+    <%= htmlWebpackPlugin.files.webpackManifest %>
+    <%=htmlWebpackPlugin.files.webpackChunkManifest%>
+
+    <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+    <script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>" defer="defer"></script>
+    <% } %>
+
+    <!-- scrollbar for firefox -->
+    <link rel="stylesheet" href="external-libs/perfect-scrollbar/css/perfect-scrollbar.css"/>
+    <script src="external-libs/perfect-scrollbar/dist/perfect-scrollbar.js"></script>
+
+    <!-- scripts that will run after the page load -->
+    <script src="external-libs/next/afterPageLoadedFlow.js"></script>
+
+    <!-- Specific css for FireFox -->
+    <link rel="stylesheet" href="external-libs/next/styles/onlyForFireFox.css">
+
+    <!-- Specific css for IE10+ -->
+    <link rel="stylesheet" href="external-libs/next/styles/ie/ie10and11specific.css">
+
+    <!-- Specific css for IE9 and less -->
+    <!--[if IE]>
+    <link rel="stylesheet" href="external-libs/next/styles/ie/ie9specific.css">
+    <![endif]-->
+
+    <nav id="left-submenu-container" class="vertical"></nav>
+</div>
+
+</html>

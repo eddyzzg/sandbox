@@ -17,7 +17,8 @@
     "build:development": "webpack --config webpack/webpack.config.dev.js",
     "build:production": "webpack --config webpack/webpack.config.prod.js",
     "watch": "npm run build:development -- -w",
-    "start": "node public/dist/main.bundle.js"
+    "start": "node public/dist/main.bundle.js",
+    "development": "node dev_server.js"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
