@@ -9,6 +9,9 @@ export default class Player {
         this.speed = Math.ceil(Math.random()*100);
         this.power = Math.ceil(Math.random()*100);
         this.nominalPosition = nominalPosition;
+
+
+
     }
 
     move(positionX,positionY) {
