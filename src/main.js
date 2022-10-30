@@ -9,17 +9,31 @@ import './style.less';
 import NamesGenerator from "./names/NamesGenerator";
 import SquadManager from "./squad/SquadManager";
 import Player from './match/Player';
-import field from './match/field.hbs'
+import fieldDiv from './match/field.hbs';
+import field  from './match/field.js';
+
+
+
 
 testModule.test();
 
 global.API = {};
 
 $(document).ready(function () {
+
     const gwozd = new Player(1, 'Bohater', 'Gwóźdź');
     
-    let field1 = field({title: 'asfasf'});
-    $('body').html(field1);
+
+
+    const boisko = new field(1000,800);
+
+    console.log(boisko.width);
+    console.log(boisko.height);
+
+
+
+    $('body').html(fieldDiv, {width: boisko.width, height: boisko.height});
+
     
     
     if (false) {
