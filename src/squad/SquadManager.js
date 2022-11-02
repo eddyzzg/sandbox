@@ -42,11 +42,7 @@ export default class SquadManager {
         this.setPitchGrid($pitch.data('gridstack'));
 
         this.$workspace.find('.add-player').click(() => {
-            self.addPlayerToPitch();
-
-            const $faceGenContainer = getFaceGeneratorContainer(self.$workspace);
-            $faceGenContainer.find('#nameGen').click();
-            $faceGenContainer.find('#faceGen').click();
+            this.handleAdd(self);
         });
 
         $pitch.on('added', (event, items) => {
@@ -59,6 +55,14 @@ export default class SquadManager {
             }
             self.setPosition(item.helper, item.position);
         });
+    }
+
+    handleAdd(self) {
+        self.addPlayerToPitch();
+
+        const $faceGenContainer = getFaceGeneratorContainer(self.$workspace);
+        $faceGenContainer.find('#nameGen').click();
+        $faceGenContainer.find('#faceGen').click();
     }
 
     /**
@@ -117,6 +121,10 @@ export default class SquadManager {
         const generatedName = getFaceGeneratorContainer(this.$workspace).find('.name-container').html();
         const playerHTML = this.createPlayer(generatedName);
         this.pitchGrid.addWidget(playerHTML, 0, 0, 3, 6, true);
+    }
+
+    addOutsidePlayerToPitch(playerHTML) {
+        this.pitchGrid.addWidget(playerHTML, 0, 0, 2, 4, true);
     }
 
     /**

@@ -4,4 +4,8 @@ export default class Field {
         this.width = width;
         this.height = height;
     }
+
+    init() {
+        let wspolrzedne = [];
+    }
 }
