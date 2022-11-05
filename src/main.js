@@ -6,11 +6,11 @@ import WORKSPACE_TMP from './Workspace.hbs';
 import './style.less';
 import NamesGenerator from "./names/NamesGenerator";
 import SquadManager from "./squad/SquadManager";
-import Player from './match/Player';
 import SquadGenerator from './squad/SquadGenerator';
 import Field from './match/field.hbs';
 import Event from './match/Event.js';
-import PlayerHBS from './squad/player.hbs';
+import playerHBS from './squad/player.hbs';
+import Ball from "./match/Ball";
 
 testModule.test();
 global.API = {};
@@ -18,7 +18,7 @@ global.API = {};
 
 $(document).ready(function () {
     const $WORKSPACE = createWorkspace();
-
+    
     $WORKSPACE.find('.menu .generator').click(() => {
         openFaceGenerator($WORKSPACE);
     });
@@ -39,13 +39,10 @@ $(document).ready(function () {
     generatePlayers(homePlayers, squadManager);
     generatePlayers(awayPlayers, squadManager2);
 
-
     $WORKSPACE.find('.start-match').click(() => {
         let field = Field;
         startMatch(homePlayers, awayPlayers, field);
     });
-
-
 });
 
 function generatePlayers(team, squadManager) {
@@ -66,31 +63,6 @@ function createWorkspace() {
     return $body;
 }
 
-/*
-function generateSquad(team) {
-
-    team = [];
-    for (let i = 0; i < 15; i++) {
-    team[i]= new Player(i,Alfons,Zwierzyński,CB,team)
-    }
-
-}
-*/
-/**
- * @param {jQuery} $container
- */
-
-/*
-function openFaceGenerator($container) {
-    const klimaSandbox = new KlimaSandbox($container);
-    klimaSandbox.init();
-
-    const text = 'GENERATOR';
-    klimaSandbox.showTextInHTML(text);
-    klimaSandbox.showFace(FaceGenerator.generateFace());
-    klimaSandbox.showName(NamesGenerator.generateName());
-}
-*/
 /**
  * @param {jQuery} $container
  */
@@ -100,38 +72,48 @@ function openSquadManager($container, team) {
     return squadManager;
 }
 
-
+/**
+ * @param {Player[]} homePlayers
+ * @param {Player[]} awayPlayers
+ * @param field
+ */
 function startMatch(homePlayers, awayPlayers, field) {
     const $body = $('body');
     $body.html(field({width: 1200, height: 800}));
-    const playerhbs = PlayerHBS;
+    
     const $field = $('.field');
-
-    for (let i = 0; i < 11; i++) {
-        $field.append(playerhbs({
-            id: homePlayers[i].id,
-            name: homePlayers[i].name,
-            position: homePlayers[i].position,
-            positionX: homePlayers[i].positionX - 25,
-            positionY: homePlayers[i].positionY,
-            team: homePlayers[i].team,
+    
+    homePlayers.forEach((player) => {
+        $field.append(playerHBS({
+            id: player.id,
+            name: player.name,
+            position: player.position,
+            positionX: player.positionX - 25,
+            positionY: player.positionY,
+            team: player.team,
         }));
-
-    }
-    for (let i = 0; i < 11; i++) {
-        $field.append(playerhbs({
-            id: awayPlayers[i].id,
-            name: awayPlayers[i].name,
-            position: awayPlayers[i].position,
-            positionX: 600 - awayPlayers[i].positionX + 525,
-            positionY: awayPlayers[i].positionY,
-            team: awayPlayers[i].team,
+    })
+    awayPlayers.forEach((player) => {
+        $field.append(playerHBS({
+            id: player.id,
+            name: player.name,
+            position: player.position,
+            positionX: 600 - player.positionX + 525,
+            positionY: player.positionY,
+            team: player.team,
         }));
-    }
-
+    })
+    
+    new Ball().render($field);
 
     const event = new Event(homePlayers, awayPlayers);
+    let index = 0
     setInterval(() => {
+        if (index===0) {
+            homePlayers[11].hasBall=true;
+            homePlayers[11].positionX=600;
+            homePlayers[11].positionY=400;
+        }
         event.compile();
     }, 1000);
 

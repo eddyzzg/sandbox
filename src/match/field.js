@@ -1,3 +1,5 @@
+import fieldTmp from './field.hbs';
+
 export default class Field {
 
     constructor(width, height) {
@@ -7,5 +9,12 @@ export default class Field {
 
     init() {
         let wspolrzedne = [];
+    }
+    
+    render() {
+        let field = fieldTmp(this);
+        let $body = $(document).find('body');
+        
+        $body.html(field);
     }
 }
