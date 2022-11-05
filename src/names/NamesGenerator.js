@@ -4,8 +4,19 @@ import surnames from './surnames';
 export default class NamesGenerator {
     static generateName() {
         const firstName = getRandomValue(names);
-        const lastName = getRandomValue(surnames);
+        let lastName = getRandomValue(surnames).toLowerCase();
 
+        const word = lastName
+
+        const firstLetter = word.charAt(0)
+
+        const firstLetterCap = firstLetter.toUpperCase()
+
+        const remainingLetters = word.slice(1)
+
+        const capitalizedWord = firstLetterCap + remainingLetters
+
+        lastName = capitalizedWord;
         return `${firstName} ${lastName}`;
     }
 }

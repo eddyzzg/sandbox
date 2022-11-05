@@ -8,9 +8,9 @@ import NamesGenerator from "./names/NamesGenerator";
 import SquadManager from "./squad/SquadManager";
 import Player from './match/Player';
 import SquadGenerator from './squad/SquadGenerator';
-import fieldDiv from './match/field.hbs';
-import Field from './match/field.js';
+import Field from './match/field.hbs';
 import Event from './match/Event.js';
+import PlayerHBS from './squad/player.hbs';
 
 testModule.test();
 global.API = {};
@@ -26,33 +26,35 @@ $(document).ready(function () {
         openSquadManager($WORKSPACE);
     });
 
-    openFaceGenerator($WORKSPACE.find('.face-generator-container'));
-    let squadManager = openSquadManager($WORKSPACE.find('.squad-manager-container'));
-
+//    openFaceGenerator($WORKSPACE.find('.face-generator-container'));
     let homeTeam = new SquadGenerator();
     let awayTeam = new SquadGenerator();
 
-    let homePayers = homeTeam.generateSquad();
-    let awayPayers = awayTeam.generateSquad();
+    let homePlayers = homeTeam.generateSquad("red");
+    let awayPlayers = awayTeam.generateSquad("blue");
 
-    generateHomePlayers(homePayers, awayPayers, squadManager);
+    let squadManager = openSquadManager($WORKSPACE.find('.squad-manager-home-container'), homeTeam);
+    let squadManager2 = openSquadManager($WORKSPACE.find('.squad-manager-away-container'), awayTeam);
 
-    setTimeout(() => {
-        let event = new Event(homePayers, awayPayers);
-        event.compile()
-    })
+    generatePlayers(homePlayers, squadManager);
+    generatePlayers(awayPlayers, squadManager2);
+
+
+    $WORKSPACE.find('.start-match').click(() => {
+        let field = Field;
+        startMatch(homePlayers, awayPlayers, field);
+    });
+
+
 });
 
-function generateHomePlayers(homeTeam, awayPayers, squadManager) {
-    homeTeam.forEach((player) => {
+function generatePlayers(team, squadManager) {
+    team.forEach((player) => {
         let renderHTML = player.getRenderHTML();
-        squadManager.addOutsidePlayerToPitch(renderHTML);
+        squadManager.addOutsidePlayerToPitch(player, renderHTML);
     });
 
-    awayPayers.forEach((player) => {
-        let renderHTML = player.getRenderHTML();
-        squadManager.addOutsidePlayerToPitch(renderHTML);
-    });
+
 }
 
 /**
@@ -77,6 +79,8 @@ function generateSquad(team) {
 /**
  * @param {jQuery} $container
  */
+
+/*
 function openFaceGenerator($container) {
     const klimaSandbox = new KlimaSandbox($container);
     klimaSandbox.init();
@@ -86,12 +90,49 @@ function openFaceGenerator($container) {
     klimaSandbox.showFace(FaceGenerator.generateFace());
     klimaSandbox.showName(NamesGenerator.generateName());
 }
-
+*/
 /**
  * @param {jQuery} $container
  */
-function openSquadManager($container) {
-    let squadManager = new SquadManager($container);
+function openSquadManager($container, team) {
+    let squadManager = new SquadManager($container, team);
     squadManager.init();
     return squadManager;
+}
+
+
+function startMatch(homePlayers, awayPlayers, field) {
+    const $body = $('body');
+    $body.html(field({width: 1200, height: 800}));
+    const playerhbs = PlayerHBS;
+    const $field = $('.field');
+
+    for (let i = 0; i < 11; i++) {
+        $field.append(playerhbs({
+            id: homePlayers[i].id,
+            name: homePlayers[i].name,
+            position: homePlayers[i].position,
+            positionX: homePlayers[i].positionX - 25,
+            positionY: homePlayers[i].positionY,
+            team: homePlayers[i].team,
+        }));
+
+    }
+    for (let i = 0; i < 11; i++) {
+        $field.append(playerhbs({
+            id: awayPlayers[i].id,
+            name: awayPlayers[i].name,
+            position: awayPlayers[i].position,
+            positionX: 600 - awayPlayers[i].positionX + 525,
+            positionY: awayPlayers[i].positionY,
+            team: awayPlayers[i].team,
+        }));
+    }
+
+
+    const event = new Event(homePlayers, awayPlayers);
+    setInterval(() => {
+        event.compile();
+    }, 1000);
+
 }

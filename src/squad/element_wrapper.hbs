@@ -2,10 +2,12 @@
     <div class="panel-dashboard-outer grid-stack-item-content panel panel-default">
         <div id="{{id}}" class="grid-stack-id panel-body panel-dashboard-inner">
 
-            <div class="player">
+            <div class="player"
+                 style='background-repeat: no-repeat; background-image: url("../src/styles/img/{{team}}player.png"); background-position:center top;'>
                 <div class="position">{{position}}</div>
-                <div class="shirt"></div>
-                <div class="name">{{name}}</div>
+                <div class=" name
+                ">{{name}}</div>
+                <div class="id" hidden>{{id}}</div>
             </div>
 
         </div>

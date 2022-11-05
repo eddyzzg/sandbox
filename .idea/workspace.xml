@@ -4,18 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d3d3ed9-da38-4e0b-bfc0-ff2834e03693" name="Default Changelist" comment="squadGenerator">
-      <change afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/match/Event.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/squad/SquadGenerator.js" afterDir="false" />
+    <list default="true" id="7d3d3ed9-da38-4e0b-bfc0-ff2834e03693" name="Default Changelist" comment="Edi srał i pisał">
+      <change afterPath="$PROJECT_DIR$/src/squad/player.hbs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Workspace.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Workspace.hbs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/Event.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Event.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/match/Player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Player.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/match/field.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/field.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/match/field.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/field.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/names/NamesGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/names/NamesGenerator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/squad/SquadGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/SquadGenerator.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/squad/SquadManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/SquadManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/squad/element_wrapper.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/element_wrapper.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/squad/tmp.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/tmp.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/style.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/gridstack.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/gridstack.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/img/back.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/img/back.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/squadManager.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/squadManager.less" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,9 +57,8 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/bartosz.stanislawski/WebstormProjects/sandbox",
+    "last_opened_file_path": "C:/Users/premi/WebstormProjects/MANAGER/src/squad",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -67,11 +71,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\premi\WebstormProjects\MANAGER\src\squad" />
       <recent name="C:\Users\bartosz.stanislawski\WebstormProjects\sandbox" />
       <recent name="C:\WORKSPACE\sandbox\sandbox\src\squad" />
       <recent name="C:\WORKSPACE\sandbox\sandbox\src\styles" />
       <recent name="C:\WORKSPACE\sandbox\sandbox\webpack\style" />
-      <recent name="C:\WORKSPACE\sandbox\sandbox\webpack" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\WORKSPACE\sandbox\sandbox\src\names" />
@@ -154,7 +158,9 @@
       <workItem from="1666025656882" duration="4892000" />
       <workItem from="1666033982124" duration="116000" />
       <workItem from="1667132772821" duration="8358000" />
-      <workItem from="1667222345267" duration="26388000" />
+      <workItem from="1667222345267" duration="26463000" />
+      <workItem from="1667470760745" duration="1428000" />
+      <workItem from="1667488683245" duration="55015000" />
     </task>
     <task id="LOCAL-00001" summary="t">
       <created>1564057867467</created>
@@ -268,7 +274,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665836443581</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Edi srał i pisał">
+      <created>1667417594575</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1667417594575</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,6 +308,7 @@
     <MESSAGE value="facegenerator and squadManager assigned for tests" />
     <MESSAGE value="ble bele" />
     <MESSAGE value="squadGenerator" />
-    <option name="LAST_COMMIT_MESSAGE" value="squadGenerator" />
+    <MESSAGE value="Edi srał i pisał" />
+    <option name="LAST_COMMIT_MESSAGE" value="Edi srał i pisał" />
   </component>
 </project>
