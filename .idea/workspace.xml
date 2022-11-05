@@ -4,24 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d3d3ed9-da38-4e0b-bfc0-ff2834e03693" name="Default Changelist" comment="Edi srał i pisał">
-      <change afterPath="$PROJECT_DIR$/src/squad/player.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Workspace.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Workspace.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/match/Event.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Event.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/match/Player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Player.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/match/field.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/field.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/names/NamesGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/names/NamesGenerator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/squad/SquadGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/SquadGenerator.js" afterDir="false" />
+    <list default="true" id="7d3d3ed9-da38-4e0b-bfc0-ff2834e03693" name="Default Changelist" comment="Gównokod2">
       <change beforePath="$PROJECT_DIR$/src/squad/SquadManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/SquadManager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/squad/element_wrapper.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/element_wrapper.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/squad/tmp.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/tmp.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/style.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/style.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/gridstack.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/gridstack.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/img/back.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/img/back.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/squadManager.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/squadManager.less" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +144,7 @@
       <workItem from="1667132772821" duration="8358000" />
       <workItem from="1667222345267" duration="26463000" />
       <workItem from="1667470760745" duration="1428000" />
-      <workItem from="1667488683245" duration="55015000" />
+      <workItem from="1667488683245" duration="55284000" />
     </task>
     <task id="LOCAL-00001" summary="t">
       <created>1564057867467</created>
@@ -281,7 +265,21 @@
       <option name="project" value="LOCAL" />
       <updated>1667417594575</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Gównokod">
+      <created>1667647740602</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1667647740602</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Gównokod2">
+      <created>1667647796712</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1667647796712</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -309,6 +307,8 @@
     <MESSAGE value="ble bele" />
     <MESSAGE value="squadGenerator" />
     <MESSAGE value="Edi srał i pisał" />
-    <option name="LAST_COMMIT_MESSAGE" value="Edi srał i pisał" />
+    <MESSAGE value="Gównokod" />
+    <MESSAGE value="Gównokod2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Gównokod2" />
   </component>
 </project>

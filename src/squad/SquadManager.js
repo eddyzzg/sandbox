@@ -103,9 +103,9 @@ export default class SquadManager {
         } else if (positionOnGrid.left > 50 && positionOnGrid.left < 400) {
             $playerPosition.addClass('defender');
 
-            if (positionOnGrid.top > 0 && positionOnGrid.top < 532) {
+            if (positionOnGrid.top > 0 && positionOnGrid.top < 266) {
                 position = 'LD';
-            } else if (positionOnGrid.top > 532 && positionOnGrid.top < 532) {
+            } else if (positionOnGrid.top > 266 && positionOnGrid.top < 532) {
                 position = 'CD';
             } else if (positionOnGrid.top > 532) {
                 position = 'RD';
