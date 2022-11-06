@@ -78,7 +78,7 @@ export default class Player {
     move(positionX, positionY) {
         this.positionX = positionX + Math.ceil(Math.random() * 10) - 5;
         this.positionY = positionY + Math.ceil(Math.random() * 10) - 5;
-
+        console.log('ruch');
     }
 
     pass(team, ball) {
@@ -91,7 +91,6 @@ export default class Player {
                 distance = this.distance(player);
             }
         });
-
 
         closestPlayer.hasBall = true;
         this.hasBall = false;

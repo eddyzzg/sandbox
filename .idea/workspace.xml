@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d3d3ed9-da38-4e0b-bfc0-ff2834e03693" name="Default Changelist" comment="dodano reRender(), piłkarze losowo się poruszają">
+    <list default="true" id="7d3d3ed9-da38-4e0b-bfc0-ff2834e03693" name="Default Changelist" comment="dodano player.decide() - podejmowanie decyzji. dostepne sa trzy opcje, z czego dwie działają: losowy ruch, podanie do najbliższego zawodnika. Strzał wyswietla tylko console.log('shot!');&#10;dodano ball.reRender()&#10;dodano grafike pilki">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/match/Ball.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Ball.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/match/Event.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Event.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/match/Player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Player.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/match/ball.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/ball.hbs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -291,7 +290,21 @@
       <option name="project" value="LOCAL" />
       <updated>1667748378658</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="dodano player.decide() - podejmowanie decyzji&#10;dodano ball.reRender()&#10;dodano trzy podstawowe decyzje, z czego dwie działają: losowy ruch, podanie do najbliższego zawodnika. Strzał wyswietla tylko console.log('shot!');">
+      <created>1667759819396</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1667759819396</updated>
+    </task>
+    <task id="LOCAL-00022" summary="dodano player.decide() - podejmowanie decyzji. dostepne sa trzy opcje, z czego dwie działają: losowy ruch, podanie do najbliższego zawodnika. Strzał wyswietla tylko console.log('shot!');&#10;dodano ball.reRender()&#10;dodano grafike pilki">
+      <created>1667759917086</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1667759917086</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -322,6 +335,8 @@
     <MESSAGE value="Gównokod" />
     <MESSAGE value="Gównokod2" />
     <MESSAGE value="dodano reRender(), piłkarze losowo się poruszają" />
-    <option name="LAST_COMMIT_MESSAGE" value="dodano reRender(), piłkarze losowo się poruszają" />
+    <MESSAGE value="dodano player.decide() - podejmowanie decyzji&#10;dodano ball.reRender()&#10;dodano trzy podstawowe decyzje, z czego dwie działają: losowy ruch, podanie do najbliższego zawodnika. Strzał wyswietla tylko console.log('shot!');" />
+    <MESSAGE value="dodano player.decide() - podejmowanie decyzji. dostepne sa trzy opcje, z czego dwie działają: losowy ruch, podanie do najbliższego zawodnika. Strzał wyswietla tylko console.log('shot!');&#10;dodano ball.reRender()&#10;dodano grafike pilki" />
+    <option name="LAST_COMMIT_MESSAGE" value="dodano player.decide() - podejmowanie decyzji. dostepne sa trzy opcje, z czego dwie działają: losowy ruch, podanie do najbliższego zawodnika. Strzał wyswietla tylko console.log('shot!');&#10;dodano ball.reRender()&#10;dodano grafike pilki" />
   </component>
 </project>

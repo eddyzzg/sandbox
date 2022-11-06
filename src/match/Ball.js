@@ -3,8 +3,8 @@ import ballTemplate from './ball.hbs'
 export default class Ball {
 
     constructor() {
-        this.positionX = 600;
-        this.positionY = 400;
+        this.positionX = 550;
+        this.positionY = 355;
     }
 
     render($field) {

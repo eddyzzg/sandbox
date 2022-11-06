@@ -11,6 +11,7 @@ export default class Event {
     compile() {
 
         const allPlayers = this.team1.concat(this.team2);
+
         allPlayers.forEach((player) => {
             let decision = player.decide();
 

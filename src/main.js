@@ -65,15 +65,13 @@ function openSquadManager($container, team) {
     return squadManager;
 }
 
-function placeForwardPlayerToTheMiddleOfTheField(homePlayers) {
-    let index = 0
-    if (index === 0) {
-        const forwardPlayer = homePlayers[10];
-        forwardPlayer.hasBall = true;
-        forwardPlayer.positionX = 600;
-        forwardPlayer.positionY = 400;
-        forwardPlayer.reRender();
-    }
+function placeForwardPlayerToTheMiddleOfTheField(homePlayers, ball) {
+    const forwardPlayer = homePlayers[10];
+    forwardPlayer.hasBall = true;
+    forwardPlayer.positionX = 550;
+    forwardPlayer.positionY = 355;
+    forwardPlayer.reRender();
+    ball.reRender();
 }
 
 function renderBall($field) {
@@ -89,10 +87,19 @@ function startMatch(homePlayers, awayPlayers) {
 
     addPlayersToMatch(homePlayers, awayPlayers, $field);
     renderBall($field);
-    placeForwardPlayerToTheMiddleOfTheField(homePlayers);
+
+
+    let ball = new Ball();
+    const event = new Event(homePlayers, awayPlayers, $field, ball);
+    //   placeForwardPlayerToTheMiddleOfTheField(homePlayers, ball);
+
+    homePlayers[10].hasBall = true;
+    homePlayers[10].positionX = 550;
+    homePlayers[10].positionY = 355;
+    homePlayers[10].reRender(homePlayers[10].id, 550, 355);
+    ball.reRender(homePlayers[10].positionX, homePlayers[10].positionY);
 
     setInterval(() => {
-        const event = new Event(homePlayers, awayPlayers, $field);
         event.compile();
     }, 1000);
 
@@ -122,22 +129,5 @@ function addPlayersToMatch(homePlayers, awayPlayers, $field) {
         player.positionX = 600 - player.positionX + 525;
     })
 
-    let ball = new Ball();
-    ball.render($field);
-
-
-    const event = new Event(homePlayers, awayPlayers, $field, ball);
-    let index = 0
-    if (index === 0) {
-        homePlayers[10].hasBall = true;
-        homePlayers[10].positionX = 600;
-        homePlayers[10].positionY = 400;
-        const $playerDiv = $("#10");
-        homePlayers[10].reRender(homePlayers[10].id, 600, 400, $playerDiv);
-    }
-    setInterval(() => {
-
-        event.compile();
-    }, 1000);
 
 }
