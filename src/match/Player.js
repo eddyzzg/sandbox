@@ -46,13 +46,13 @@ export default class Player {
         }));
     }
     
-    reRender(id, x, y) {
+    reRender() {
         this.getPlayerDOMSelector().html(playerHBS({
             id: this.id,
             name: this.name,
             position: this.position,
-            positionX: x,
-            positionY: y,
+            positionX: this.positionX,
+            positionY: this.positionY,
             team: this.team,
         }));
     }

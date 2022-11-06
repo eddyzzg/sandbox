@@ -73,7 +73,7 @@ function placeForwardPlayerToTheMiddleOfTheField(homePlayers) {
         forwardPlayer.hasBall = true;
         forwardPlayer.positionX = 600;
         forwardPlayer.positionY = 400;
-        forwardPlayer.reRender(forwardPlayer.id, 600, 400);
+        forwardPlayer.reRender();
     }
 }
 
@@ -93,7 +93,6 @@ function startMatch(homePlayers, awayPlayers, field) {
     const $field = $('.field');
     addPlayersToMatch(homePlayers, awayPlayers, $field);
     renderBall($field);
-    
     placeForwardPlayerToTheMiddleOfTheField(homePlayers);
     
     setInterval(() => {
