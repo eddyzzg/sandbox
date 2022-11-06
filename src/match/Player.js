@@ -17,7 +17,10 @@ export default class Player {
         this.position = position;
         this.team = team;
         this.hasBall = false;
+    }
 
+    getPlayerDOMSelector() {
+        return $(`#${this.id}`);
     }
 
 
@@ -111,7 +114,6 @@ export default class Player {
     }
 
     render($field) {
-
         $field.append(playerHBS({
             id: this.id,
             name: this.name,
@@ -123,8 +125,7 @@ export default class Player {
     }
 
     reRender(id, x, y, $playerDiv) {
-
-        $playerDiv.html(playerHBS({
+        this.getPlayerDOMSelector().html(playerHBS({
             id: this.id,
             name: this.name,
             position: this.position,
@@ -132,6 +133,5 @@ export default class Player {
             positionY: y,
             team: this.team,
         }));
-
     }
 }
