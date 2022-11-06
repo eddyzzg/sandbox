@@ -124,7 +124,6 @@ export default class SquadManager {
         this.team.squad[id].nominalPositionX = positionOnGrid.left;
         this.team.squad[id].nominalPositionY = positionOnGrid.top;
         $playerPosition.html(position);
-        console.log(this.team.squad[id]);
 
 
     }

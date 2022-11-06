@@ -18,7 +18,7 @@ global.API = {};
 
 $(document).ready(function () {
     const $WORKSPACE = createWorkspace();
-    
+
     $WORKSPACE.find('.menu .generator').click(() => {
         openFaceGenerator($WORKSPACE);
     });
@@ -80,9 +80,9 @@ function openSquadManager($container, team) {
 function startMatch(homePlayers, awayPlayers, field) {
     const $body = $('body');
     $body.html(field({width: 1200, height: 800}));
-    
+
     const $field = $('.field');
-    
+
     homePlayers.forEach((player) => {
         $field.append(playerHBS({
             id: player.id,
@@ -92,6 +92,8 @@ function startMatch(homePlayers, awayPlayers, field) {
             positionY: player.positionY,
             team: player.team,
         }));
+        player.positionX = player.positionX - 25;
+
     })
     awayPlayers.forEach((player) => {
         $field.append(playerHBS({
@@ -102,18 +104,23 @@ function startMatch(homePlayers, awayPlayers, field) {
             positionY: player.positionY,
             team: player.team,
         }));
+        player.positionX = 600 - player.positionX + 525;
+
     })
-    
+
     new Ball().render($field);
 
-    const event = new Event(homePlayers, awayPlayers);
+    const event = new Event(homePlayers, awayPlayers, $field);
     let index = 0
+    if (index === 0) {
+        homePlayers[10].hasBall = true;
+        homePlayers[10].positionX = 600;
+        homePlayers[10].positionY = 400;
+        const $playerDiv = $("#10");
+        homePlayers[10].reRender(homePlayers[10].id, 600, 400, $playerDiv);
+    }
     setInterval(() => {
-        if (index===0) {
-            homePlayers[11].hasBall=true;
-            homePlayers[11].positionX=600;
-            homePlayers[11].positionY=400;
-        }
+
         event.compile();
     }, 1000);
 

@@ -7,12 +7,13 @@ export default class Event {
     }
 
     compile() {
-        //  let allPlayers = this.team1 + this.team2;
+
         const allPlayers = this.team1.concat(this.team2);
         allPlayers.forEach((player) => {
-//            const {x, y} = player.makeMove();
-
-//            this.checkConfilct()
+            player.move(player.positionX, player.positionY);
+            let id = `#` + player.id;
+            const $playerDiv = $(id);
+            player.reRender(player.id, player.positionX, player.positionY, $playerDiv);
         });
     }
 }

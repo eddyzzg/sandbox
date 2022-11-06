@@ -5,16 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d3d3ed9-da38-4e0b-bfc0-ff2834e03693" name="Default Changelist" comment="Gównokod2">
-      <change afterPath="$PROJECT_DIR$/public/img/ooo.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/match/Ball.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/match/ball.hbs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/field.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/Event.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Event.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/match/Player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Player.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/match/field.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/field.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/squad/SquadGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/SquadGenerator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/style.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/style.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/squad/SquadManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/SquadManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/squad/player.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/player.hbs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,23 +21,275 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="hbs" />
         <option value="JavaScript File" />
       </list>
     </option>
   </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="1OV8eoe3E3Hq3lDjqvhy5tsaKVW" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/premi/WebstormProjects/MANAGER/src/squad&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\premi\WebstormProjects\MANAGER\src\squad" />
+      <recent name="C:\Users\bartosz.stanislawski\WebstormProjects\sandbox" />
+      <recent name="C:\WORKSPACE\sandbox\sandbox\src\squad" />
+      <recent name="C:\WORKSPACE\sandbox\sandbox\src\styles" />
+      <recent name="C:\WORKSPACE\sandbox\sandbox\webpack\style" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\WORKSPACE\sandbox\sandbox\src\names" />
+      <recent name="C:\WORKSPACE\sandbox\sandbox\src\styles" />
+      <recent name="C:\WORKSPACE\sandbox\sandbox\src\squad\img" />
+      <recent name="C:\WORKSPACE\sandbox\sandbox\public" />
+      <recent name="C:\WORKSPACE\sandbox\sandbox\src\squad" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.index.html">
+    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/sandbox/public/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="development" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="development" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="watch" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="watch" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.watch" />
+        <item itemvalue="JavaScript Debug.index.html" />
+        <item itemvalue="npm.build" />
+        <item itemvalue="npm.development" />
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7d3d3ed9-da38-4e0b-bfc0-ff2834e03693" name="Default Changelist" comment="" />
+      <created>1564051502175</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1564051502175</updated>
+      <workItem from="1564051505841" duration="2827000" />
+      <workItem from="1564057837809" duration="29373000" />
+      <workItem from="1564468910768" duration="23161000" />
+      <workItem from="1665835200661" duration="37000" />
+      <workItem from="1665836318210" duration="1534000" />
+      <workItem from="1666025656882" duration="4892000" />
+      <workItem from="1666033982124" duration="116000" />
+      <workItem from="1667132772821" duration="8358000" />
+      <workItem from="1667222345267" duration="26463000" />
+      <workItem from="1667470760745" duration="1428000" />
+      <workItem from="1667488683245" duration="55284000" />
+    </task>
+    <task id="LOCAL-00001" summary="t">
+      <created>1564057867467</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1564057867467</updated>
+    </task>
+    <task id="LOCAL-00002" summary="t">
+      <created>1564057940926</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1564057940926</updated>
+    </task>
+    <task id="LOCAL-00003" summary="less styles added">
+      <created>1564062901520</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1564062901520</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Random face generator">
+      <created>1564122721738</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1564122721738</updated>
+    </task>
+    <task id="LOCAL-00005" summary="HANDLEBARS &amp; UTF8">
+      <created>1564130468872</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1564130468872</updated>
+    </task>
+    <task id="LOCAL-00006" summary="HANDLEBARS &amp; UTF8">
+      <created>1564131153388</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1564131153388</updated>
+    </task>
+    <task id="LOCAL-00007" summary="HANDLEBARS &amp; UTF8">
+      <created>1564131351130</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1564131351130</updated>
+    </task>
+    <task id="LOCAL-00008" summary="HANDLEBARS &amp; UTF8">
+      <created>1564134008518</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1564134008518</updated>
+    </task>
+    <task id="LOCAL-00009" summary="GRIDSTACK ADDED">
+      <created>1564145449433</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1564145449433</updated>
+    </task>
+    <task id="LOCAL-00010" summary="GRIDSTACK ADDED">
+      <created>1564473337641</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1564473337641</updated>
+    </task>
+    <task id="LOCAL-00011" summary="GRIDSTACK ADDED">
+      <created>1564473674833</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1564473674833</updated>
+    </task>
+    <task id="LOCAL-00012" summary="GRIDSTACK ADDED">
+      <created>1564475471187</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1564475471187</updated>
+    </task>
+    <task id="LOCAL-00013" summary="GRIDSTACK ADDED">
+      <created>1564480679706</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1564480679706</updated>
+    </task>
+    <task id="LOCAL-00014" summary="names database moved to json's">
+      <created>1564488035987</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1564488035987</updated>
+    </task>
+    <task id="LOCAL-00015" summary="facegenerator and squadManager assigned for tests">
+      <created>1564491822547</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1564491822547</updated>
+    </task>
+    <task id="LOCAL-00016" summary="ble bele">
+      <created>1665836443581</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1665836443581</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Edi srał i pisał">
+      <created>1667417594575</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1667417594575</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Gównokod">
+      <created>1667647740602</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1667647740602</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Gównokod2">
+      <created>1667647796712</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1667647796712</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

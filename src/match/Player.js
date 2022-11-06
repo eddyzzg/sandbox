@@ -11,13 +11,13 @@ export default class Player {
         this.speed = Math.ceil(Math.random() * 100);
         this.power = Math.ceil(Math.random() * 100);
         this.passing = Math.ceil(Math.random() * 100);
-      //  this.nominalPosition = nominalPosition;
+        //  this.nominalPosition = nominalPosition;
         this.nominalPositionX = 1;
         this.nominalPositionY = 1;
         this.position = position;
         this.team = team;
         this.hasBall = false;
-        
+
     }
 
     makeMove() {
@@ -29,19 +29,32 @@ export default class Player {
     }
 
     move(positionX, positionY) {
-        this.positionX = positionX;
-        this.positionY = positionY;
+        this.positionX = positionX + Math.ceil(Math.random() * 10) - 5;
+        this.positionY = positionY + Math.ceil(Math.random() * 10) - 5;
     }
-    
-    render($field){
-    
+
+    render($field) {
+
         $field.append(playerHBS({
             id: this.id,
             name: this.name,
             position: this.position,
-            positionX: this.positionX - 25,
+            positionX: this.positionX,
             positionY: this.positionY,
             team: this.team,
         }));
+    }
+
+    reRender(id, x, y, $playerDiv) {
+
+        $playerDiv.html(playerHBS({
+            id: this.id,
+            name: this.name,
+            position: this.position,
+            positionX: x,
+            positionY: y,
+            team: this.team,
+        }));
+
     }
 }
