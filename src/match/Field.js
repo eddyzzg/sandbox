@@ -1,20 +1,18 @@
 import fieldTmp from './field.hbs';
 
 export default class Field {
-
+    
     constructor(width, height) {
         this.width = width;
         this.height = height;
     }
-
-    init() {
-        let wspolrzedne = [];
-    }
     
     render() {
-        let field = fieldTmp(this);
-        let $body = $(document).find('body');
+        const $body = $('body');
+        const field = fieldTmp(this);
         
         $body.html(field);
+        
+        return $('.field');
     }
 }

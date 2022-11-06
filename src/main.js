@@ -2,12 +2,12 @@ import 'gridstack';
 import testModule from './module-a';
 import WORKSPACE_TMP from './Workspace.hbs';
 import './style.less';
-import SquadManager from "./squad/SquadManager";
+import SquadManager from './squad/SquadManager';
 import SquadGenerator from './squad/SquadGenerator';
-import Field from './match/field.hbs';
 import Event from './match/Event.js';
 import playerHBS from './squad/player.hbs';
-import Ball from "./match/Ball";
+import Ball from './match/Ball';
+import Field from './match/Field';
 
 testModule.test();
 global.API = {};
@@ -36,8 +36,7 @@ $(document).ready(function () {
     generatePlayers(awayPlayers, squadManager2);
     
     $WORKSPACE.find('.start-match').click(() => {
-        let field = Field;
-        startMatch(homePlayers, awayPlayers, field);
+        startMatch(homePlayers, awayPlayers);
     });
 });
 
@@ -84,13 +83,10 @@ function renderBall($field) {
 /**
  * @param {Player[]} homePlayers
  * @param {Player[]} awayPlayers
- * @param field
  */
-function startMatch(homePlayers, awayPlayers, field) {
-    const $body = $('body');
-    $body.html(field({width: 1200, height: 800}));
+function startMatch(homePlayers, awayPlayers) {
+    const $field = new Field(1200, 800).render();
     
-    const $field = $('.field');
     addPlayersToMatch(homePlayers, awayPlayers, $field);
     renderBall($field);
     placeForwardPlayerToTheMiddleOfTheField(homePlayers);
