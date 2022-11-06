@@ -108,9 +108,11 @@ function startMatch(homePlayers, awayPlayers, field) {
 
     })
 
-    new Ball().render($field);
+    let ball = new Ball();
+    ball.render($field);
 
-    const event = new Event(homePlayers, awayPlayers, $field);
+
+    const event = new Event(homePlayers, awayPlayers, $field, ball);
     let index = 0
     if (index === 0) {
         homePlayers[10].hasBall = true;
