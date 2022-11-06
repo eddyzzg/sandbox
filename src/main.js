@@ -1,10 +1,7 @@
 import 'gridstack';
 import testModule from './module-a';
-import KlimaSandbox from './klima/sandbox'
-import FaceGenerator from "./faces/FaceGenerator";
 import WORKSPACE_TMP from './Workspace.hbs';
 import './style.less';
-import NamesGenerator from "./names/NamesGenerator";
 import SquadManager from "./squad/SquadManager";
 import SquadGenerator from './squad/SquadGenerator';
 import Field from './match/field.hbs';
@@ -18,27 +15,26 @@ global.API = {};
 
 $(document).ready(function () {
     const $WORKSPACE = createWorkspace();
-
+    
     $WORKSPACE.find('.menu .generator').click(() => {
         openFaceGenerator($WORKSPACE);
     });
     $WORKSPACE.find('.menu .squad-manager').click(() => {
         openSquadManager($WORKSPACE);
     });
-
-//    openFaceGenerator($WORKSPACE.find('.face-generator-container'));
+    
     let homeTeam = new SquadGenerator();
     let awayTeam = new SquadGenerator();
-
+    
     let homePlayers = homeTeam.generateSquad("red");
     let awayPlayers = awayTeam.generateSquad("blue");
-
+    
     let squadManager = openSquadManager($WORKSPACE.find('.squad-manager-home-container'), homeTeam);
     let squadManager2 = openSquadManager($WORKSPACE.find('.squad-manager-away-container'), awayTeam);
-
+    
     generatePlayers(homePlayers, squadManager);
     generatePlayers(awayPlayers, squadManager2);
-
+    
     $WORKSPACE.find('.start-match').click(() => {
         let field = Field;
         startMatch(homePlayers, awayPlayers, field);
@@ -50,8 +46,6 @@ function generatePlayers(team, squadManager) {
         let renderHTML = player.getRenderHTML();
         squadManager.addOutsidePlayerToPitch(player, renderHTML);
     });
-
-
 }
 
 /**
@@ -72,6 +66,21 @@ function openSquadManager($container, team) {
     return squadManager;
 }
 
+function placeForwardPlayerToTheMiddleOfTheField(homePlayers) {
+    let index = 0
+    if (index === 0) {
+        const forwardPlayer = homePlayers[10];
+        forwardPlayer.hasBall = true;
+        forwardPlayer.positionX = 600;
+        forwardPlayer.positionY = 400;
+        forwardPlayer.reRender(forwardPlayer.id, 600, 400);
+    }
+}
+
+function renderBall($field) {
+    new Ball().render($field);
+}
+
 /**
  * @param {Player[]} homePlayers
  * @param {Player[]} awayPlayers
@@ -80,9 +89,21 @@ function openSquadManager($container, team) {
 function startMatch(homePlayers, awayPlayers, field) {
     const $body = $('body');
     $body.html(field({width: 1200, height: 800}));
-
+    
     const $field = $('.field');
+    addPlayersToMatch(homePlayers, awayPlayers, $field);
+    renderBall($field);
+    
+    placeForwardPlayerToTheMiddleOfTheField(homePlayers);
+    
+    setInterval(() => {
+        const event = new Event(homePlayers, awayPlayers, $field);
+        event.compile();
+    }, 1000);
+    
+}
 
+function addPlayersToMatch(homePlayers, awayPlayers, $field) {
     homePlayers.forEach((player) => {
         $field.append(playerHBS({
             id: player.id,
@@ -93,7 +114,6 @@ function startMatch(homePlayers, awayPlayers, field) {
             team: player.team,
         }));
         player.positionX = player.positionX - 25;
-
     })
     awayPlayers.forEach((player) => {
         $field.append(playerHBS({
@@ -105,23 +125,5 @@ function startMatch(homePlayers, awayPlayers, field) {
             team: player.team,
         }));
         player.positionX = 600 - player.positionX + 525;
-
     })
-
-    new Ball().render($field);
-
-    const event = new Event(homePlayers, awayPlayers, $field);
-    let index = 0
-    if (index === 0) {
-        homePlayers[10].hasBall = true;
-        homePlayers[10].positionX = 600;
-        homePlayers[10].positionY = 400;
-        const $playerDiv = $("#10");
-        homePlayers[10].reRender(homePlayers[10].id, 600, 400, $playerDiv);
-    }
-    setInterval(() => {
-
-        event.compile();
-    }, 1000);
-
 }
