@@ -38,9 +38,12 @@ $(document).ready(function () {
     generatePlayers(homePlayers, squadManager);
     generatePlayers(awayPlayers, squadManager2);
     
-    $WORKSPACE.find('.start-match').click(() => {
+    const $startMatchBtn = $WORKSPACE.find('.start-match');
+    $startMatchBtn.click(() => {
         startMatch(homePlayers, awayPlayers);
     });
+    
+    $startMatchBtn.click();
 });
 
 function generatePlayers(team, squadManager) {
@@ -87,7 +90,6 @@ function placeForwardPlayerToTheMiddleOfTheField(homePlayers, ball) {
     forwardPlayer.positionX = 550;
     forwardPlayer.positionY = 355;
     forwardPlayer.reRender();
-    ball.reRender();
 }
 
 function renderBall($field) {
@@ -108,6 +110,8 @@ function startMatch(homePlayers, awayPlayers) {
     
     const event = new Event(homePlayers, awayPlayers, $field, ball);
     placeForwardPlayerToTheMiddleOfTheField(homePlayers, ball);
+    
+    // event.passEvent();
     
     setInterval(() => {
         event.compile();

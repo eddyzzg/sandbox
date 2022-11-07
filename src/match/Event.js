@@ -1,5 +1,5 @@
 export default class Event {
-
+    
     constructor(home, away, field, ball) {
         this.team1 = home;
         this.team2 = away;
@@ -7,19 +7,22 @@ export default class Event {
         this.ball = ball;
         this.noConflict = false;
     }
-
+    
+    //FOR TEST
+    passEvent() {
+        this.team1[10].pass(this.team1, this.ball);
+    }
+    
     compile() {
-
         const allPlayers = this.team1.concat(this.team2);
-
         allPlayers.forEach((player) => {
             let decision = player.decide();
-
+            
             if (decision === "move") {
                 player.move(player.positionX, player.positionY);
                 if (player.hasBall === true) {
-                    this.ball.move(player.positionX, player.positionY);
-                    this.ball.reRender();
+                    this.ball.move(player.positionX, player.positionY, true);
+                    // this.ball.reRender();
                 }
             }
             if (decision === "pass") {
@@ -28,7 +31,6 @@ export default class Event {
                 } else {
                     player.pass(this.team2, this.ball);
                 }
-
             }
             if (decision === "shoot") {
                 player.shoot();

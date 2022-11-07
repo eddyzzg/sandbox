@@ -94,7 +94,7 @@ export default class Player {
         closestPlayer.hasBall = true;
         this.hasBall = false;
         ball.move(closestPlayer.positionX, closestPlayer.positionY);
-        ball.reRender();
+        // ball.reRender();
     };
     
     shoot() {
@@ -103,8 +103,7 @@ export default class Player {
     distance(object) {
         let deltaX = this.positionX - object.positionX;
         let deltaY = this.positionY - object.positionY;
-        let distance = Math.ceil(Math.sqrt(deltaX * deltaX + deltaY * deltaY));
-        return distance;
+        return Math.ceil(Math.sqrt(deltaX * deltaX + deltaY * deltaY));
     }
     
     render($field) {
