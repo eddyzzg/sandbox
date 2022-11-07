@@ -10,18 +10,30 @@ export default class Ball extends BaseMatchElement {
         this.positionY = 355;
     }
     
+    /**
+     * @returns {jQuery}
+     */
     getDOMSelector() {
         return $('#ball .ball');
     }
     
+    /**
+     * @returns {HandlebarsTemplates}
+     */
     getTemplate() {
         return ballTemplate;
     }
     
-    move(x, y, isInstantMove) {
+    /**
+     * @param {Number} positionX
+     * @param {Number} positionY
+     * @param {Boolean} isInstantMove
+     * @returns {Promise<>}
+     */
+    move(positionX, positionY, isInstantMove) {
         return new Promise((resolve) => {
-            this.positionX = x;
-            this.positionY = y;
+            this.positionX = positionX;
+            this.positionY = positionY;
             
             const $element = this.getDOMSelector();
             if (isInstantMove) {

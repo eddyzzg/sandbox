@@ -25,6 +25,7 @@ export default class Player extends BaseMatchElement {
     }
     
     getAnimationTime() {
+        //TODO: this.definition.speed * AVERAGE_ANIMATION_SPEED_RATIO
         return 600;
     }
     
@@ -100,6 +101,12 @@ export default class Player extends BaseMatchElement {
         this.positionX = 1200;
     }
     
+    /**
+     * @param {Number} positionX
+     * @param {Number} positionY
+     * @param {Boolean} isInstantMove
+     * @returns {Promise<>}
+     */
     move(positionX, positionY, isInstantMove) {
         return new Promise((resolve) => {
             this.positionX = positionX + Math.ceil(Math.random() * 10) - 5;
@@ -114,7 +121,6 @@ export default class Player extends BaseMatchElement {
                     left: `${this.positionX}px`,
                     top: `${this.positionY}px`,
                 }, this.getAnimationTime(), () => {
-                    console.log('ruch');
                     return resolve();
                 });
             }

@@ -26,7 +26,7 @@ export default class Match {
         this.homePlayers = this.homeTeam.generateSquad('red');
         this.awayPlayers = this.awayTeam.generateSquad('blue');
         
-        return this.addPlayersToMatch().then(() => {
+        return this.placePlayersOnField().then(() => {
             this.renderBall();
             return this.placeForwardPlayerToTheMiddleOfTheField();
         });
@@ -40,7 +40,7 @@ export default class Match {
         }, 1000);
     }
     
-    addPlayersToMatch() {
+    placePlayersOnField() {
         const $field = this.field.getDOMSelector();
         const animationsPromises = [];
         
