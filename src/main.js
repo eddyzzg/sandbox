@@ -8,6 +8,9 @@ import Event from './match/Event.js';
 import playerHBS from './squad/player.hbs';
 import Ball from './match/Ball';
 import Field from './match/Field';
+import KlimaSandbox from './klima/sandbox';
+import FaceGenerator from './faces/FaceGenerator';
+import NamesGenerator from './names/NamesGenerator';
 
 testModule.test();
 global.API = {};
@@ -15,26 +18,26 @@ global.API = {};
 
 $(document).ready(function () {
     const $WORKSPACE = createWorkspace();
-
+    
     $WORKSPACE.find('.menu .generator').click(() => {
         openFaceGenerator($WORKSPACE);
     });
     $WORKSPACE.find('.menu .squad-manager').click(() => {
         openSquadManager($WORKSPACE);
     });
-
+    
     let homeTeam = new SquadGenerator();
     let awayTeam = new SquadGenerator();
-
-    let homePlayers = homeTeam.generateSquad("red");
-    let awayPlayers = awayTeam.generateSquad("blue");
-
+    
+    let homePlayers = homeTeam.generateSquad('red');
+    let awayPlayers = awayTeam.generateSquad('blue');
+    
     let squadManager = openSquadManager($WORKSPACE.find('.squad-manager-home-container'), homeTeam);
     let squadManager2 = openSquadManager($WORKSPACE.find('.squad-manager-away-container'), awayTeam);
-
+    
     generatePlayers(homePlayers, squadManager);
     generatePlayers(awayPlayers, squadManager2);
-
+    
     $WORKSPACE.find('.start-match').click(() => {
         startMatch(homePlayers, awayPlayers);
     });
@@ -65,6 +68,19 @@ function openSquadManager($container, team) {
     return squadManager;
 }
 
+/**
+ * @param {jQuery} $container
+ */
+function openFaceGenerator($container) {
+    const klimaSandbox = new KlimaSandbox($container);
+    klimaSandbox.init();
+    
+    const text = 'GENERATOR';
+    klimaSandbox.showTextInHTML(text);
+    klimaSandbox.showFace(FaceGenerator.generateFace());
+    klimaSandbox.showName(NamesGenerator.generateName());
+}
+
 function placeForwardPlayerToTheMiddleOfTheField(homePlayers, ball) {
     const forwardPlayer = homePlayers[10];
     forwardPlayer.hasBall = true;
@@ -75,7 +91,9 @@ function placeForwardPlayerToTheMiddleOfTheField(homePlayers, ball) {
 }
 
 function renderBall($field) {
-    new Ball().render($field);
+    let ball = new Ball();
+    ball.render($field);
+    return ball
 }
 
 /**
@@ -84,25 +102,17 @@ function renderBall($field) {
  */
 function startMatch(homePlayers, awayPlayers) {
     const $field = new Field(1200, 800).render();
-
+    
     addPlayersToMatch(homePlayers, awayPlayers, $field);
-    renderBall($field);
-
-
-    let ball = new Ball();
+    let ball = renderBall($field);
+    
     const event = new Event(homePlayers, awayPlayers, $field, ball);
-    //   placeForwardPlayerToTheMiddleOfTheField(homePlayers, ball);
-
-    homePlayers[10].hasBall = true;
-    homePlayers[10].positionX = 550;
-    homePlayers[10].positionY = 355;
-    homePlayers[10].reRender(homePlayers[10].id, 550, 355);
-    ball.reRender(homePlayers[10].positionX, homePlayers[10].positionY);
-
+    placeForwardPlayerToTheMiddleOfTheField(homePlayers, ball);
+    
     setInterval(() => {
         event.compile();
     }, 1000);
-
+    
 }
 
 function addPlayersToMatch(homePlayers, awayPlayers, $field) {
@@ -128,6 +138,6 @@ function addPlayersToMatch(homePlayers, awayPlayers, $field) {
         }));
         player.positionX = 600 - player.positionX + 525;
     })
-
-
+    
+    
 }

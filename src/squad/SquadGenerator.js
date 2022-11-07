@@ -2,34 +2,31 @@ import Player from "../match/Player";
 import NamesGenerator from "../names/NamesGenerator";
 
 export default class SquadGenerator {
-
+    
     constructor() {
         this.squad = [];
         this.positions = ["GK", "LD", "CLD", "CRD", "RD", "LM", "CLM", "CRM", "RM", "RF", "LF"];
     }
-
+    
     generateSquad(team) {
         for (let i = 0; i < 11; i++) {
             let name = NamesGenerator.generateName();
             let player = new Player(i, name, this.positions[i], team);
-            if (team == 'blue') {
+            if (team === 'blue') {
                 player.id = i + 11;
             }
-
-
             this.generatePosition(player);
             this.squad[i] = player;
         }
         return this.squad;
     }
-
+    
     generatePosition(player) {
         switch (player.position) {
             case 'GK':
                 player.positionX = 40;
                 player.positionY = 400;
                 break;
-
             case 'LD':
                 player.positionX = 100;
                 player.positionY = 150;
@@ -70,8 +67,6 @@ export default class SquadGenerator {
                 player.positionX = 450;
                 player.positionY = 450;
                 break;
-
         }
-
     }
 }
