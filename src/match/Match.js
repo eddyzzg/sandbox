@@ -49,7 +49,7 @@ export default class Match {
         this.homePlayers.forEach((player) => {
             player.render($field);
             
-            const startPosition = this.homeTeam.generatePosition(player.position);
+            const startPosition = this.homeTeam.generatePosition(player.position, this.field);
             const movePromise = player.move(startPosition.positionX - 25, startPosition.positionY);
             
             animationsPromises.push(movePromise);
@@ -58,7 +58,7 @@ export default class Match {
             player.setRightStartTeam();
             player.render($field);
             
-            const startPosition = this.awayTeam.generatePosition(player.position);
+            const startPosition = this.awayTeam.generatePosition(player.position, this.field);
             let movePromise = player.move(600 - startPosition.positionX + 525, startPosition.positionY);
             
             animationsPromises.push(movePromise);

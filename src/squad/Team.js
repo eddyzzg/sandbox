@@ -63,54 +63,56 @@ export default class Team {
         return this.firstSquad;
     }
     
-    generatePosition(position) {
+    generatePosition(position, field) {
         let positionX = 0;
         let positionY = 0;
         
+        //TODO: getFormation
+        
         switch (position) {
             case 'GK':
-                positionX = 40;
-                positionY = 400;
+                positionX = 0.033 * field.width; //40;
+                positionY = 0.5 * field.width; //400;
                 break;
             case 'LD':
-                positionX = 100;
-                positionY = 150;
+                positionX = 0.083 * field.width; //100;
+                positionY = 0.125 * field.width; //*150;
                 break;
             case 'CLD':
-                positionX = 100;
-                positionY = 350;
+                positionX = 0.083 * field.width; //100;
+                positionY = 0.2916 * field.width; //350;
                 break;
             case 'CRD':
-                positionX = 100;
-                positionY = 450;
+                positionX = 0.083 * field.width; //100;
+                positionY = 0.375 * field.width; //450;
                 break;
             case 'RD':
-                positionX = 100;
-                positionY = 650;
+                positionX = 0.083 * field.width; //100;
+                positionY = 0.5416 * field.width; //650;
                 break;
             case 'LM':
-                positionX = 300;
-                positionY = 150;
+                positionX = 0.25 * field.width; //300;
+                positionY = 0.125 * field.width; //*1150;
                 break;
             case 'CLM':
-                positionX = 300;
-                positionY = 350;
+                positionX = 0.25 * field.width; //300;
+                positionY = 0.2916 * field.width; //350;
                 break;
             case 'CRM':
-                positionX = 300;
-                positionY = 450;
+                positionX = 0.25 * field.width; //300;
+                positionY = 0.375 * field.width; //450;
                 break;
             case 'RM':
-                positionX = 300;
-                positionY = 650;
+                positionX = 0.25 * field.width; //300;
+                positionY = 0.5416 * field.width; //650;
                 break;
             case 'RF':
-                positionX = 450;
-                positionY = 350;
+                positionX = 0.375 * field.width; //450;
+                positionY = 0.2916 * field.width; //350;
                 break;
             case 'LF':
-                positionX = 450;
-                positionY = 450;
+                positionX = 0.375 * field.width; //450;
+                positionY = 0.375 * field.width; //450;
                 break;
         }
         return {positionX, positionY};

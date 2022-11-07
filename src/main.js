@@ -14,31 +14,30 @@ global.API = {};
 
 
 $(document).ready(function () {
-    const $WORKSPACE = createWorkspace();
+    const $workspace = createWorkspace();
     
-    $WORKSPACE.find('.menu .generator').click(() => {
-        openFaceGenerator($WORKSPACE);
+    $workspace.find('.menu .generator').click(() => {
+        openFaceGenerator($workspace);
     });
-    $WORKSPACE.find('.menu .squad-manager').click(() => {
-        openSquadManager($WORKSPACE);
+    $workspace.find('.menu .squad-manager').click(() => {
+        openSquadManager($workspace);
+    });
+    let $startMatchBtn = $workspace.find('.start-match');
+    $startMatchBtn.click(() => {
+        homeTeam.generateSquad();
+        awayTeam.generateSquad();
+        
+        return startMatch(homeTeam, awayTeam);
     });
     
     let homeTeam = new Team();
     let awayTeam = new Team(true);
     
-    homeTeam.generateSquad();
-    awayTeam.generateSquad();
-    
-    let squadManager = openSquadManager($WORKSPACE.find('.squad-manager-home-container'), homeTeam);
-    let squadManager2 = openSquadManager($WORKSPACE.find('.squad-manager-away-container'), awayTeam);
+    let squadManager = openSquadManager($workspace.find('.squad-manager-home-container'), homeTeam);
+    let squadManager2 = openSquadManager($workspace.find('.squad-manager-away-container'), awayTeam);
     
     // generatePlayers(homePlayers, squadManager);
     // generatePlayers(awayPlayers, squadManager2);
-    
-    const $startMatchBtn = $WORKSPACE.find('.start-match');
-    $startMatchBtn.click(() => {
-        startMatch(homeTeam, awayTeam);
-    });
     
     //instant start match
     $startMatchBtn.click();
