@@ -24,22 +24,23 @@ $(document).ready(function () {
     });
     
     let homeTeam = new Team();
-    let awayTeam = new Team();
+    let awayTeam = new Team(true);
     
-    let homePlayers = homeTeam.generateSquad('red');
-    let awayPlayers = awayTeam.generateSquad('blue');
+    homeTeam.generateSquad();
+    awayTeam.generateSquad();
     
     let squadManager = openSquadManager($WORKSPACE.find('.squad-manager-home-container'), homeTeam);
     let squadManager2 = openSquadManager($WORKSPACE.find('.squad-manager-away-container'), awayTeam);
     
-    generatePlayers(homePlayers, squadManager);
-    generatePlayers(awayPlayers, squadManager2);
+    // generatePlayers(homePlayers, squadManager);
+    // generatePlayers(awayPlayers, squadManager2);
     
     const $startMatchBtn = $WORKSPACE.find('.start-match');
     $startMatchBtn.click(() => {
         startMatch(homeTeam, awayTeam);
     });
     
+    //instant start match
     $startMatchBtn.click();
 });
 
@@ -87,6 +88,7 @@ function openFaceGenerator($container) {
  */
 function startMatch(homeTeam, awayTeam) {
     const match = new Match(homeTeam, awayTeam);
-    match.prepare();
-    match.start();
+    return match.prepare().then(() => {
+        return match.start();
+    });
 }

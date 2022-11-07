@@ -1,27 +1,65 @@
-import Player from '../match/Player';
 import NamesGenerator from '../names/NamesGenerator';
 import PlayerDef from '../match/PlayerDef';
+import Player from '../match/Player';
 
 export default class Team {
     
-    constructor() {
-        this.squad = [];
+    constructor(isAwayTeam = false) {
+        
+        /** @type {Map<Number, PlayerDef>} */
+        this.squad = new Map();
+        
+        /** @type {Player[]} */
+        this.firstSquad = [];
+        
         this.positions = ["GK", "LD", "CLD", "CRD", "RD", "LM", "CLM", "CRM", "RM", "RF", "LF"];
+        
+        this.firstSquadDef = this.getFirstTeamPlayersNumbers();
+        
+        /** @type {Boolean} */
+        this.isAwayTeam = isAwayTeam;
+        
+        this.teamColor = isAwayTeam ? 'blue' : 'red';
     }
     
-    generateSquad(team) {
-        const TEAMS_PLAYERS_AMOUNT = 11;
-        for (let i = 0; i < TEAMS_PLAYERS_AMOUNT; i++) {
+    /**
+     * For now we generate random team here
+     */
+    generateSquad(matchSquadNumberOfPlayersAllowed = 18) {
+        for (let i = 0; i < matchSquadNumberOfPlayersAllowed; i++) {
             const name = NamesGenerator.generateName();
-            const playerDef = new PlayerDef(i, name, this.positions[i], team)
-            const player = new Player(playerDef);
-            if (team === 'blue') {
-                player.id = i + TEAMS_PLAYERS_AMOUNT;
+            const playerDef = new PlayerDef(i, name, this.positions[i])
+            if (this.isAwayTeam) {
+                playerDef.id = i + matchSquadNumberOfPlayersAllowed;
             }
-            // this.generatePosition(player);
-            this.squad[i] = player;
+            this.squad.set(i, playerDef);
         }
-        return this.squad;
+    }
+    
+    /**
+     * @param {Number[]} numbers
+     */
+    setFirstTeamPlayersNumbers(numbers) {
+        this.firstSquadDef = numbers;
+    }
+    
+    /**
+     * Returns number of players from first team
+     *
+     * @returns {number[]}
+     */
+    getFirstTeamPlayersNumbers() {
+        return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+    }
+    
+    getMatchPlayers() {
+        this.firstSquadDef.forEach((playerNumber) => {
+            const playerDef = this.squad.get(playerNumber);
+            const player = new Player(playerDef);
+            player.setShitColor(this.teamColor);
+            this.firstSquad.push(player);
+        });
+        return this.firstSquad;
     }
     
     generatePosition(position) {

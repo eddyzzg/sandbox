@@ -24,9 +24,13 @@ export default class Player extends BaseMatchElement {
         this.definition = playerDef;
     }
     
+    setShitColor(color) {
+        this.shirtColor = color;
+    }
+    
     getAnimationTime() {
         //TODO: this.definition.speed * AVERAGE_ANIMATION_SPEED_RATIO
-        return 600;
+        return 1000;
     }
     
     getDOMSelector() {

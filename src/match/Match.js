@@ -23,8 +23,8 @@ export default class Match {
     prepare() {
         this.field.render();
         
-        this.homePlayers = this.homeTeam.generateSquad('red');
-        this.awayPlayers = this.awayTeam.generateSquad('blue');
+        this.homePlayers = this.homeTeam.getMatchPlayers();
+        this.awayPlayers = this.awayTeam.getMatchPlayers();
         
         return this.placePlayersOnField().then(() => {
             this.renderBall();
