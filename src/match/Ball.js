@@ -30,7 +30,7 @@ export default class Ball extends BaseMatchElement {
             $element.animate({
                 left: `${this.positionX}px`,
                 top: `${this.positionY}px`,
-            }, 400, () => {
+            }, this.getAnimationTime(), () => {
                 console.log('animation complete !');
             });
         }

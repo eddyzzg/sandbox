@@ -22,6 +22,10 @@ export default class Player extends BaseMatchElement {
         this.hasBall = false;
     }
     
+    getAnimationTime() {
+        return 600;
+    }
+    
     getPlayerDOMSelector() {
         return $(`#${this.id}`);
     }
@@ -68,9 +72,7 @@ export default class Player extends BaseMatchElement {
     
     possibilityOfShoot() {
         if (this.hasBall === true) {
-            
             return 10;
-            
         } else {
             return 0;
         }
@@ -93,7 +95,7 @@ export default class Player extends BaseMatchElement {
             $element.animate({
                 left: `${this.positionX}px`,
                 top: `${this.positionY}px`,
-            }, 600, () => {
+            }, this.getAnimationTime(), () => {
                 console.log('animation complete !');
             });
         }

@@ -2,6 +2,10 @@ export default class BaseMatchElement {
     constructor() {
     }
     
+    getAnimationTime() {
+        return 400;
+    }
+    
     getPlayerDOMSelector() {
     }
     
