@@ -19,20 +19,22 @@ export default class Ball extends BaseMatchElement {
     }
     
     move(x, y, isInstantMove) {
-        this.positionX = x;
-        this.positionY = y;
-        
-        const $element = this.getDOMSelector();
-        if (isInstantMove) {
-            $element.css('left', `${this.positionX}px`);
-            $element.css('top', `${this.positionY}px`);
-        } else {
-            $element.animate({
-                left: `${this.positionX}px`,
-                top: `${this.positionY}px`,
-            }, this.getAnimationTime(), () => {
-                console.log('animation complete !');
-            });
-        }
+        return new Promise((resolve) => {
+            this.positionX = x;
+            this.positionY = y;
+            
+            const $element = this.getDOMSelector();
+            if (isInstantMove) {
+                $element.css('left', `${this.positionX}px`);
+                $element.css('top', `${this.positionY}px`);
+            } else {
+                $element.animate({
+                    left: `${this.positionX}px`,
+                    top: `${this.positionY}px`,
+                }, this.getAnimationTime(), () => {
+                    return resolve();
+                });
+            }
+        });
     }
 }

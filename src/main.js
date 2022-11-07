@@ -3,7 +3,7 @@ import testModule from './module-a';
 import WORKSPACE_TMP from './Workspace.hbs';
 import './style.less';
 import SquadManager from './squad/SquadManager';
-import SquadGenerator from './squad/SquadGenerator';
+import Team from './squad/Team';
 import KlimaSandbox from './klima/sandbox';
 import FaceGenerator from './faces/FaceGenerator';
 import NamesGenerator from './names/NamesGenerator';
@@ -23,8 +23,8 @@ $(document).ready(function () {
         openSquadManager($WORKSPACE);
     });
     
-    let homeTeam = new SquadGenerator();
-    let awayTeam = new SquadGenerator();
+    let homeTeam = new Team();
+    let awayTeam = new Team();
     
     let homePlayers = homeTeam.generateSquad('red');
     let awayPlayers = awayTeam.generateSquad('blue');
@@ -37,7 +37,7 @@ $(document).ready(function () {
     
     const $startMatchBtn = $WORKSPACE.find('.start-match');
     $startMatchBtn.click(() => {
-        startMatch(homePlayers, awayPlayers);
+        startMatch(homeTeam, awayTeam);
     });
     
     $startMatchBtn.click();
@@ -82,9 +82,11 @@ function openFaceGenerator($container) {
 }
 
 /**
- * @param {Player[]} homePlayers
- * @param {Player[]} awayPlayers
+ * @param {Team} homeTeam
+ * @param {Team} awayTeam
  */
-function startMatch(homePlayers, awayPlayers) {
-    new Match(homePlayers, awayPlayers).start();
+function startMatch(homeTeam, awayTeam) {
+    const match = new Match(homeTeam, awayTeam);
+    match.prepare();
+    match.start();
 }

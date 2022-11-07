@@ -96,24 +96,30 @@ export default class Player extends BaseMatchElement {
         return elementWrapper(this)
     }
     
+    setRightStartTeam() {
+        this.positionX = 1200;
+    }
+    
     move(positionX, positionY, isInstantMove) {
-        console.log('ruch');
+        return new Promise((resolve) => {
+            this.positionX = positionX + Math.ceil(Math.random() * 10) - 5;
+            this.positionY = positionY + Math.ceil(Math.random() * 10) - 5;
+            
+            const $element = this.getDOMSelector().find('.player');
+            if (isInstantMove) {
+                $element.css('left', `${this.positionX}px`);
+                $element.css('top', `${this.positionY}px`);
+            } else {
+                $element.animate({
+                    left: `${this.positionX}px`,
+                    top: `${this.positionY}px`,
+                }, this.getAnimationTime(), () => {
+                    console.log('ruch');
+                    return resolve();
+                });
+            }
+        });
         
-        this.positionX = positionX + Math.ceil(Math.random() * 10) - 5;
-        this.positionY = positionY + Math.ceil(Math.random() * 10) - 5;
-        
-        const $element = this.getDOMSelector().find('.player');
-        if (isInstantMove) {
-            $element.css('left', `${this.positionX}px`);
-            $element.css('top', `${this.positionY}px`);
-        } else {
-            $element.animate({
-                left: `${this.positionX}px`,
-                top: `${this.positionY}px`,
-            }, this.getAnimationTime(), () => {
-                console.log('animation complete !');
-            });
-        }
     }
     
     pass(team, ball) {
