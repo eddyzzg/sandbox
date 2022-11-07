@@ -18,7 +18,7 @@ export default class Ball extends BaseMatchElement {
     }
     
     /**
-     * @returns {HandlebarsTemplates}
+     * @returns {Function}
      */
     getTemplate() {
         return ballTemplate;

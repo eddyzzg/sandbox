@@ -46,8 +46,8 @@ $(document).ready(function () {
 
 function generatePlayers(team, squadManager) {
     team.forEach((player) => {
-        let renderHTML = player.getRenderHTML();
-        squadManager.addOutsidePlayerToPitch(player, renderHTML);
+        let tmp = player.getTemplate();
+        squadManager.addOutsidePlayerToPitch(player, tmp(player));
     });
 }
 

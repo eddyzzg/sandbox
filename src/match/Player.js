@@ -1,6 +1,6 @@
-import elementWrapper from '../squad/element_wrapper.hbs';
 import playerHBS from '../squad/player.hbs';
 import BaseMatchElement from './BaseMatchElement';
+import PlayerDecisionEvent from "./PlayerDecisionEvent";
 
 export default class Player extends BaseMatchElement {
     
@@ -37,72 +37,19 @@ export default class Player extends BaseMatchElement {
         return $(`#${this.id}`);
     }
     
+    /**
+     * @returns {Function}
+     */
     getTemplate() {
         return playerHBS;
     }
     
-    decide() {
-        let decisionArray = [];
-        let index = 0;
-        
-        index = this.drawMove(decisionArray, index);
-        index = this.drawPass(decisionArray, index);
-        index = this.drawShoot(decisionArray, index);
-        
-        const randomIndex = Math.ceil(Math.random() * (index - 1));
-        return decisionArray[randomIndex];
-    }
-    
-    drawMove(decisionArray, index) {
-        for (let i = 0; i < this.possibilityOfMove(); i++) {
-            decisionArray[i + index] = "move";
-        }
-        index += this.possibilityOfMove();
-        return index;
-    }
-    
-    drawPass(decisionArray, index) {
-        for (let i = 0; i < this.possibilityOfPass(); i++) {
-            decisionArray[i + index] = "pass";
-        }
-        index += this.possibilityOfPass();
-        return index;
-    }
-    
-    drawShoot(decisionArray, index) {
-        for (let i = 0; i < this.possibilityOfShoot(); i++) {
-            decisionArray[i + index] = "shoot";
-        }
-        index += this.possibilityOfShoot();
-        return index;
-    }
-    
-    possibilityOfMove() {
-        return 100;
-    }
-    
-    possibilityOfPass() {
-        if (this.hasBall) {
-            return 100;
-        } else {
-            return 0;
-        }
-    }
-    
-    possibilityOfShoot() {
-        if (this.hasBall) {
-            return 10;
-        } else {
-            return 0;
-        }
-    }
-    
-    getRenderHTML() {
-        return elementWrapper(this)
-    }
-    
     setRightStartTeam() {
         this.positionX = 1200;
+    }
+    
+    decide() {
+        return new PlayerDecisionEvent(this).run();
     }
     
     /**
@@ -146,7 +93,6 @@ export default class Player extends BaseMatchElement {
         closestPlayer.hasBall = true;
         this.hasBall = false;
         ball.move(closestPlayer.positionX, closestPlayer.positionY);
-        // ball.reRender();
     };
     
     shoot() {

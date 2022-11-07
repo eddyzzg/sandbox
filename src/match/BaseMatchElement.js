@@ -16,7 +16,7 @@ export default class BaseMatchElement {
     }
     
     /**
-     * @returns {HandlebarsTemplates}
+     * @returns {Function}
      */
     getTemplate() {
     }
