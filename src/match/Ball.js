@@ -1,7 +1,7 @@
 import ballTemplate from './ball.hbs'
-import BaseMarchElement from "./BaseMarchElement";
+import BaseMatchElement from "./BaseMatchElement";
 
-export default class Ball extends BaseMarchElement {
+export default class Ball extends BaseMatchElement {
     
     constructor() {
         super();

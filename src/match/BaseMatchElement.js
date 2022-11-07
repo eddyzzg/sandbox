@@ -1,4 +1,4 @@
-export default class BaseMarchElement {
+export default class BaseMatchElement {
     constructor() {
     }
     

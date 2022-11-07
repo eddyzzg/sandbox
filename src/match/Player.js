@@ -1,8 +1,8 @@
 import elementWrapper from '../squad/element_wrapper.hbs';
 import playerHBS from '../squad/player.hbs';
-import BaseMarchElement from './BaseMarchElement';
+import BaseMatchElement from './BaseMatchElement';
 
-export default class Player extends BaseMarchElement {
+export default class Player extends BaseMatchElement {
     
     constructor(id, name, position, team) {
         super();
