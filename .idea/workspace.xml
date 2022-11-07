@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d3d3ed9-da38-4e0b-bfc0-ff2834e03693" name="Default Changelist" comment="dodano player.decide() - podejmowanie decyzji. dostepne sa trzy opcje, z czego dwie działają: losowy ruch, podanie do najbliższego zawodnika. Strzał wyswietla tylko console.log('shot!');&#10;dodano ball.reRender()&#10;dodano grafike pilki">
+    <list default="true" id="7d3d3ed9-da38-4e0b-bfc0-ff2834e03693" name="Default Changelist" comment="dodano player.decide() - podejmowanie decyzji. dostepne trzy opcje, z czego dwie działają: losowy ruch, podanie do najbliższego zawodnika. Strzał wyswietla tylko console.log('shot!');&#10;dodano ball.reRender()&#10;dodano grafike pilki">
+      <change afterPath="$PROJECT_DIR$/src/match/PlayerDecisionWhereToMove.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/match/Ball.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Ball.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/match/Event.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Event.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/Match.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Match.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/MatchEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/MatchEvent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/match/Player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Player.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/PlayerDecisionEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/PlayerDecisionEvent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/squad/Team.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/Team.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
