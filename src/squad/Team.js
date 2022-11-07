@@ -57,6 +57,7 @@ export default class Team {
             const playerDef = this.squad.get(playerNumber);
             const player = new Player(playerDef);
             player.setShitColor(this.teamColor);
+            player.setIsInAwayTeam(this.isAwayTeam);
             this.firstSquad.push(player);
         });
         return this.firstSquad;

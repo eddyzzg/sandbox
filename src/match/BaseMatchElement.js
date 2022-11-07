@@ -1,5 +1,7 @@
 export default class BaseMatchElement {
     constructor() {
+        this.positionX = 0;
+        this.positionY = 0;
     }
     
     /**
@@ -37,9 +39,26 @@ export default class BaseMatchElement {
     /**
      * @param {Number} positionX
      * @param {Number} positionY
-     * @param {Boolean} isInstantMove
+     * @param {Boolean} [isInstantMove]
      * @returns {Promise<>}
      */
-    move(positionX, positionY, isInstantMove) {
+    move(positionX, positionY, isInstantMove = false) {
+    }
+    
+    executeMove(isInstantMove) {
+        const $element = this.getDOMSelector()
+        return new Promise((resolve) => {
+            if (isInstantMove) {
+                $element.css('left', `${this.positionX}px`);
+                $element.css('top', `${this.positionY}px`);
+                return resolve();
+            }
+            $element.animate({
+                left: `${this.positionX}px`,
+                top: `${this.positionY}px`,
+            }, this.getAnimationTime(), () => {
+                return resolve();
+            });
+        });
     }
 }

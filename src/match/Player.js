@@ -12,9 +12,7 @@ export default class Player extends BaseMatchElement {
         
         this.id = playerDef.id;
         this.position = playerDef.nominalPosition;
-        
-        this.positionX = 1;
-        this.positionY = 1;
+        this.isInAwayTeam = false;
         
         this.nominalPositionX = 1;
         this.nominalPositionY = 1;
@@ -28,13 +26,17 @@ export default class Player extends BaseMatchElement {
         this.shirtColor = color;
     }
     
+    setIsInAwayTeam(isAwayTeam) {
+        this.isInAwayTeam = isAwayTeam;
+    }
+    
     getAnimationTime() {
         //TODO: this.definition.speed * AVERAGE_ANIMATION_SPEED_RATIO
         return 1000;
     }
     
     getDOMSelector() {
-        return $(`#${this.id}`);
+        return $(`#${this.id} .player`);
     }
     
     /**
@@ -55,47 +57,49 @@ export default class Player extends BaseMatchElement {
     /**
      * @param {Number} positionX
      * @param {Number} positionY
-     * @param {Boolean} isInstantMove
+     * @param {Boolean} [isInstantMove]
      * @returns {Promise<>}
      */
-    move(positionX, positionY, isInstantMove) {
-        return new Promise((resolve) => {
-            this.positionX = positionX + Math.ceil(Math.random() * 10) - 5;
-            this.positionY = positionY + Math.ceil(Math.random() * 10) - 5;
-            
-            const $element = this.getDOMSelector().find('.player');
-            if (isInstantMove) {
-                $element.css('left', `${this.positionX}px`);
-                $element.css('top', `${this.positionY}px`);
-            } else {
-                $element.animate({
-                    left: `${this.positionX}px`,
-                    top: `${this.positionY}px`,
-                }, this.getAnimationTime(), () => {
-                    return resolve();
-                });
-            }
-        });
+    move(positionX, positionY, isInstantMove = false) {
+        this.positionX = positionX + Math.ceil(Math.random() * 10) - 5;
+        this.positionY = positionY + Math.ceil(Math.random() * 10) - 5;
         
+        return this.executeMove(isInstantMove);
     }
     
-    pass(team, ball) {
-        let closestPlayer = team[0];
+    /**
+     * @param {Player[]} players
+     * @param {Ball} ball
+     */
+    pass(players, ball) {
+        let closestPlayer = players[0];
         let distance = 1200;
         
-        team.forEach((player) => {
+        closestPlayer = this.getClosestTeammate(players, distance, closestPlayer);
+        closestPlayer.hasBall = true;
+        this.hasBall = false;
+        
+        return ball.move(closestPlayer.positionX, closestPlayer.positionY);
+    };
+    
+    /**
+     * @param {Player[]} players
+     * @param {Number} distance
+     * @param {Player} closestPlayer
+     * @returns {*}
+     */
+    getClosestTeammate(players, distance, closestPlayer) {
+        players.forEach((player) => {
             if (this.distance(player) < distance && this.id !== player.id) {
                 closestPlayer = player;
                 distance = this.distance(player);
             }
         });
-        
-        closestPlayer.hasBall = true;
-        this.hasBall = false;
-        ball.move(closestPlayer.positionX, closestPlayer.positionY);
-    };
+        return closestPlayer;
+    }
     
     shoot() {
+        console.log('shot!');
     }
     
     distance(object) {

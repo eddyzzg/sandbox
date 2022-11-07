@@ -27,26 +27,13 @@ export default class Ball extends BaseMatchElement {
     /**
      * @param {Number} positionX
      * @param {Number} positionY
-     * @param {Boolean} isInstantMove
+     * @param {Boolean} [isInstantMove]
      * @returns {Promise<>}
      */
-    move(positionX, positionY, isInstantMove) {
-        return new Promise((resolve) => {
-            this.positionX = positionX;
-            this.positionY = positionY;
-            
-            const $element = this.getDOMSelector();
-            if (isInstantMove) {
-                $element.css('left', `${this.positionX}px`);
-                $element.css('top', `${this.positionY}px`);
-            } else {
-                $element.animate({
-                    left: `${this.positionX}px`,
-                    top: `${this.positionY}px`,
-                }, this.getAnimationTime(), () => {
-                    return resolve();
-                });
-            }
-        });
+    move(positionX, positionY, isInstantMove = false) {
+        this.positionX = positionX;
+        this.positionY = positionY;
+        
+        return this.executeMove(isInstantMove);
     }
 }

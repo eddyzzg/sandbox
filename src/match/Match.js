@@ -1,5 +1,5 @@
 import Field from './Field';
-import Event from './Event';
+import MatchEvent from './MatchEvent';
 import Ball from './Ball';
 
 export default class Match {
@@ -14,7 +14,9 @@ export default class Match {
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
         
+        /** @type {Player[]} */
         this.homePlayers = [];
+        /** @type {Player[]} */
         this.awayPlayers = [];
         
         this.ball = new Ball();
@@ -34,9 +36,9 @@ export default class Match {
     
     start() {
         setInterval(() => {
-            const event = new Event(this.homePlayers, this.awayPlayers, this.field.getDOMSelector(), this.ball);
-            event.compile();
-            // event.passEvent();
+            const matchEvent = new MatchEvent(this.homePlayers, this.awayPlayers, this.ball);
+            matchEvent.run();
+            // matchEvent.passEvent();
         }, 1000);
     }
     
