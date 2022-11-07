@@ -10,7 +10,7 @@ export default class Ball extends BaseMatchElement {
         this.positionY = 355;
     }
     
-    getPlayerDOMSelector() {
+    getDOMSelector() {
         return $('#ball .ball');
     }
     
@@ -22,7 +22,7 @@ export default class Ball extends BaseMatchElement {
         this.positionX = x;
         this.positionY = y;
         
-        const $element = this.getPlayerDOMSelector();
+        const $element = this.getDOMSelector();
         if (isInstantMove) {
             $element.css('left', `${this.positionX}px`);
             $element.css('top', `${this.positionY}px`);

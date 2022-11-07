@@ -6,7 +6,7 @@ export default class BaseMatchElement {
         return 400;
     }
     
-    getPlayerDOMSelector() {
+    getDOMSelector() {
     }
     
     getTemplate() {
@@ -19,6 +19,6 @@ export default class BaseMatchElement {
     
     reRender() {
         const template = this.getTemplate();
-        this.getPlayerDOMSelector().html(template(this));
+        this.getDOMSelector().html(template(this));
     }
 }

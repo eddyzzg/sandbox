@@ -28,7 +28,7 @@ export default class Player extends BaseMatchElement {
         return 600;
     }
     
-    getPlayerDOMSelector() {
+    getDOMSelector() {
         return $(`#${this.id}`);
     }
     
@@ -89,7 +89,7 @@ export default class Player extends BaseMatchElement {
         this.positionX = positionX + Math.ceil(Math.random() * 10) - 5;
         this.positionY = positionY + Math.ceil(Math.random() * 10) - 5;
         
-        const $element = this.getPlayerDOMSelector().find('.player');
+        const $element = this.getDOMSelector().find('.player');
         if (isInstantMove) {
             $element.css('left', `${this.positionX}px`);
             $element.css('top', `${this.positionY}px`);
