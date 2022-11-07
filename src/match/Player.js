@@ -1,9 +1,12 @@
 import elementWrapper from '../squad/element_wrapper.hbs';
-import playerHBS from "../squad/player.hbs";
+import playerHBS from '../squad/player.hbs';
+import BaseMarchElement from './BaseMarchElement';
 
-export default class Player {
+export default class Player extends BaseMarchElement {
     
     constructor(id, name, position, team) {
+        super();
+        
         this.id = id;
         this.name = name;
         this.positionX = 1;
@@ -23,6 +26,9 @@ export default class Player {
         return $(`#${this.id}`);
     }
     
+    getTemplate() {
+        return playerHBS;
+    }
     
     decide() {
         let decisionArray = [];
@@ -74,10 +80,23 @@ export default class Player {
         return elementWrapper(this)
     }
     
-    move(positionX, positionY) {
+    move(positionX, positionY, isInstantMove) {
+        console.log('ruch');
         this.positionX = positionX + Math.ceil(Math.random() * 10) - 5;
         this.positionY = positionY + Math.ceil(Math.random() * 10) - 5;
-        console.log('ruch');
+        
+        const $element = this.getPlayerDOMSelector().find('.player');
+        if (isInstantMove) {
+            $element.css('left', `${this.positionX}px`);
+            $element.css('top', `${this.positionY}px`);
+        } else {
+            $element.animate({
+                left: `${this.positionX}px`,
+                top: `${this.positionY}px`,
+            }, 600, () => {
+                console.log('animation complete !');
+            });
+        }
     }
     
     pass(team, ball) {
@@ -106,11 +125,4 @@ export default class Player {
         return Math.ceil(Math.sqrt(deltaX * deltaX + deltaY * deltaY));
     }
     
-    render($field) {
-        $field.append(playerHBS(this));
-    }
-    
-    reRender() {
-        this.getPlayerDOMSelector().html(playerHBS(this));
-    }
 }

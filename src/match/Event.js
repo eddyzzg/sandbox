@@ -36,9 +36,8 @@ export default class Event {
                 player.shoot();
                 console.log('shot!');
             }
-            let id = `#` + player.id;
-            const $playerDiv = $(id);
-            player.reRender(player.id, player.positionX, player.positionY, $playerDiv);
+            
+            // player.reRender();
         });
     }
 }
