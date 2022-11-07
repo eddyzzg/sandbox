@@ -1,5 +1,6 @@
 import Player from "../match/Player";
 import NamesGenerator from "../names/NamesGenerator";
+import PlayerDef from "../match/PlayerDef";
 
 export default class SquadGenerator {
     
@@ -11,7 +12,8 @@ export default class SquadGenerator {
     generateSquad(team) {
         for (let i = 0; i < 11; i++) {
             let name = NamesGenerator.generateName();
-            let player = new Player(i, name, this.positions[i], team);
+            const playerDef = new PlayerDef(i, name, this.positions[i], team)
+            let player = new Player(playerDef);
             if (team === 'blue') {
                 player.id = i + 11;
             }

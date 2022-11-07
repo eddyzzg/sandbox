@@ -5,7 +5,6 @@ import './style.less';
 import SquadManager from './squad/SquadManager';
 import SquadGenerator from './squad/SquadGenerator';
 import Event from './match/Event.js';
-import playerHBS from './squad/player.hbs';
 import Ball from './match/Ball';
 import Field from './match/Field';
 import KlimaSandbox from './klima/sandbox';
@@ -121,26 +120,12 @@ function startMatch(homePlayers, awayPlayers) {
 
 function addPlayersToMatch(homePlayers, awayPlayers, $field) {
     homePlayers.forEach((player) => {
-        $field.append(playerHBS({
-            id: player.id,
-            name: player.name,
-            position: player.position,
-            positionX: player.positionX - 25,
-            positionY: player.positionY,
-            team: player.team,
-        }));
         player.positionX = player.positionX - 25;
+        player.render($field);
     })
     awayPlayers.forEach((player) => {
-        $field.append(playerHBS({
-            id: player.id,
-            name: player.name,
-            position: player.position,
-            positionX: 600 - player.positionX + 525,
-            positionY: player.positionY,
-            team: player.team,
-        }));
         player.positionX = 600 - player.positionX + 525;
+        player.render($field);
     })
     
     

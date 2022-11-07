@@ -4,22 +4,24 @@ import BaseMatchElement from './BaseMatchElement';
 
 export default class Player extends BaseMatchElement {
     
-    constructor(id, name, position, team) {
+    /**
+     * @param {PlayerDef} playerDef
+     */
+    constructor(playerDef) {
         super();
         
-        this.id = id;
-        this.name = name;
+        this.id = playerDef.id;
+        this.position = playerDef.nominalPosition;
+        
         this.positionX = 1;
         this.positionY = 1;
-        this.speed = Math.ceil(Math.random() * 100);
-        this.power = Math.ceil(Math.random() * 100);
-        this.passing = Math.ceil(Math.random() * 100);
-        //  this.nominalPosition = nominalPosition;
+        
         this.nominalPositionX = 1;
         this.nominalPositionY = 1;
-        this.position = position;
-        this.team = team;
+        
         this.hasBall = false;
+        
+        this.definition = playerDef;
     }
     
     getAnimationTime() {
