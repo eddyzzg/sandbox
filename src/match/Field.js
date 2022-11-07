@@ -7,12 +7,14 @@ export default class Field {
         this.height = height;
     }
     
+    getDOMSelector() {
+        return $('.field');
+    }
+    
     render() {
         const $body = $('body');
         const field = fieldTmp(this);
         
         $body.html(field);
-        
-        return $('.field');
     }
 }

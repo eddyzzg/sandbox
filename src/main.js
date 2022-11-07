@@ -4,12 +4,10 @@ import WORKSPACE_TMP from './Workspace.hbs';
 import './style.less';
 import SquadManager from './squad/SquadManager';
 import SquadGenerator from './squad/SquadGenerator';
-import Event from './match/Event.js';
-import Ball from './match/Ball';
-import Field from './match/Field';
 import KlimaSandbox from './klima/sandbox';
 import FaceGenerator from './faces/FaceGenerator';
 import NamesGenerator from './names/NamesGenerator';
+import Match from './match/Match';
 
 testModule.test();
 global.API = {};
@@ -83,50 +81,10 @@ function openFaceGenerator($container) {
     klimaSandbox.showName(NamesGenerator.generateName());
 }
 
-function placeForwardPlayerToTheMiddleOfTheField(homePlayers, ball) {
-    const forwardPlayer = homePlayers[10];
-    forwardPlayer.hasBall = true;
-    forwardPlayer.positionX = 550;
-    forwardPlayer.positionY = 355;
-    forwardPlayer.reRender();
-}
-
-function renderBall($field) {
-    let ball = new Ball();
-    ball.render($field);
-    return ball
-}
-
 /**
  * @param {Player[]} homePlayers
  * @param {Player[]} awayPlayers
  */
 function startMatch(homePlayers, awayPlayers) {
-    const $field = new Field(1200, 800).render();
-    
-    addPlayersToMatch(homePlayers, awayPlayers, $field);
-    let ball = renderBall($field);
-    
-    const event = new Event(homePlayers, awayPlayers, $field, ball);
-    placeForwardPlayerToTheMiddleOfTheField(homePlayers, ball);
-    
-    // event.passEvent();
-    
-    setInterval(() => {
-        event.compile();
-    }, 1000);
-    
-}
-
-function addPlayersToMatch(homePlayers, awayPlayers, $field) {
-    homePlayers.forEach((player) => {
-        player.positionX = player.positionX - 25;
-        player.render($field);
-    })
-    awayPlayers.forEach((player) => {
-        player.positionX = 600 - player.positionX + 525;
-        player.render($field);
-    })
-    
-    
+    new Match(homePlayers, awayPlayers).start();
 }

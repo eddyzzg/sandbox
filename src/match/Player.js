@@ -40,24 +40,36 @@ export default class Player extends BaseMatchElement {
         let decisionArray = [];
         let index = 0;
         
+        index = this.drawMove(decisionArray, index);
+        index = this.drawPass(decisionArray, index);
+        index = this.drawShoot(decisionArray, index);
+        
+        const randomIndex = Math.ceil(Math.random() * (index - 1));
+        return decisionArray[randomIndex];
+    }
+    
+    drawMove(decisionArray, index) {
         for (let i = 0; i < this.possibilityOfMove(); i++) {
             decisionArray[i + index] = "move";
         }
         index += this.possibilityOfMove();
-        
+        return index;
+    }
+    
+    drawPass(decisionArray, index) {
         for (let i = 0; i < this.possibilityOfPass(); i++) {
             decisionArray[i + index] = "pass";
         }
         index += this.possibilityOfPass();
-        
+        return index;
+    }
+    
+    drawShoot(decisionArray, index) {
         for (let i = 0; i < this.possibilityOfShoot(); i++) {
             decisionArray[i + index] = "shoot";
         }
         index += this.possibilityOfShoot();
-        
-        let decision = decisionArray[Math.ceil(Math.random() * (index - 1))];
-        return decision;
-        
+        return index;
     }
     
     possibilityOfMove() {
@@ -65,7 +77,7 @@ export default class Player extends BaseMatchElement {
     }
     
     possibilityOfPass() {
-        if (this.hasBall === true) {
+        if (this.hasBall) {
             return 100;
         } else {
             return 0;
@@ -73,7 +85,7 @@ export default class Player extends BaseMatchElement {
     }
     
     possibilityOfShoot() {
-        if (this.hasBall === true) {
+        if (this.hasBall) {
             return 10;
         } else {
             return 0;
@@ -86,6 +98,7 @@ export default class Player extends BaseMatchElement {
     
     move(positionX, positionY, isInstantMove) {
         console.log('ruch');
+        
         this.positionX = positionX + Math.ceil(Math.random() * 10) - 5;
         this.positionY = positionY + Math.ceil(Math.random() * 10) - 5;
         
