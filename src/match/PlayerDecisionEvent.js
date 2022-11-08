@@ -1,28 +1,22 @@
 export default class PlayerDecisionEvent {
     constructor(player) {
         this.player = player;
-
         this.decisionArray = [];
         this.index = 0;
         this.drawMove();
         this.drawPass();
         this.drawShoot();
-
-
     }
-
 
     run() {
         const randomIndex = Math.ceil(Math.random() * (this.index - 1));
         return this.decisionArray[randomIndex];
     }
 
-
     where() {
         const randomIndex = Math.ceil(Math.random() * (this.index - 1));
         return this.decisionArray[randomIndex];
     }
-
 
     drawMove() {
         for (let i = 0; i < this.possibilityOfMove(); i++) {
@@ -45,7 +39,6 @@ export default class PlayerDecisionEvent {
         this.index += this.possibilityOfShoot();
     }
 
-
     possibilityOfMove() {
         if (this.player.position === "GK") {
             return 10;
@@ -62,6 +55,4 @@ export default class PlayerDecisionEvent {
     possibilityOfShoot() {
         return this.player.hasBall ? 50 : 0;
     }
-
-
 }

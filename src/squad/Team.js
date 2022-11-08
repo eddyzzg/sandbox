@@ -8,17 +8,13 @@ export default class Team {
 
         /** @type {Map<Number, PlayerDef>} */
         this.squad = new Map();
-
         /** @type {Player[]} */
         this.firstSquad = [];
-
         this.positions = ["GK", "LD", "CLD", "CRD", "RD", "LM", "CLM", "CRM", "RM", "RF", "LF"];
-
         this.firstSquadDef = this.getFirstTeamPlayersNumbers();
-
         /** @type {Boolean} */
         this.isAwayTeam = isAwayTeam;
-
+        this.hasBall = false;
         this.teamColor = isAwayTeam ? 'blue' : 'red';
     }
 
@@ -55,7 +51,7 @@ export default class Team {
     getMatchPlayers() {
         this.firstSquadDef.forEach((playerNumber) => {
             const playerDef = this.squad.get(playerNumber - 1);
-            const player = new Player(playerDef);
+            const player = new Player(playerDef, this);
             player.setShitColor(this.teamColor);
             player.setIsInAwayTeam(this.isAwayTeam);
             this.firstSquad.push(player);

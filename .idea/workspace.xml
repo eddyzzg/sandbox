@@ -4,10 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d3d3ed9-da38-4e0b-bfc0-ff2834e03693" name="Default Changelist" comment="dodano komentarze i kilka pierdół do funkcji moveInDirectionXY()">
+    <list default="true" id="7d3d3ed9-da38-4e0b-bfc0-ff2834e03693" name="Default Changelist" comment="poprawiono zjebane podawanie">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/match/MatchEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/MatchEvent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/Ball.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Ball.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/Field.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Field.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/Match.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Match.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/match/Player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Player.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/PlayerDecisionEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/PlayerDecisionEvent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/PlayerDecisionWhereToMove.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/PlayerDecisionWhereToMove.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/PlayerDef.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/PlayerDef.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/squad/SquadManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/SquadManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/squad/Team.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/Team.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -323,7 +330,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667918442414</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="poprawiono zjebane podawanie">
+      <created>1667920943888</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1667920943888</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -359,6 +373,7 @@
     <MESSAGE value="dodano PlayerDecisionWhereToMove i generowanie nominalPosition" />
     <MESSAGE value="Ziomeczki biegają targani podstawowymi pragnieniami : ustaw sie na pozycji, idz na bramke przeciwnika, idz do piłki. Zjebało się za to podawanie piłki" />
     <MESSAGE value="dodano komentarze i kilka pierdół do funkcji moveInDirectionXY()" />
-    <option name="LAST_COMMIT_MESSAGE" value="dodano komentarze i kilka pierdół do funkcji moveInDirectionXY()" />
+    <MESSAGE value="poprawiono zjebane podawanie" />
+    <option name="LAST_COMMIT_MESSAGE" value="poprawiono zjebane podawanie" />
   </component>
 </project>

@@ -115,7 +115,7 @@ export default class SquadManager {
             $playerPosition.addClass('goal-keeper');
             position = 'GK';
         }
-        //    this.team.position = "habla";
+
 
         let id = ($player.find('.id').text());
         this.team.squad[id].position = position;

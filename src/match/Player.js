@@ -7,20 +7,23 @@ export default class Player extends BaseMatchElement {
 
     /**
      * @param {PlayerDef} playerDef
+     * @param {Team} team
      */
-    constructor(playerDef) {
+    constructor(playerDef, team) {
         super();
-
         this.id = playerDef.id;
         this.position = playerDef.nominalPosition;
         this.isInAwayTeam = false;
-
         this.nominalPositionX = 1;
         this.nominalPositionY = 1;
-
         this.hasBall = false;
-
         this.definition = playerDef;
+        this.ball = undefined;
+        this.team = team;
+    }
+
+    setBallInfo(ball) {
+        this.ball = ball;
     }
 
     setShitColor(color) {
@@ -33,7 +36,7 @@ export default class Player extends BaseMatchElement {
 
     getAnimationTime() {
         //TODO: this.definition.speed * AVERAGE_ANIMATION_SPEED_RATIO
-        return 1000;
+        return 500;
     }
 
     getDOMSelector() {
@@ -56,7 +59,7 @@ export default class Player extends BaseMatchElement {
     }
 
     decideWhereToMove() {
-        return new PlayerDecisionWhereToMove(this, ball).run();
+        return new PlayerDecisionWhereToMove(this).run();
     }
 
     /**
@@ -119,10 +122,20 @@ export default class Player extends BaseMatchElement {
         let closestPlayer = players[0];
         let distance = 1400;
         closestPlayer = this.getClosestTeammate(players, distance, closestPlayer);
-        closestPlayer.hasBall = true;
-        this.hasBall = false;
+        this.setHasBall(false);
+        closestPlayer.setHasBall(true);
         return ball.move(closestPlayer.positionX, closestPlayer.positionY);
     };
+
+
+    /**
+     *
+     * @param {Boolean} boolean
+     */
+    setHasBall(boolean) {
+        this.hasBall = boolean;
+        this.team.hasBall = boolean;
+    }
 
     /**
      * @param {Player[]} players

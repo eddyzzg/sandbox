@@ -6,7 +6,6 @@ export default class PlayerDecisionWhereToMove {
         this.drawMoveToBall();
         this.drawMoveToPosition();
         this.drawMoveToGoal();
-
     }
 
 
@@ -39,26 +38,31 @@ export default class PlayerDecisionWhereToMove {
 
     /* TODO  jak tu przekazać instancje ball ?    \/
      */
-    possibilityOfMoveToBall(ball) {
+    possibilityOfMoveToBall() {
         /*
         if (this.player.distance(ball) < 30) {
             return 200;
         } else {
             return 20;
         }*/
+
+        let possibility = 0;
         if (this.player.hasBall === true) {
             return 0;
-        } else {
-            return 20;
         }
+        if (((this.player.distance(this.player.ball)) < 150) && !this.player.team.hasBall) {     // idz do piły jeżeli ma ją przeciwnik w odległości <150
+            return 100;
+        }
+        return 0;
     }
 
     possibilityOfMoveToPosition() {
         if (this.player.position === "GK") {
-            return 200;
+            return 80;
         } else {
-            return 100;
+            return 20;
         }
+
     }
 
     possibilityOfMoveToGoal() {
@@ -67,7 +71,7 @@ export default class PlayerDecisionWhereToMove {
         } else if (this.player.hasBall === true) {
             return 150;
         } else {
-            return 50;
+            return 10;
         }
     }
 

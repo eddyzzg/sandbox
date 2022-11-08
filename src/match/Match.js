@@ -10,36 +10,40 @@ export default class Match {
      */
     constructor(homeTeam, awayTeam) {
         this.field = new Field(1200, 800);
-
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
-
         /** @type {Player[]} */
         this.homePlayers = [];
         /** @type {Player[]} */
         this.awayPlayers = [];
-
         this.ball = new Ball();
+        window.match = this;
     }
 
     prepare() {
         this.field.render();
-
         this.homePlayers = this.homeTeam.getMatchPlayers();
         this.awayPlayers = this.awayTeam.getMatchPlayers();
-
+        this.informPlayersAboutTheBall();
         return this.placePlayersOnField().then(() => {
             this.renderBall();
             return this.placeForwardPlayerToTheMiddleOfTheField();
         });
     }
 
+    informPlayersAboutTheBall() {
+        this.homePlayers.concat(this.awayPlayers).forEach((player) => {
+            player.setBallInfo(this.ball)
+        })
+    }
+
+
     start() {
         setInterval(() => {
             const matchEvent = new MatchEvent(this.homePlayers, this.awayPlayers, this.ball);
             matchEvent.run();
             // matchEvent.passEvent();
-        }, 2000);
+        }, 1000);
     }
 
     placePlayersOnField() {
@@ -72,8 +76,8 @@ export default class Match {
 
     placeForwardPlayerToTheMiddleOfTheField() {
         const forwardPlayer = this.homePlayers[10];
-        console.log(this.homePlayers[10].position);
-        forwardPlayer.hasBall = true;
+        //console.log(this.homePlayers[10].team);
+        forwardPlayer.setHasBall(true);
         return forwardPlayer.moveToXY(550, 355);
     }
 
