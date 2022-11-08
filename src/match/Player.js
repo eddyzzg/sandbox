@@ -79,7 +79,10 @@ export default class Player extends BaseMatchElement {
 
     moveInDirectionOfXY(positionX, positionY, isInstantMove = false) {
 
-        let deltaX = Math.ceil(positionX) - Math.ceil(this.positionX);
+
+        let speed = this.definition.speed / 2;   // ustalenie przesuwanie się w turze przez playera max o przedział od 0 do 50
+
+        let deltaX = Math.ceil(positionX) - Math.ceil(this.positionX);   //usuwanie prawdpodobienstwa dzielenia przez zero usuwając je z danych wejsciowych
         let deltaY = Math.ceil(positionY) - Math.ceil(this.positionY);
 
         if (deltaX > -1 && deltaX <= 0) {
@@ -92,15 +95,24 @@ export default class Player extends BaseMatchElement {
             deltaY = -1;
         } else if (deltaY > 0 && deltaY < 1) {
             deltaY = 1;
-        }
+        }                                                       // koniec usuwania prawdopodobienstwa dzielenia przez zero
 
         let proportionY = deltaY / (Math.abs(deltaX) + Math.abs(deltaY));
         let proportionX = deltaX / (Math.abs(deltaX) + Math.abs(deltaY));
+        let offsetX = proportionX * speed;
+        let offsetY = proportionY * speed;
 
-        this.positionX = this.positionX + proportionX * (this.definition.speed / 2);
-        this.positionY = this.positionY + proportionY * (this.definition.speed / 2);
+        if (Math.abs(deltaX) < speed) {      // jeżeli player jest blisko celu przesunie się tylko o ile trzeba
+            offsetX = deltaX;
+        } else if (Math.abs(deltaY) < speed) {
+            offsetY = deltaY;
+        }
 
+        this.positionX = this.positionX + offsetX;
+        this.positionY = this.positionY + offsetY;
         return this.executeMove(isInstantMove);
+
+
     }
 
     /**

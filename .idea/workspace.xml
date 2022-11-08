@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d3d3ed9-da38-4e0b-bfc0-ff2834e03693" name="Default Changelist" comment="dodano PlayerDecisionWhereToMove i generowanie nominalPosition">
+    <list default="true" id="7d3d3ed9-da38-4e0b-bfc0-ff2834e03693" name="Default Changelist" comment="Ziomeczki biegają targani podstawowymi pragnieniami : ustaw sie na pozycji, idz na bramke przeciwnika, idz do piłki. Zjebało się za to podawanie piłki">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/match/BaseMatchElement.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/BaseMatchElement.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/match/Match.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Match.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/match/MatchEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/MatchEvent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/match/Player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Player.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/match/PlayerDecisionEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/PlayerDecisionEvent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/match/PlayerDecisionWhereToMove.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/PlayerDecisionWhereToMove.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -313,7 +308,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667852467956</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Ziomeczki biegają targani podstawowymi pragnieniami : ustaw sie na pozycji, idz na bramke przeciwnika, idz do piłki. Zjebało się za to podawanie piłki">
+      <created>1667914857103</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1667914857103</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -347,6 +349,7 @@
     <MESSAGE value="dodano player.decide() - podejmowanie decyzji&#10;dodano ball.reRender()&#10;dodano trzy podstawowe decyzje, z czego dwie działają: losowy ruch, podanie do najbliższego zawodnika. Strzał wyswietla tylko console.log('shot!');" />
     <MESSAGE value="dodano player.decide() - podejmowanie decyzji. dostepne sa trzy opcje, z czego dwie działają: losowy ruch, podanie do najbliższego zawodnika. Strzał wyswietla tylko console.log('shot!');&#10;dodano ball.reRender()&#10;dodano grafike pilki" />
     <MESSAGE value="dodano PlayerDecisionWhereToMove i generowanie nominalPosition" />
-    <option name="LAST_COMMIT_MESSAGE" value="dodano PlayerDecisionWhereToMove i generowanie nominalPosition" />
+    <MESSAGE value="Ziomeczki biegają targani podstawowymi pragnieniami : ustaw sie na pozycji, idz na bramke przeciwnika, idz do piłki. Zjebało się za to podawanie piłki" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ziomeczki biegają targani podstawowymi pragnieniami : ustaw sie na pozycji, idz na bramke przeciwnika, idz do piłki. Zjebało się za to podawanie piłki" />
   </component>
 </project>
