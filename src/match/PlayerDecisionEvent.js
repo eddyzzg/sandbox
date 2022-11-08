@@ -47,7 +47,12 @@ export default class PlayerDecisionEvent {
 
 
     possibilityOfMove() {
-        return 100;
+        if (this.player.position === "GK") {
+            return 10;
+        } else {
+            return 100;
+        }
+
     }
 
     possibilityOfPass() {
@@ -55,7 +60,7 @@ export default class PlayerDecisionEvent {
     }
 
     possibilityOfShoot() {
-        return this.player.hasBall ? 10 : 0;
+        return this.player.hasBall ? 50 : 0;
     }
 
 

@@ -1,7 +1,6 @@
 export default class PlayerDecisionWhereToMove {
     constructor(player) {
         this.player = player;
-
         this.decisionArray = [];
         this.index = 0;
         this.drawMoveToBall();
@@ -38,18 +37,38 @@ export default class PlayerDecisionWhereToMove {
         this.index += this.possibilityOfMoveToGoal();
     }
 
-
-    possibilityOfMoveToBall() {
-        return 20;
+    /* TODO  jak tu przekazać instancje ball ?    \/
+     */
+    possibilityOfMoveToBall(ball) {
+        /*
+        if (this.player.distance(ball) < 30) {
+            return 200;
+        } else {
+            return 20;
+        }*/
+        if (this.player.hasBall === true) {
+            return 0;
+        } else {
+            return 20;
+        }
     }
 
     possibilityOfMoveToPosition() {
-
-        return 100;
+        if (this.player.position === "GK") {
+            return 200;
+        } else {
+            return 100;
+        }
     }
 
     possibilityOfMoveToGoal() {
-        return 10;
+        if (this.player.position === "GK") {
+            return 2;
+        } else if (this.player.hasBall === true) {
+            return 150;
+        } else {
+            return 50;
+        }
     }
 
 

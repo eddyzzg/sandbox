@@ -56,7 +56,7 @@ export default class Player extends BaseMatchElement {
     }
 
     decideWhereToMove() {
-        return new PlayerDecisionWhereToMove(this).run();
+        return new PlayerDecisionWhereToMove(this, ball).run();
     }
 
     /**
@@ -66,44 +66,41 @@ export default class Player extends BaseMatchElement {
      * @returns {Promise<>}
      */
     move(positionX, positionY, isInstantMove = false) {
+    }
 
-        this.positionX = positionX + Math.ceil(Math.random() * 10) - 5;
-        this.positionY = positionY + Math.ceil(Math.random() * 10) - 5;
+    moveToXY(positionX, positionY, isInstantMove = false) {
+
+        this.positionX = positionX;
+        this.positionY = positionY;
+
+
         return this.executeMove(isInstantMove);
+    }
 
-        /*
-        let deltaX = (targetX) - this.positionX;
-        let deltaY = (targetY) - this.positionY;
+    moveInDirectionOfXY(positionX, positionY, isInstantMove = false) {
 
-        let proportionX = 1;
-        let proportionY = 1;
+        let deltaX = Math.ceil(positionX) - Math.ceil(this.positionX);
+        let deltaY = Math.ceil(positionY) - Math.ceil(this.positionY);
 
-        if (deltaX === 0) {
-            proportionY = 1;
-            proportionX = 0;
-        } else {
-            proportionX = ((deltaX / deltaY) / (deltaX + deltaY));
+        if (deltaX > -1 && deltaX <= 0) {
+            deltaX = -1;
+        } else if (deltaX > 0 && deltaX < 1) {
+            deltaX = 1;
         }
 
-        if (deltaY === 0) {
-            proportionX = 1;
-            proportionY = 0;
-        } else {
-            proportionY = ((deltaY / deltaX) / (deltaX + deltaY));
+        if (deltaY > -1 && deltaY <= 0) {
+            deltaY = -1;
+        } else if (deltaY > 0 && deltaY < 1) {
+            deltaY = 1;
         }
 
+        let proportionY = deltaY / (Math.abs(deltaX) + Math.abs(deltaY));
+        let proportionX = deltaX / (Math.abs(deltaX) + Math.abs(deltaY));
 
-        //      let proportion = proportionX + proportionY;
+        this.positionX = this.positionX + proportionX * (this.definition.speed / 2);
+        this.positionY = this.positionY + proportionY * (this.definition.speed / 2);
 
-
-//        proportionX = (proportionX / proportion);
-        //       proportionY = (proportionY / proportion);
-
-        this.positionX = Math.ceil(this.positionX + (proportionX) * (this.speed / 10));
-        this.positionY = Math.ceil(this.positionY + (proportionY) * (this.speed / 10));
-
-*/
-
+        return this.executeMove(isInstantMove);
     }
 
     /**
@@ -112,9 +109,10 @@ export default class Player extends BaseMatchElement {
      */
     pass(players, ball) {
         let closestPlayer = players[0];
-        let distance = 1200;
+        let distance = 1400;
 
         closestPlayer = this.getClosestTeammate(players, distance, closestPlayer);
+        console.log(closestPlayer);
         closestPlayer.hasBall = true;
         this.hasBall = false;
 

@@ -24,18 +24,19 @@ export default class MatchEvent {
 
             if (decision === "move") {
                 let decisionWhereToMove = player.decideWhereToMove();
+
                 if (decisionWhereToMove === "moveToBall") {
-                    player.move(this.ball.positionX, this.ball.positionY);
+                    player.moveInDirectionOfXY(this.ball.positionX, this.ball.positionY);
                 } else if (decisionWhereToMove === "moveToPosition") {
-                    player.move(player.nominalPositionX, player.nominalPositionY);
+                    player.moveInDirectionOfXY(player.nominalPositionX, player.nominalPositionY);
                 } else if (decisionWhereToMove === "moveToGoal") {
                     if (player.isInAwayTeam === false) {
-                        player.move(1200, 400);
+                        player.moveInDirectionOfXY(1200, 400);
                     } else {
-                        player.move(0, 400);
+                        player.moveInDirectionOfXY(0, 400);
                     }
                 }
-                
+
             }
 
             if (player.hasBall === true) {

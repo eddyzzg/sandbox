@@ -52,7 +52,7 @@ export default class Match {
             player.setNominalPosition(positions.nominalPositionX, positions.nominalPositionY);
 
             const startPosition = this.homeTeam.generatePosition(player.position, this.field);
-            const movePromise = player.move(startPosition.positionX - 25, startPosition.positionY);
+            const movePromise = player.moveToXY(startPosition.positionX - 25, startPosition.positionY);
             animationsPromises.push(movePromise);
 
         });
@@ -62,7 +62,7 @@ export default class Match {
             const positions = this.homeTeam.generateNominalPosition(player.position, this.field);
             player.setNominalPosition(1200 - positions.nominalPositionX, positions.nominalPositionY);
             const startPosition = this.awayTeam.generatePosition(player.position, this.field);
-            let movePromise = player.move(600 - startPosition.positionX + 525, startPosition.positionY);
+            let movePromise = player.moveToXY(600 - startPosition.positionX + 525, startPosition.positionY);
 
             animationsPromises.push(movePromise);
         });
@@ -74,7 +74,7 @@ export default class Match {
         const forwardPlayer = this.homePlayers[10];
         console.log(this.homePlayers[10].position);
         forwardPlayer.hasBall = true;
-        return forwardPlayer.move(550, 355);
+        return forwardPlayer.moveToXY(550, 355);
     }
 
     renderBall() {

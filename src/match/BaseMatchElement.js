@@ -3,26 +3,26 @@ export default class BaseMatchElement {
         this.positionX = 0;
         this.positionY = 0;
     }
-    
+
     /**
      * @returns {Number}
      */
     getAnimationTime() {
         return 400;
     }
-    
+
     /**
      * @returns {jQuery}
      */
     getDOMSelector() {
     }
-    
+
     /**
      * @returns {Function}
      */
     getTemplate() {
     }
-    
+
     /**
      * @param {jQuery} $field
      */
@@ -30,21 +30,23 @@ export default class BaseMatchElement {
         const template = this.getTemplate();
         $field.append(template(this));
     }
-    
+
     reRender() {
         const template = this.getTemplate();
         this.getDOMSelector().html(template(this));
     }
-    
+
     /**
      * @param {Number} positionX
      * @param {Number} positionY
      * @param {Boolean} [isInstantMove]
      * @returns {Promise<>}
      */
-    move(positionX, positionY, isInstantMove = false) {
-    }
-    
+
+
+    //  move(positionX, positionY, isInstantMove = false) {
+    //  }
+
     executeMove(isInstantMove) {
         const $element = this.getDOMSelector()
         return new Promise((resolve) => {
