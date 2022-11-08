@@ -72,8 +72,6 @@ export default class Player extends BaseMatchElement {
 
         this.positionX = positionX;
         this.positionY = positionY;
-
-
         return this.executeMove(isInstantMove);
     }
 
@@ -82,7 +80,7 @@ export default class Player extends BaseMatchElement {
 
         let speed = this.definition.speed / 2;   // ustalenie przesuwanie się w turze przez playera max o przedział od 0 do 50
 
-        let deltaX = Math.ceil(positionX) - Math.ceil(this.positionX);   //usuwanie prawdpodobienstwa dzielenia przez zero usuwając je z danych wejsciowych
+        let deltaX = Math.ceil(positionX) - Math.ceil(this.positionX);   //  \/  usuwanie prawdpodobienstwa dzielenia przez zero usuwając je z danych wejsciowych
         let deltaY = Math.ceil(positionY) - Math.ceil(this.positionY);
 
         if (deltaX > -1 && deltaX <= 0) {
@@ -111,8 +109,6 @@ export default class Player extends BaseMatchElement {
         this.positionX = this.positionX + offsetX;
         this.positionY = this.positionY + offsetY;
         return this.executeMove(isInstantMove);
-
-
     }
 
     /**
@@ -122,12 +118,9 @@ export default class Player extends BaseMatchElement {
     pass(players, ball) {
         let closestPlayer = players[0];
         let distance = 1400;
-
         closestPlayer = this.getClosestTeammate(players, distance, closestPlayer);
-        console.log(closestPlayer);
         closestPlayer.hasBall = true;
         this.hasBall = false;
-
         return ball.move(closestPlayer.positionX, closestPlayer.positionY);
     };
 
