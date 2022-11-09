@@ -109,10 +109,12 @@ export default class Player extends BaseMatchElement {
             offsetY = deltaY;
         }
 
+
         this.positionX = this.positionX + offsetX;
         this.positionY = this.positionY + offsetY;
         return this.executeMove(isInstantMove);
     }
+
 
     /**
      * @param {Player[]} players
@@ -153,6 +155,27 @@ export default class Player extends BaseMatchElement {
         return closestPlayer;
     }
 
+    getOpponentWithBallInRange(opponentPlayers) {
+        if (this.team.hasBall) {
+            return false;
+        } else {
+            let closestOpponentPlayerWithBall = opponentPlayers[0];
+            opponentPlayers.forEach((opponentPlayer) => {
+                if (opponentPlayer.hasBall) {
+                    closestOpponentPlayerWithBall = opponentPlayer;
+                }
+            });
+
+            if (this.distance(closestOpponentPlayerWithBall) < 30) {
+                return closestOpponentPlayerWithBall;
+            } else {
+                return false;
+            }
+
+        }
+    }
+
+
     shoot() {
         console.log('shot!');
     }
@@ -166,6 +189,16 @@ export default class Player extends BaseMatchElement {
     setNominalPosition(x, y) {
         this.nominalPositionX = x;
         this.nominalPositionY = y;
+    }
+
+    tryToWinTheBall(player, opponent) {
+        if (Math.random() * (player.definition.technique + player.definition.dribble + player.definition.speed) > Math.random() * (opponent.definition.technique + opponent.definition.dribble + opponent.definition.speed)) {
+            player.setHasBall(true);
+            opponent.setHasBall(false);
+            this.ball.move(player.positionX, player.positionY);
+        } else {
+            return false;
+        }
     }
 
 }

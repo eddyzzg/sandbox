@@ -37,6 +37,19 @@ export default class MatchEvent {
                         }
                     }
 
+                    if (player.isInAwayTeam) {
+                        if (player.getOpponentWithBallInRange(this.homeTeam) !== false) {
+
+                            player.tryToWinTheBall(player, player.getOpponentWithBallInRange(this.homeTeam));
+                        }
+                    } else {
+                        if (player.getOpponentWithBallInRange(this.awayTeam) !== false) {
+
+                            player.tryToWinTheBall(player, player.getOpponentWithBallInRange(this.awayTeam));
+                        }
+                    }
+
+
                 }
 
                 if (player.hasBall === true) {
@@ -56,4 +69,6 @@ export default class MatchEvent {
             }
         });
     }
+
+
 }

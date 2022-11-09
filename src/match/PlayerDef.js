@@ -7,6 +7,9 @@ export default class PlayerDef {
         this.speed = Math.ceil(Math.random() * 100);
         this.power = Math.ceil(Math.random() * 100);
         this.passing = Math.ceil(Math.random() * 100);
+        this.dribble = Math.ceil(Math.random() * 100);
+        this.technique = Math.ceil(Math.random() * 100);
+
     }
 
     setSpeed(value) {
