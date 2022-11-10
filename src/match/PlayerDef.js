@@ -4,6 +4,7 @@ export default class PlayerDef {
         this.name = name;
         this.nominalPosition = position;
         this.team = team;
+        this.strength = Math.ceil(Math.random() * 100);
         this.speed = Math.ceil(Math.random() * 100);
         this.power = Math.ceil(Math.random() * 100);
         this.passing = Math.ceil(Math.random() * 100);

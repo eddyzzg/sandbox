@@ -3,7 +3,7 @@ import MatchEvent from './MatchEvent';
 import Ball from './Ball';
 
 export default class Match {
-
+    
     /**
      * @param {Team} homeTeam
      * @param {Team} awayTeam
@@ -23,7 +23,7 @@ export default class Match {
         this.eventsPerMinute = 10;
         this.currentIndex = 0;
     }
-
+    
     prepare() {
         this.field.render();
         this.homePlayers = this.homeTeam.getMatchPlayers();
@@ -34,14 +34,14 @@ export default class Match {
             return this.placeForwardPlayerToTheMiddleOfTheField();
         });
     }
-
+    
     informPlayersAboutTheBall() {
         this.homePlayers.concat(this.awayPlayers).forEach((player) => {
             player.setBallInfo(this.ball)
         })
     }
-
-
+    
+    
     start() {
         const matchEvent = new MatchEvent(this.homePlayers, this.awayPlayers, this.ball);
         matchEvent.run().then(() => {
@@ -60,20 +60,20 @@ export default class Match {
             // matchEvent.passEvent();
         }, 1000);*/
     }
-
+    
     placePlayersOnField() {
         const $field = this.field.getDOMSelector();
         const animationsPromises = [];
-
+        
         this.homePlayers.forEach((player) => {
             player.render($field);
             const positions = this.homeTeam.generateNominalPosition(player.position, this.field);
             player.setNominalPosition(positions.nominalPositionX, positions.nominalPositionY);
-
+            
             const startPosition = this.homeTeam.generatePosition(player.position, this.field);
             const movePromise = player.moveToXY(startPosition.positionX - 25, startPosition.positionY);
             animationsPromises.push(movePromise);
-
+            
         });
         this.awayPlayers.forEach((player) => {
             player.setRightStartTeam();
@@ -82,20 +82,19 @@ export default class Match {
             player.setNominalPosition(1200 - positions.nominalPositionX, positions.nominalPositionY);
             const startPosition = this.awayTeam.generatePosition(player.position, this.field);
             let movePromise = player.moveToXY(600 - startPosition.positionX + 525, startPosition.positionY);
-
+            
             animationsPromises.push(movePromise);
         });
-
+        
         return Promise.all(animationsPromises);
     }
-
+    
     placeForwardPlayerToTheMiddleOfTheField() {
         const forwardPlayer = this.homePlayers[10];
-        //console.log(this.homePlayers[10].team);
         forwardPlayer.setHasBall(true);
         return forwardPlayer.moveToXY(550, 355);
     }
-
+    
     renderBall() {
         this.ball.render(this.field.getDOMSelector());
     }

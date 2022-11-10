@@ -1,5 +1,7 @@
-export default class MatchEvent {
+import MatchEventConflictManager from "./MatchEventConflictManager";
 
+export default class MatchEvent {
+    
     /**
      * @param {Player[]} home
      * @param {Player[]} away
@@ -9,9 +11,13 @@ export default class MatchEvent {
         this.homeTeam = home;
         this.awayTeam = away;
         this.ball = ball;
-        this.noConflict = false;
+        this.conflictManger = new MatchEventConflictManager(this.getAllPlayers());
     }
-
+    
+    getAllPlayers() {
+        return this.homeTeam.concat(this.awayTeam);
+    }
+    
     //FOR TEST
     passEvent() {
         return this.homeTeam[10].pass(this.homeTeam, this.ball);
@@ -23,58 +29,103 @@ export default class MatchEvent {
     }
 
     run() {
-        const promises = [];
-        const allPlayers = this.homeTeam.concat(this.awayTeam);
-        allPlayers.forEach((player) => {
+        this.calculateDecisions();
+        this.resolveConflicts();
+        return Promise.all(this.executeMoves());
+    }
+    
+    calculateDecisions() {
+        this.getAllPlayers().forEach((player) => {
             let decision = player.decide();
             player.decision = decision;  // zmienna wyświetlająca co ziomek chce zrobić
-
+            
             this.showPlayerDecision(player);
-
-            if (decision === "move") {
-                let decisionWhereToMove = player.decideWhereToMove();
-                if (decisionWhereToMove === "moveToBall") {
-                    promises.push(player.moveInDirectionOfXY(this.ball.positionX, this.ball.positionY));
-                } else if (decisionWhereToMove === "moveToPosition") {
-                    promises.push(player.moveInDirectionOfXY(player.nominalPositionX, player.nominalPositionY));
-                } else if (decisionWhereToMove === "moveToGoal") {
-                    if (player.isInAwayTeam === false) {
-                        promises.push(player.moveInDirectionOfXY(1200, 400));
-                    } else {
-                        promises.push(player.moveInDirectionOfXY(0, 400));
-                    }
+            
+            switch (decision) {
+                case 'move': {
+                    //TODO: przemyslec calculate dla pilki
+                    this.calculateMoveDecision(player);
+                    break;
                 }
-
-                if (player.isInAwayTeam) {
-                    if (player.getOpponentWithBallInRange(this.homeTeam) !== false) {
-                        promises.push(player.tryToWinTheBall(player, player.getOpponentWithBallInRange(this.homeTeam)));
-                    }
-                } else {
-                    if (player.getOpponentWithBallInRange(this.awayTeam) !== false) {
-                        promises.push(player.tryToWinTheBall(player, player.getOpponentWithBallInRange(this.awayTeam)));
-                    }
+                case 'pass': {
+                    this.calculatePassDecision(player);
+                    break;
                 }
-
-
-                if (player.hasBall === true) {
-                    promises.push(this.ball.move(player.positionX, player.positionY));
+                case 'shoot': {
+                    this.calculateShootDecision(player);
+                    break;
                 }
             }
-
-            if (decision === "pass") {
-                if (player.isInAwayTeam) {
-                    promises.push(player.pass(this.awayTeam, this.ball));
-                } else {
-                    promises.push(player.pass(this.homeTeam, this.ball));
-                }
-            }
-            if (decision === "shoot") {
-                player.shoot();
-            }
+        
         });
-
-        return Promise.all(promises);
     }
-
-
+    
+    executeMoves() {
+        const promises = [];
+        this.getAllPlayers().forEach((player) => {
+            switch (player.decision) {
+                case 'move': {
+                    promises.push(player.executeMove());
+                    break;
+                }
+                case 'pass': {
+                    promises.push(this.ball.executeMove());
+                    break;
+                }
+                case 'shoot': {
+                    promises.push(Promise.resolve());
+                    break;
+                }
+            }
+            
+        });
+        return promises;
+    }
+    
+    resolveConflicts() {
+        this.getAllPlayers().forEach((player) => {
+            this.conflictManger.validateMove(player);
+        });
+    }
+    
+    calculateMoveDecision(player) {
+        let decisionWhereToMove = player.decideWhereToMove();
+        if (decisionWhereToMove === "moveToBall") {
+            player.moveInDirectionOfXY(this.ball.positionX, this.ball.positionY);
+        } else if (decisionWhereToMove === "moveToPosition") {
+            player.moveInDirectionOfXY(player.nominalPositionX, player.nominalPositionY);
+        } else if (decisionWhereToMove === "moveToGoal") {
+            if (player.isInAwayTeam === false) {
+                player.moveInDirectionOfXY(1200, 400);
+            } else {
+                player.moveInDirectionOfXY(0, 400);
+            }
+        }
+    
+        if (player.isInAwayTeam) {
+            if (player.getOpponentWithBallInRange(this.homeTeam) !== false) {
+                player.tryToWinTheBall(player, player.getOpponentWithBallInRange(this.homeTeam));
+            }
+        } else {
+            if (player.getOpponentWithBallInRange(this.awayTeam) !== false) {
+                player.tryToWinTheBall(player, player.getOpponentWithBallInRange(this.awayTeam));
+            }
+        }
+    
+        if (player.hasBall === true) {
+            this.ball.move(player.positionX, player.positionY);
+        }
+    }
+    
+    calculatePassDecision(player) {
+        if (player.isInAwayTeam) {
+            player.pass(this.awayTeam, this.ball);
+        } else {
+            player.pass(this.homeTeam, this.ball);
+        }
+    }
+    
+    calculateShootDecision(player) {
+        player.shoot();
+    }
 }

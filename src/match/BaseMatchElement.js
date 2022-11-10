@@ -42,12 +42,14 @@ export default class BaseMatchElement {
      * @param {Boolean} [isInstantMove]
      * @returns {Promise<>}
      */
-
-
     //  move(positionX, positionY, isInstantMove = false) {
     //  }
-
-    executeMove(isInstantMove, decision) {
+    
+    /**
+     * @param {Boolean} [isInstantMove]
+     * @returns {Promise<>}
+     */
+    executeMove(isInstantMove) {
         const $element = this.getDOMSelector()
         return new Promise((resolve) => {
             if (isInstantMove) {
@@ -63,4 +65,5 @@ export default class BaseMatchElement {
             });
         });
     }
+    
 }
