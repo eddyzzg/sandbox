@@ -27,12 +27,14 @@ export default class MatchEventConflictManager {
         
         const conflictReport = new PositionXConflictReport(inPlayer);
         this.players.forEach((player) => {
-            const areaOccupiedByPlayerX = {from: player.positionX, to: player.positionX + playerWidth};
-            const areaOccupiedByPlayerY = {from: player.positionY, to: player.positionY + playerHeight};
-            
-            if (inPosX >= areaOccupiedByPlayerX.from && inPosX <= areaOccupiedByPlayerX.to) {
-                if (inPosY >= areaOccupiedByPlayerY.from && inPosY <= areaOccupiedByPlayerY.to) {
-                    conflictReport.addConflict(player);
+            if (player.id !== inPlayer.id) {
+                const areaOccupiedByPlayerX = {from: player.positionX, to: player.positionX + playerWidth};
+                const areaOccupiedByPlayerY = {from: player.positionY, to: player.positionY + playerHeight};
+    
+                if (inPosX >= areaOccupiedByPlayerX.from && inPosX <= areaOccupiedByPlayerX.to) {
+                    if (inPosY >= areaOccupiedByPlayerY.from && inPosY <= areaOccupiedByPlayerY.to) {
+                        conflictReport.addConflict(player);
+                    }
                 }
             }
         });
@@ -58,17 +60,19 @@ class PositionXConflictReport {
         let success = true;
         
         this.conflictedPlayers.every((conflictedPlayer) => {
-            if (strength > conflictedPlayer.definition.strength) {
-                conflictedPlayer.positionX = conflictedPlayer.positionX - playerWidth;
-                conflictedPlayer.positionY = conflictedPlayer.positionY - playerHeight;
-                return true;
-            } else {
-                success = false;
-
-                this.player.positionX = this.player.positionX - playerWidth;
-                this.player.positionY = this.player.positionY - playerHeight;
-                
-                return false;
+            if (this.player.id !== conflictedPlayer.id) {
+                if (strength > conflictedPlayer.definition.strength) {
+                    conflictedPlayer.positionX = conflictedPlayer.positionX - playerWidth;
+                    conflictedPlayer.positionY = conflictedPlayer.positionY - playerHeight;
+                    return true;
+                } else {
+                    success = false;
+        
+                    this.player.positionX = this.player.positionX - playerWidth;
+                    this.player.positionY = this.player.positionY - playerHeight;
+        
+                    return false;
+                }
             }
         });
         return success;

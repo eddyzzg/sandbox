@@ -122,7 +122,6 @@ export default class Player extends BaseMatchElement {
         // return this.executeMove(isInstantMove, this.decision);
     }
     
-    
     /**
      * @param {Player[]} players
      * @param {Ball} ball
@@ -135,7 +134,6 @@ export default class Player extends BaseMatchElement {
         closestPlayer.setHasBall(true);
         return ball.move(closestPlayer.positionX, closestPlayer.positionY);
     };
-    
     
     /**
      *

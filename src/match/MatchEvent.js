@@ -30,7 +30,7 @@ export default class MatchEvent {
 
     run() {
         this.calculateDecisions();
-        // this.resolveConflicts();
+        this.resolveConflicts();
         return Promise.all(this.executeMoves());
     }
     
