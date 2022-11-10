@@ -26,10 +26,9 @@ export default class MatchEvent {
         const promises = [];
         const allPlayers = this.homeTeam.concat(this.awayTeam);
         allPlayers.forEach((player) => {
-            let decision = player.decide();
-            player.decision = decision;  // zmienna wyświetlająca co ziomek chce zrobić
+            let decision = player.decide();                                                                             // diagnostyka - wyswietlanie wyboru
+            player.decision = decision;                                                                                  //
 
-            this.showPlayerDecision(player);
 
             if (decision === "move") {
                 let decisionWhereToMove = player.decideWhereToMove();
@@ -45,16 +44,21 @@ export default class MatchEvent {
                     }
                 }
 
+                player.decision = player.decision + " : " + decisionWhereToMove;                                        // diagnostyka - wyswietlanie wyboru
+
                 if (player.isInAwayTeam) {
                     if (player.getOpponentWithBallInRange(this.homeTeam) !== false) {
+                        player.decision += ": tryToWinTheBall";                                                         // diagnostyka - wyswietlanie wyboru
                         promises.push(player.tryToWinTheBall(player, player.getOpponentWithBallInRange(this.homeTeam)));
                     }
                 } else {
                     if (player.getOpponentWithBallInRange(this.awayTeam) !== false) {
+                        player.decision += ": tryToWinTheBall";                                                         // diagnostyka - wyswietlanie wyboru
                         promises.push(player.tryToWinTheBall(player, player.getOpponentWithBallInRange(this.awayTeam)));
                     }
                 }
 
+                this.showPlayerDecision(player);                                                                        // diagnostyka - wyswietlanie wyboru
 
                 if (player.hasBall === true) {
                     promises.push(this.ball.move(player.positionX, player.positionY));

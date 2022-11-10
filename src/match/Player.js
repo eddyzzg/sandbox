@@ -87,22 +87,26 @@ export default class Player extends BaseMatchElement {
         let deltaX = Math.ceil(positionX) - Math.ceil(this.positionX);   //  \/  usuwanie prawdpodobienstwa dzielenia przez zero usuwając je z danych wejsciowych
         let deltaY = Math.ceil(positionY) - Math.ceil(this.positionY);
 
-        if (deltaX > -1 && deltaX <= 0) {
-            deltaX = -1;
-        } else if (deltaX > 0 && deltaX < 1) {
-            deltaX = 1;
+        if (deltaX > -0.1 && deltaX <= 0) {
+            deltaX = -0.1;
+        } else if (deltaX > 0 && deltaX < 0.1) {
+            deltaX = 0.1;
         }
 
-        if (deltaY > -1 && deltaY <= 0) {
-            deltaY = -1;
-        } else if (deltaY > 0 && deltaY < 1) {
-            deltaY = 1;
+        if (deltaY > -0.1 && deltaY <= 0) {
+            deltaY = -0.1;
+        } else if (deltaY > 0 && deltaY < 0.1) {
+            deltaY = 0.1;
         }                                                       // koniec usuwania prawdopodobienstwa dzielenia przez zero
 
         let proportionY = deltaY / (Math.abs(deltaX) + Math.abs(deltaY));
         let proportionX = deltaX / (Math.abs(deltaX) + Math.abs(deltaY));
         let offsetX = proportionX * speed;
         let offsetY = proportionY * speed;
+
+        deltaX = positionX - this.positionX;   //  powrót do precyzyjnych różnic celem wyeliminowania niepotrzebnych ruchów
+        deltaY = positionY - this.positionY;
+
 
         if (Math.abs(deltaX) < speed) {      // jeżeli player jest blisko celu przesunie się tylko o ile trzeba
             offsetX = deltaX;
