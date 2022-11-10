@@ -20,6 +20,7 @@ export default class Player extends BaseMatchElement {
         this.definition = playerDef;
         this.ball = undefined;
         this.team = team;
+        this.decision = "no decision";
     }
 
     setBallInfo(ball) {
@@ -112,7 +113,7 @@ export default class Player extends BaseMatchElement {
 
         this.positionX = this.positionX + offsetX;
         this.positionY = this.positionY + offsetY;
-        return this.executeMove(isInstantMove);
+        return this.executeMove(isInstantMove, this.decision);
     }
 
 
@@ -195,9 +196,9 @@ export default class Player extends BaseMatchElement {
         if (Math.random() * (player.definition.technique + player.definition.dribble + player.definition.speed) > Math.random() * (opponent.definition.technique + opponent.definition.dribble + opponent.definition.speed)) {
             player.setHasBall(true);
             opponent.setHasBall(false);
-            this.ball.move(player.positionX, player.positionY);
+            return this.ball.move(player.positionX, player.positionY);
         } else {
-            return false;
+            return Promise.resolve(false);
         }
     }
 

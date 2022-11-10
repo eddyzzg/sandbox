@@ -7,6 +7,10 @@ export default class Field {
         this.height = height;
         this.goalWidth = 40;
         this.goalHeight = 160;
+        this.homeGoalX = 0;
+        this.homeGoalY = (this.height / 2) - (this.goalHeight / 2);
+        this.awayGoalX = this.width - this.goalWidth;
+        this.awayGoalY = (this.height / 2) - (this.goalHeight / 2)
     }
 
     getDOMSelector() {
@@ -16,7 +20,6 @@ export default class Field {
     render() {
         const $body = $('body');
         const field = fieldTmp(this);
-
         $body.html(field);
     }
 }

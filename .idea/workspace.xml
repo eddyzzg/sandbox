@@ -4,11 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d3d3ed9-da38-4e0b-bfc0-ff2834e03693" name="Default Changelist" comment="ziomki biegna do pily jezeli ma ja przeciwnik w odleglosci &lt;150">
+    <list default="true" id="7d3d3ed9-da38-4e0b-bfc0-ff2834e03693" name="Default Changelist" comment="dodano getOpponentWithBallInRange() i tryToWinTheBall(), tera każdy przeciwnik w odległości &lt;30 od piłki ktorą posiada przeciwnik próbuje ją odebrać">
+      <change afterPath="$PROJECT_DIR$/src/styles/player.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/BaseMatchElement.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/BaseMatchElement.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/Field.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Field.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/Match.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Match.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/match/MatchEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/MatchEvent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/match/Player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Player.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/match/PlayerDef.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/PlayerDef.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/field.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/field.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/squad/player.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/player.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/style.less" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +26,8 @@
       <list>
         <option value="hbs" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
+        <option value="Less File" />
       </list>
     </option>
   </component>
@@ -40,22 +48,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/premi/WebstormProjects/MANAGER/src/squad&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/premi/WebstormProjects/MANAGER/src/squad",
+    "list.type.of.created.stylesheet": "Less",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "rearrange.code.on.save": "true",
+    "settings.editor.selected.configurable": "actions.on.save",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\premi\WebstormProjects\MANAGER\src\squad" />
@@ -148,6 +158,7 @@
       <workItem from="1667222345267" duration="26463000" />
       <workItem from="1667470760745" duration="1428000" />
       <workItem from="1667488683245" duration="55284000" />
+      <workItem from="1668011908483" duration="12724000" />
     </task>
     <task id="LOCAL-00001" summary="t">
       <created>1564057867467</created>
@@ -338,7 +349,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667941210690</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="dodano getOpponentWithBallInRange() i tryToWinTheBall(), tera każdy przeciwnik w odległości &lt;30 od piłki ktorą posiada przeciwnik próbuje ją odebrać">
+      <created>1667952104521</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1667952104521</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -376,6 +394,7 @@
     <MESSAGE value="dodano komentarze i kilka pierdół do funkcji moveInDirectionXY()" />
     <MESSAGE value="poprawiono zjebane podawanie" />
     <MESSAGE value="ziomki biegna do pily jezeli ma ja przeciwnik w odleglosci &lt;150" />
-    <option name="LAST_COMMIT_MESSAGE" value="ziomki biegna do pily jezeli ma ja przeciwnik w odleglosci &lt;150" />
+    <MESSAGE value="dodano getOpponentWithBallInRange() i tryToWinTheBall(), tera każdy przeciwnik w odległości &lt;30 od piłki ktorą posiada przeciwnik próbuje ją odebrać" />
+    <option name="LAST_COMMIT_MESSAGE" value="dodano getOpponentWithBallInRange() i tryToWinTheBall(), tera każdy przeciwnik w odległości &lt;30 od piłki ktorą posiada przeciwnik próbuje ją odebrać" />
   </component>
 </project>

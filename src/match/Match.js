@@ -18,6 +18,10 @@ export default class Match {
         this.awayPlayers = [];
         this.ball = new Ball();
         window.match = this;
+
+        this.matchDuration = 90;
+        this.eventsPerMinute = 10;
+        this.currentIndex = 0;
     }
 
     prepare() {
@@ -39,11 +43,22 @@ export default class Match {
 
 
     start() {
+        const matchEvent = new MatchEvent(this.homePlayers, this.awayPlayers, this.ball);
+        matchEvent.run().then(() => {
+            const maxEventCount = this.matchDuration * this.eventsPerMinute;
+            if (this.currentIndex <= maxEventCount) {
+                this.currentIndex++;
+                return this.start();
+            }
+            alert('MECZ SKONCZONY !');
+        });
+
+        /*
         setInterval(() => {
             const matchEvent = new MatchEvent(this.homePlayers, this.awayPlayers, this.ball);
             matchEvent.run();
             // matchEvent.passEvent();
-        }, 1000);
+        }, 1000);*/
     }
 
     placePlayersOnField() {

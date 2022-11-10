@@ -47,7 +47,7 @@ export default class BaseMatchElement {
     //  move(positionX, positionY, isInstantMove = false) {
     //  }
 
-    executeMove(isInstantMove) {
+    executeMove(isInstantMove, decision) {
         const $element = this.getDOMSelector()
         return new Promise((resolve) => {
             if (isInstantMove) {
