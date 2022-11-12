@@ -1,7 +1,7 @@
 import MatchEventConflictManager from "./MatchEventConflictManager";
 
 export default class MatchEvent {
-    
+
     /**
      * @param {Player[]} home
      * @param {Player[]} away
@@ -13,11 +13,11 @@ export default class MatchEvent {
         this.ball = ball;
         this.conflictManger = new MatchEventConflictManager(this.getAllPlayers());
     }
-    
+
     getAllPlayers() {
         return this.homeTeam.concat(this.awayTeam);
     }
-    
+
     //FOR TEST
     passEvent() {
         return this.homeTeam[10].pass(this.homeTeam, this.ball);
@@ -33,14 +33,13 @@ export default class MatchEvent {
         this.resolveConflicts();
         return Promise.all(this.executeMoves());
     }
-    
+
     calculateDecisions() {
         this.getAllPlayers().forEach((player) => {
             let decision = player.decide();
-            player.decision = decision;  // zmienna wyświetlająca co ziomek chce zrobić
-            
-            this.showPlayerDecision(player);
-            
+            player.decision = decision;  // zmienna zawierajaca decyzje co ziomek chce zrobić,
+            this.showPlayerDecision(player);    // wyswietlenie co ziomek chce zrobic
+
             switch (decision) {
                 case 'move': {
                     //TODO: przemyslec calculate dla pilki
@@ -56,10 +55,10 @@ export default class MatchEvent {
                     break;
                 }
             }
-        
+
         });
     }
-    
+
     executeMoves() {
         const promises = [];
         this.getAllPlayers().forEach((player) => {
@@ -77,19 +76,23 @@ export default class MatchEvent {
                     break;
                 }
             }
-            
         });
         return promises;
     }
-    
+
     resolveConflicts() {
         this.getAllPlayers().forEach((player) => {
             this.conflictManger.validateMove(player);
         });
     }
-    
+
     calculateMoveDecision(player) {
         let decisionWhereToMove = player.decideWhereToMove();
+        // TODO czemu ziomki się nie ruszają po dodaniu poniższego kodu?
+        /*
+                player.decision = decisionWhereToMove;  // zmienna zawierajaca decyzje co ziomek chce zrobić,
+                player.showPlayerDecision(player);    // wyswietlenie co ziomek chce zrobic
+        */
         if (decisionWhereToMove === "moveToBall") {
             player.moveInDirectionOfXY(this.ball.positionX, this.ball.positionY);
         } else if (decisionWhereToMove === "moveToPosition") {
@@ -101,7 +104,8 @@ export default class MatchEvent {
                 player.moveInDirectionOfXY(0, 400);
             }
         }
-    
+
+
         if (player.isInAwayTeam) {
             if (player.getOpponentWithBallInRange(this.homeTeam) !== false) {
                 player.tryToWinTheBall(player, player.getOpponentWithBallInRange(this.homeTeam));
@@ -111,12 +115,13 @@ export default class MatchEvent {
                 player.tryToWinTheBall(player, player.getOpponentWithBallInRange(this.awayTeam));
             }
         }
-    
+
         if (player.hasBall === true) {
             this.ball.move(player.positionX, player.positionY);
         }
+
     }
-    
+
     calculatePassDecision(player) {
         if (player.isInAwayTeam) {
             player.pass(this.awayTeam, this.ball);
@@ -124,7 +129,7 @@ export default class MatchEvent {
             player.pass(this.homeTeam, this.ball);
         }
     }
-    
+
     calculateShootDecision(player) {
         player.shoot();
     }
