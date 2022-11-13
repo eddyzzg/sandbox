@@ -31,7 +31,10 @@ export default class Player extends BaseMatchElement {
         this.animationFile="left";
 
     }
-
+    
+    /**
+     * @param {Ball} ball
+     */
     setBallInfo(ball) {
         this.ball = ball;
     }
@@ -42,11 +45,17 @@ export default class Player extends BaseMatchElement {
     setFieldInfo(field) {
         this.field = field;
     }
-
+    
+    /**
+     * @param {String} color
+     */
     setShitColor(color) {
         this.shirtColor = color;
     }
-
+    
+    /**
+     * @param {Boolean} isAwayTeam
+     */
     setIsInAwayTeam(isAwayTeam) {
         this.isInAwayTeam = isAwayTeam;
     }
@@ -87,14 +96,24 @@ export default class Player extends BaseMatchElement {
      */
     move(positionX, positionY, isInstantMove = false) {
     }
-
+    
+    /**
+     * @param {Number} positionX
+     * @param {Number} positionY
+     * @param {Boolean} [isInstantMove]
+     */
     moveToXY(positionX, positionY, isInstantMove = false) {
         this.positionX = positionX;
         this.positionY = positionY;
 
         // return this.executeMove(isInstantMove);
     }
-
+    
+    /**
+     * @param {Number} positionX
+     * @param {Number} positionY
+     * @param {Boolean} [isInstantMove]
+     */
     moveInDirectionOfXY(positionX, positionY, isInstantMove = false) {
         let speed = this.definition.speed / 2;   // ustalenie przesuwanie się w turze przez playera max o przedział od 0 do 50
 
@@ -120,7 +139,6 @@ export default class Player extends BaseMatchElement {
 
         deltaX = positionX - this.positionX;   //  powrót do precyzyjnych różnic celem wyeliminowania niepotrzebnych ruchów
         deltaY = positionY - this.positionY;
-
 
         if (Math.abs(deltaX) < speed) {      // jeżeli player jest blisko celu przesunie się tylko o ile trzeba
             offsetX = Math.floor(deltaX);
@@ -188,7 +206,10 @@ export default class Player extends BaseMatchElement {
         });
         return closestPlayer;
     }
-
+    
+    /**
+     * @param {Player[]} opponentPlayers
+     */
     getOpponentWithBallInRange(opponentPlayers) {
         if (this.team.hasBall) {
             return false;
@@ -215,7 +236,6 @@ export default class Player extends BaseMatchElement {
         } else {
             this.ball.move(this.field.awayGoalX + this.field.goalWidth, this.field.awayGoalY + (this.field.goalHeight / 2));
         }
-        return Promise.resolve();
     }
 
     distance(object) {
