@@ -45,13 +45,6 @@ export default class MatchEventConflictManager {
         return conflictReport;
     }
 
-
-
-
-
-
-
-
     /**
      * @param {Player} inPlayer
      * @returns {PositionXConflictReport}
@@ -83,13 +76,11 @@ class GoalReport {
     }
 
     scoreAwayGoal() {
-        this.match.awayGoals++;
-        this.match.renderScoreboard();
+        API.eventBus.send(API.events.MATCH_EVENTS.GOAL_SCORED, 'AWAY');
     }
 
     scoreHomeGoal() {
-        this.match.homeGoals++;
-        this.match.renderScoreboard();
+        API.eventBus.send(API.events.MATCH_EVENTS.GOAL_SCORED, 'HOME');
     }
 }
 

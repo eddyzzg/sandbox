@@ -18,7 +18,7 @@ export default class Match {
         /** @type {Player[]} */
         this.awayPlayers = [];
         this.ball = new Ball();
-        window.match = this;
+        // window.match = this;
 
         this.matchDuration = 90;
         this.eventsPerMinute = 10;
@@ -35,12 +35,25 @@ export default class Match {
     prepare() {
         this.field.render();
         this.renderScoreboard();
+        this.addEventsListeners();
         this.homePlayers = this.homeTeam.getMatchPlayers();
         this.awayPlayers = this.awayTeam.getMatchPlayers();
         this.informPlayersAboutTheBallAndField();
         return this.placePlayersOnField().then(() => {
             this.renderBall();
             return this.placeForwardPlayerToTheMiddleOfTheField();
+        });
+    }
+    
+    addEventsListeners() {
+        const self = this;
+        API.eventBus.addListener(API.events.MATCH_EVENTS.GOAL_SCORED, (teamId) => {
+            if ('HOME' === teamId) {
+                this.homeGoals++;
+            } else if ('AWAY' === teamId) {
+                this.awayGoals++;
+            }
+            self.renderScoreboard();
         });
     }
     

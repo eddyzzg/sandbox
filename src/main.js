@@ -9,6 +9,7 @@ import FaceGenerator from './faces/FaceGenerator';
 import NamesGenerator from './names/NamesGenerator';
 import Match from './match/Match';
 import matchWindow from './matchWindow.hbs';
+import {eventBus, events} from './lifecycle/EventBus';
 
 testModule.test();
 global.API = {};
@@ -40,14 +41,24 @@ $(document).ready(function () {
     //instant start match
   //  $startMatchBtn.click();
     */
+    
+    prepareApplication();
+    
     let homeTeam = new Team();
+    
     let awayTeam = new Team(true);
-
     homeTeam.generateSquad();
-    awayTeam.generateSquad();
 
-    startMatch(homeTeam, awayTeam);
+    awayTeam.generateSquad();
+    
+    return startMatch(homeTeam, awayTeam);
 });
+
+function prepareApplication() {
+    window.API = {};
+    window.API.eventBus = eventBus;
+    window.API.events = events;
+}
 
 function generatePlayers(team, squadManager) {
     team.forEach((player) => {
