@@ -44,6 +44,17 @@ export default class Match {
             return this.placeForwardPlayerToTheMiddleOfTheField();
         });
     }
+
+    goalEvent() {
+        this.homePlayers.concat(this.awayPlayers).forEach((player) => {
+            if (player.isInAwayTeam) {
+                player.moveToXY(600+(player.nominalPositionX/2), player.nominalPositionY);
+            } else {
+                player.moveToXY(player.nominalPositionX/2, player.nominalPositionY);
+            }
+        })
+
+    }
     
     addEventsListeners() {
         const self = this;

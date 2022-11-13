@@ -35,11 +35,13 @@ export default class MatchEventConflictManager {
         if (areaOccupiedByBallX.rightEdge < areaOccupiedByHomeGoalX.rightEdge) {
             if (areaOccupiedByBallY.bottomEdge < areaOccupiedByHomeGoalY.bottomEdge && areaOccupiedByBallY.topEdge > areaOccupiedByHomeGoalY.topEdge) {
                 conflictReport.scoreAwayGoal();
+                this.match.goalEvent();
             }
         }
         if (areaOccupiedByBallX.leftEdge > areaOccupiedByAwayGoalX.leftEdge) {
             if (areaOccupiedByBallY.bottomEdge < areaOccupiedByAwayGoalY.bottomEdge && areaOccupiedByBallY.topEdge > areaOccupiedByAwayGoalY.topEdge) {
                 conflictReport.scoreHomeGoal();
+                this.match.goalEvent();
             }
         }
         return conflictReport;

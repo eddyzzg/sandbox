@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d470b8ee-1ae5-49ee-9ade-527ea11d5fce" name="Changes" comment="problem z setAnimationFile - działa tylko przy wprowadzeniu bezposrednio w konstruktorze">
+    <list default="true" id="d470b8ee-1ae5-49ee-9ade-527ea11d5fce" name="Changes" comment="dodalem shot gif">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/player.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/player.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/Match.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Match.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/MatchEventConflictManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/MatchEventConflictManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/ball.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/ball.hbs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -364,7 +366,21 @@
       <option name="project" value="LOCAL" />
       <updated>1668349906714</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="problem z setAnimationFile - działa tylko przy wprowadzeniu bezposrednio w konstruktorze  - dodalem bieg w lewo i w prawo, ukryłem decision div">
+      <created>1668351246726</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1668351246726</updated>
+    </task>
+    <task id="LOCAL-00035" summary="dodalem shot gif">
+      <created>1668353406831</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1668353406831</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -379,8 +395,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="t" />
-    <MESSAGE value="less styles added" />
     <MESSAGE value="Random face generator" />
     <MESSAGE value="HANDLEBARS &amp; UTF8" />
     <MESSAGE value="GRIDSTACK ADDED" />
@@ -404,6 +418,8 @@
     <MESSAGE value="asasdads" />
     <MESSAGE value="pierwsze gify" />
     <MESSAGE value="problem z setAnimationFile - działa tylko przy wprowadzeniu bezposrednio w konstruktorze" />
-    <option name="LAST_COMMIT_MESSAGE" value="problem z setAnimationFile - działa tylko przy wprowadzeniu bezposrednio w konstruktorze" />
+    <MESSAGE value="problem z setAnimationFile - działa tylko przy wprowadzeniu bezposrednio w konstruktorze  - dodalem bieg w lewo i w prawo, ukryłem decision div" />
+    <MESSAGE value="dodalem shot gif" />
+    <option name="LAST_COMMIT_MESSAGE" value="dodalem shot gif" />
   </component>
 </project>
