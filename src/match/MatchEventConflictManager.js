@@ -1,9 +1,13 @@
-const playerHeight = 10;
-const playerWidth = 10;
+const playerHeight = 15;
+const playerWidth = 15;
+
 
 export default class MatchEventConflictManager {
-    constructor(allPlayers) {
+    constructor(allPlayers, ball,field,match) {
         this.players = allPlayers;
+        this.ball = ball;
+        this.field= field;
+        this.match = match;
     }
     
     validateMove() {
@@ -16,7 +20,38 @@ export default class MatchEventConflictManager {
             }
         });
     }
-    
+
+    checkGoal() {
+        const conflictReport = new GoalReport(this.match);
+        const areaOccupiedByBallX = {leftEdge: this.ball.positionX, rightEdge: this.ball.positionX + this.ball.width};
+        const areaOccupiedByBallY = {topEdge: this.ball.positionY, bottomEdge: this.ball.positionY + this.ball.width};
+
+        const areaOccupiedByHomeGoalX = {leftEdge: this.field.homeGoalX - this.field.goalWidth, rightEdge: this.field.homeGoalX};
+        const areaOccupiedByHomeGoalY = {topEdge: this.field.homeGoalY, bottomEdge: this.field.homeGoalY + this.field.goalHeight};
+
+        const areaOccupiedByAwayGoalX = {leftEdge: this.field.awayGoalX, rightEdge: this.field.awayGoalX + this.field.goalWidth};
+        const areaOccupiedByAwayGoalY = {topEdge: this.field.awayGoalY, bottomEdge: this.field.awayGoalY + this.field.goalHeight};
+
+        if (areaOccupiedByBallX.rightEdge < areaOccupiedByHomeGoalX.rightEdge) {
+            if (areaOccupiedByBallY.bottomEdge < areaOccupiedByHomeGoalY.bottomEdge && areaOccupiedByBallY.topEdge > areaOccupiedByHomeGoalY.topEdge) {
+                conflictReport.scoreAwayGoal();
+            }
+        }
+        if (areaOccupiedByBallX.leftEdge > areaOccupiedByAwayGoalX.leftEdge) {
+            if (areaOccupiedByBallY.bottomEdge < areaOccupiedByAwayGoalY.bottomEdge && areaOccupiedByBallY.topEdge > areaOccupiedByAwayGoalY.topEdge) {
+                conflictReport.scoreHomeGoal();
+            }
+        }
+        return conflictReport;
+    }
+
+
+
+
+
+
+
+
     /**
      * @param {Player} inPlayer
      * @returns {PositionXConflictReport}
@@ -39,6 +74,22 @@ export default class MatchEventConflictManager {
             }
         });
         return conflictReport;
+    }
+}
+
+class GoalReport {
+    constructor(match) {
+        this.match = match;
+    }
+
+    scoreAwayGoal() {
+        this.match.awayGoals++;
+        this.match.renderScoreboard();
+    }
+
+    scoreHomeGoal() {
+        this.match.homeGoals++;
+        this.match.renderScoreboard();
     }
 }
 

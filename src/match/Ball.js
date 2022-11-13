@@ -36,8 +36,8 @@ export default class Ball extends BaseMatchElement {
     move(positionX, positionY, isInstantMove = false) {
         this.positionX = positionX;
         this.positionY = positionY;
-        
         // return this.executeMove(isInstantMove);
+
     }
 
  

@@ -5,7 +5,6 @@ import Player from '../match/Player';
 export default class Team {
 
     constructor(isAwayTeam = false) {
-
         /** @type {Map<Number, PlayerDef>} */
         this.squad = new Map();
         /** @type {Player[]} */

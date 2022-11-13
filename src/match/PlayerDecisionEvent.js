@@ -49,10 +49,12 @@ export default class PlayerDecisionEvent {
     }
 
     possibilityOfPass() {
-        return this.player.hasBall ? 100 : 0;
+        return this.player.hasBall ? 30 : 0;
     }
 
     possibilityOfShoot() {
-        return this.player.hasBall ? 50 : 0;
+        return this.player.hasBall ? 15 : 0;
     }
+
+
 }

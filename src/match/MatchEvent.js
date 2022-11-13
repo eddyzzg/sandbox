@@ -1,23 +1,26 @@
 import MatchEventConflictManager from "./MatchEventConflictManager";
 
 export default class MatchEvent {
-    
+
     /**
      * @param {Player[]} home
      * @param {Player[]} away
      * @param {Ball} ball
+     * @param {Field} field
+     * @param {Match} match
      */
-    constructor(home, away, ball) {
+    constructor(home, away, ball,field,match) {
         this.homeTeam = home;
         this.awayTeam = away;
         this.ball = ball;
-        this.conflictManger = new MatchEventConflictManager(this.getAllPlayers());
+        this.field=field;
+        this.conflictManger = new MatchEventConflictManager(this.getAllPlayers(),this.ball,this.field,match);
     }
-    
+
     getAllPlayers() {
         return this.homeTeam.concat(this.awayTeam);
     }
-    
+
     //FOR TEST
     passEvent() {
         return this.homeTeam[10].pass(this.homeTeam, this.ball);
@@ -25,7 +28,7 @@ export default class MatchEvent {
 
     showPlayerDecision(player) {
         let $decisionContainer = $(`#${player.id}`).find('.decision');
-        $decisionContainer.html(player.decision);
+        $decisionContainer.html(player.finalDecision);
     }
 
     run() {
@@ -33,18 +36,16 @@ export default class MatchEvent {
         this.resolveConflicts();
         return Promise.all(this.executeMoves());
     }
-    
+
     calculateDecisions() {
         this.getAllPlayers().forEach((player) => {
             let decision = player.decide();
-            player.decision = decision;  // zmienna wyświetlająca co ziomek chce zrobić
-            
-            this.showPlayerDecision(player);
-            
+            let finalDecision = '';
+
             switch (decision) {
                 case 'move': {
                     //TODO: przemyslec calculate dla pilki
-                    this.calculateMoveDecision(player);
+                    finalDecision = this.calculateMoveDecision(player);
                     break;
                 }
                 case 'pass': {
@@ -56,16 +57,22 @@ export default class MatchEvent {
                     break;
                 }
             }
-        
+
+            player.decision = decision;  // zmienna zawierajaca decyzje co ziomek chce zrobić,
+            player.finalDecision = `${decision} / ${finalDecision}`;  // zmienna zawierajaca decyzje co ziomek chce zrobić,
+            this.showPlayerDecision(player);    // wyswietlenie co ziomek chce zrobic
         });
     }
-    
+
     executeMoves() {
         const promises = [];
         this.getAllPlayers().forEach((player) => {
             switch (player.decision) {
                 case 'move': {
                     promises.push(player.executeMove());
+                    if (player.hasBall) {
+                        promises.push(this.ball.executeMove());
+                    }
                     break;
                 }
                 case 'pass': {
@@ -73,23 +80,29 @@ export default class MatchEvent {
                     break;
                 }
                 case 'shoot': {
-                    promises.push(Promise.resolve());
+                    promises.push(this.ball.executeMove());
                     break;
                 }
             }
-            
         });
         return promises;
     }
-    
+
     resolveConflicts() {
         this.getAllPlayers().forEach((player) => {
             this.conflictManger.validateMove(player);
         });
+        this.conflictManger.checkGoal();
     }
-    
+
     calculateMoveDecision(player) {
+        let finalDecision;
         let decisionWhereToMove = player.decideWhereToMove();
+        // TODO czemu ziomki się nie ruszają po dodaniu poniższego kodu?
+        /*
+                player.decision = decisionWhereToMove;  // zmienna zawierajaca decyzje co ziomek chce zrobić,
+                player.showPlayerDecision(player);    // wyswietlenie co ziomek chce zrobic
+        */
         if (decisionWhereToMove === "moveToBall") {
             player.moveInDirectionOfXY(this.ball.positionX, this.ball.positionY);
         } else if (decisionWhereToMove === "moveToPosition") {
@@ -101,22 +114,26 @@ export default class MatchEvent {
                 player.moveInDirectionOfXY(0, 400);
             }
         }
-    
+        finalDecision = decisionWhereToMove;
+
         if (player.isInAwayTeam) {
             if (player.getOpponentWithBallInRange(this.homeTeam) !== false) {
                 player.tryToWinTheBall(player, player.getOpponentWithBallInRange(this.homeTeam));
+                finalDecision = 'tryToWinTheBall';
             }
         } else {
             if (player.getOpponentWithBallInRange(this.awayTeam) !== false) {
                 player.tryToWinTheBall(player, player.getOpponentWithBallInRange(this.awayTeam));
+                finalDecision = 'tryToWinTheBall';
             }
         }
-    
+
         if (player.hasBall === true) {
             this.ball.move(player.positionX, player.positionY);
         }
+        return finalDecision;
     }
-    
+
     calculatePassDecision(player) {
         if (player.isInAwayTeam) {
             player.pass(this.awayTeam, this.ball);
@@ -124,7 +141,7 @@ export default class MatchEvent {
             player.pass(this.homeTeam, this.ball);
         }
     }
-    
+
     calculateShootDecision(player) {
         player.shoot();
     }

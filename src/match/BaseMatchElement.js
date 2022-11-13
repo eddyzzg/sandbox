@@ -50,7 +50,7 @@ export default class BaseMatchElement {
      * @returns {Promise<>}
      */
     executeMove(isInstantMove) {
-        const $element = this.getDOMSelector()
+        const $element = this.getDOMSelector();
         return new Promise((resolve) => {
             if (isInstantMove) {
                 $element.css('left', `${this.positionX}px`);

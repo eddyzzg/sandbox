@@ -1,6 +1,7 @@
 import Field from './Field';
 import MatchEvent from './MatchEvent';
 import Ball from './Ball';
+import scoreboard from './scoreboard.hbs';
 
 export default class Match {
     
@@ -22,43 +23,47 @@ export default class Match {
         this.matchDuration = 90;
         this.eventsPerMinute = 10;
         this.currentIndex = 0;
+        this.homeGoals = 0;
+        this.awayGoals =0;
     }
-    
+
+    renderScoreboard(){
+        const $scoreboardContainer = $("body .score-board");
+        $scoreboardContainer.html(scoreboard(this));
+    }
+
     prepare() {
         this.field.render();
+        this.renderScoreboard();
         this.homePlayers = this.homeTeam.getMatchPlayers();
         this.awayPlayers = this.awayTeam.getMatchPlayers();
-        this.informPlayersAboutTheBall();
+        this.informPlayersAboutTheBallAndField();
         return this.placePlayersOnField().then(() => {
             this.renderBall();
             return this.placeForwardPlayerToTheMiddleOfTheField();
         });
     }
     
-    informPlayersAboutTheBall() {
+    informPlayersAboutTheBallAndField() {
         this.homePlayers.concat(this.awayPlayers).forEach((player) => {
-            player.setBallInfo(this.ball)
+            player.setBallInfo(this.ball);
+            player.setFieldInfo(this.field);
         })
     }
-    
-    
+
     start() {
-        const matchEvent = new MatchEvent(this.homePlayers, this.awayPlayers, this.ball);
+        const matchEvent = new MatchEvent(this.homePlayers, this.awayPlayers, this.ball,this.field,this);
         matchEvent.run().then(() => {
             const maxEventCount = this.matchDuration * this.eventsPerMinute;
             if (this.currentIndex <= maxEventCount) {
                 this.currentIndex++;
+                this.renderScoreboard();
                 return this.start();
             }
-            alert('MECZ SKONCZONY !');
+            alert("MECZ SKONCZONY !");
         });
 
-        /*
-        setInterval(() => {
-            const matchEvent = new MatchEvent(this.homePlayers, this.awayPlayers, this.ball);
-            matchEvent.run();
-            // matchEvent.passEvent();
-        }, 1000);*/
+
     }
     
     placePlayersOnField() {

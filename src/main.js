@@ -8,30 +8,28 @@ import KlimaSandbox from './klima/sandbox';
 import FaceGenerator from './faces/FaceGenerator';
 import NamesGenerator from './names/NamesGenerator';
 import Match from './match/Match';
+import matchWindow from './matchWindow.hbs';
 
 testModule.test();
 global.API = {};
 
 
 $(document).ready(function () {
-    const $workspace = createWorkspace();
-    
+    // const $workspace = createWorkspace();
+    /*
     $workspace.find('.menu .generator').click(() => {
         openFaceGenerator($workspace);
     });
     $workspace.find('.menu .squad-manager').click(() => {
         openSquadManager($workspace);
     });
-    let $startMatchBtn = $workspace.find('.start-match');
+
+    let $startMatchBtn = $("body").find('.start-match');
     $startMatchBtn.click(() => {
-        homeTeam.generateSquad();
-        awayTeam.generateSquad();
-        
-        return startMatch(homeTeam, awayTeam);
+
     });
     
-    let homeTeam = new Team();
-    let awayTeam = new Team(true);
+
     
     let squadManager = openSquadManager($workspace.find('.squad-manager-home-container'), homeTeam);
     let squadManager2 = openSquadManager($workspace.find('.squad-manager-away-container'), awayTeam);
@@ -40,7 +38,15 @@ $(document).ready(function () {
     // generatePlayers(awayPlayers, squadManager2);
     
     //instant start match
-    $startMatchBtn.click();
+  //  $startMatchBtn.click();
+    */
+    let homeTeam = new Team();
+    let awayTeam = new Team(true);
+
+    homeTeam.generateSquad();
+    awayTeam.generateSquad();
+
+    startMatch(homeTeam, awayTeam);
 });
 
 function generatePlayers(team, squadManager) {
@@ -86,6 +92,9 @@ function openFaceGenerator($container) {
  * @param {Team} awayTeam
  */
 function startMatch(homeTeam, awayTeam) {
+    const workspace = $('body .workspace');
+    workspace.html(matchWindow());
+
     const match = new Match(homeTeam, awayTeam);
     return match.prepare().then(() => {
         return match.start();
