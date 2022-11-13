@@ -5,7 +5,8 @@ export default class Ball extends BaseMatchElement {
 
     constructor() {
         super();
-
+        this.startPositionX = 0;
+        this.startPositionY = 0;
         this.positionX = 550;
         this.positionY = 355;
         this.width = 15;
@@ -17,7 +18,7 @@ export default class Ball extends BaseMatchElement {
      * @returns {jQuery}
      */
     getDOMSelector() {
-        return $('#ball .ball');
+        return $('#ball.ball');
     }
 
     /**
@@ -31,7 +32,6 @@ export default class Ball extends BaseMatchElement {
      * @param {Number} positionX
      * @param {Number} positionY
      * @param {Boolean} [isInstantMove]
-     * @returns {Promise<>}
      */
     move(positionX, positionY, isInstantMove = false) {
         this.positionX = positionX;

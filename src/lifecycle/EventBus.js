@@ -55,6 +55,8 @@ export const events = {
 	GLOBAL_EVENTS: {
 	},
 	MATCH_EVENTS: {
-		GOAL_SCORED: 'goalScored'
+		GOAL_SCORED: 'goalScored',
+		HOME_GOAL: 'homeGoalScored',
+		AWAY_GOAL: 'awayGoalScored',
 	}
 };

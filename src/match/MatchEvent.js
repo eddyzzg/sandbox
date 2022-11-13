@@ -14,6 +14,7 @@ export default class MatchEvent {
         this.awayTeam = away;
         this.ball = ball;
         this.field=field;
+        this.matchSpecialEvents = [];
         this.conflictManger = new MatchEventConflictManager(this.getAllPlayers(),this.ball,this.field,match);
     }
 
@@ -92,7 +93,7 @@ export default class MatchEvent {
         this.getAllPlayers().forEach((player) => {
             this.conflictManger.validateMove(player);
         });
-        this.conflictManger.checkGoal();
+        this.matchSpecialEvents.push(this.conflictManger.checkGoal());
     }
 
     calculateMoveDecision(player) {

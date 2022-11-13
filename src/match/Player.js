@@ -15,6 +15,9 @@ export default class Player extends BaseMatchElement {
         this.id = playerDef.id;
         this.position = playerDef.nominalPosition;
         this.isInAwayTeam = false;
+        
+        this.startPositionX = 0;
+        this.startPositionY = 0;
 
         this.nominalPositionX = 1;
         this.nominalPositionY = 1;
@@ -66,7 +69,7 @@ export default class Player extends BaseMatchElement {
     }
 
     getDOMSelector() {
-        return $(`#${this.id} .player`);
+        return $(`#${this.id}.player`);
     }
 
     /**

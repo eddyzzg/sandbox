@@ -1,5 +1,4 @@
 import 'gridstack';
-import testModule from './module-a';
 import WORKSPACE_TMP from './Workspace.hbs';
 import './style.less';
 import SquadManager from './squad/SquadManager';
@@ -11,13 +10,11 @@ import Match from './match/Match';
 import matchWindow from './matchWindow.hbs';
 import {eventBus, events} from './lifecycle/EventBus';
 
-testModule.test();
 global.API = {};
 
-
 $(document).ready(function () {
-    // const $workspace = createWorkspace();
     /*
+    const $workspace = createWorkspace();
     $workspace.find('.menu .generator').click(() => {
         openFaceGenerator($workspace);
     });
@@ -30,8 +27,6 @@ $(document).ready(function () {
 
     });
     
-
-    
     let squadManager = openSquadManager($workspace.find('.squad-manager-home-container'), homeTeam);
     let squadManager2 = openSquadManager($workspace.find('.squad-manager-away-container'), awayTeam);
     
@@ -39,25 +34,23 @@ $(document).ready(function () {
     // generatePlayers(awayPlayers, squadManager2);
     
     //instant start match
-  //  $startMatchBtn.click();
+    //$startMatchBtn.click();
     */
     
+    const $workspace = createWorkspace();
     prepareApplication();
     
     let homeTeam = new Team();
-    
     let awayTeam = new Team(true);
     homeTeam.generateSquad();
-
     awayTeam.generateSquad();
     
-    return startMatch(homeTeam, awayTeam);
+    return startMatch(homeTeam, awayTeam, $workspace);
 });
 
 function prepareApplication() {
-    window.API = {};
-    window.API.eventBus = eventBus;
-    window.API.events = events;
+    API.eventBus = eventBus;
+    API.events = events;
 }
 
 function generatePlayers(team, squadManager) {
@@ -101,10 +94,10 @@ function openFaceGenerator($container) {
 /**
  * @param {Team} homeTeam
  * @param {Team} awayTeam
+ * @param {jQuery} $workspace
  */
-function startMatch(homeTeam, awayTeam) {
-    const workspace = $('body .workspace');
-    workspace.html(matchWindow());
+function startMatch(homeTeam, awayTeam, $workspace) {
+    $workspace.find('.match-container').html(matchWindow());
 
     const match = new Match(homeTeam, awayTeam);
     return match.prepare().then(() => {
