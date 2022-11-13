@@ -42,6 +42,11 @@ export default class Player extends BaseMatchElement {
         this.ball = ball;
     }
 
+    beforeMove() {
+        let $element = this.getDOMSelector();
+        $element.css('background-image', `url("../src/styles/img/${this.shirtColor}player${this.animationFile}.gif")`);
+    }
+
     /**
      * @param {Field} field
      */
@@ -165,9 +170,11 @@ export default class Player extends BaseMatchElement {
     setAnimationFile(offsetX,offsetY){
         if (offsetX<0) {
             this.animationFile="left";
-        } else if (offsetX>=0) {
+        }
+        if (offsetX>=0) {
             this.animationFile="right";
-        } else if (offsetX+offsetY<1) {
+        }
+        if (Math.abs(offsetX)+Math.abs(offsetY)<1) {
             this.animationFile="rest";
         }
     }

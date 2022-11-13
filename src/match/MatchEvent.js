@@ -99,11 +99,12 @@ export default class MatchEvent {
     calculateMoveDecision(player) {
         let finalDecision;
         let decisionWhereToMove = player.decideWhereToMove();
-        // TODO czemu ziomki się nie ruszają po dodaniu poniższego kodu?
-        /*
-                player.decision = decisionWhereToMove;  // zmienna zawierajaca decyzje co ziomek chce zrobić,
-                player.showPlayerDecision(player);    // wyswietlenie co ziomek chce zrobic
-        */
+
+        // if (player.hasBall) {
+        //     console.log(player.name);
+        // console.log(decisionWhereToMove);}
+
+
         if (decisionWhereToMove === "moveToBall") {
             player.moveInDirectionOfXY(this.ball.positionX, this.ball.positionY);
         } else if (decisionWhereToMove === "moveToPosition") {

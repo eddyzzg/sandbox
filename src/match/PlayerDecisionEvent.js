@@ -45,7 +45,6 @@ export default class PlayerDecisionEvent {
         } else {
             return 100;
         }
-
     }
 
     possibilityOfPass() {
@@ -53,8 +52,22 @@ export default class PlayerDecisionEvent {
     }
 
     possibilityOfShoot() {
-        return this.player.hasBall ? 15 : 0;
+        let awayGoal = {positionX:1200,positionY:400};
+        let homeGoal = {positionX:0,positionY:400};
+        let distance =0;
+
+        if (!this.player.hasBall) {
+            return 0;
+        } else if (this.player.isInAwayTeam){
+            distance=(600-(this.player.distance(homeGoal)))/6;
+            if (distance<0) {distance=0;}
+            return distance;
+        } else if (!this.player.isInAwayTeam) {
+
+            distance=(600-(this.player.distance(awayGoal)))/6;
+            if (distance<0) {distance=0;}
+            return distance;
+
+        }
     }
-
-
 }

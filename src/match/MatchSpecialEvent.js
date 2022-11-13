@@ -28,7 +28,6 @@ export default class MatchSpecialEvent extends MatchEvent {
     }
     
     calculateMoves() {
-        debugger
         this.getAllPlayers().forEach((player) => {
             this.calculateMoveToStartPosition(player);
         });

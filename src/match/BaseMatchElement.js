@@ -44,14 +44,21 @@ export default class BaseMatchElement {
      */
     //  move(positionX, positionY, isInstantMove = false) {
     //  }
-    
+
+    beforeMove() {
+
+    }
+
+
     /**
      * @param {Boolean} [isInstantMove]
      * @returns {Promise<>}
      */
     executeMove(isInstantMove) {
         const $element = this.getDOMSelector();
+        this.beforeMove();
         return new Promise((resolve) => {
+
             if (isInstantMove) {
                 $element.css('left', `${this.positionX}px`);
                 $element.css('top', `${this.positionY}px`);
@@ -60,6 +67,7 @@ export default class BaseMatchElement {
             $element.animate({
                 left: `${this.positionX}px`,
                 top: `${this.positionY}px`,
+
             }, this.getAnimationTime(), () => {
                 return resolve();
             });

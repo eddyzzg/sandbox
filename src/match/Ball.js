@@ -9,8 +9,8 @@ export default class Ball extends BaseMatchElement {
         this.startPositionY = 0;
         this.positionX = 550;
         this.positionY = 355;
-        this.width = 15;
-        this.height = 15;
+        this.width = 10;
+        this.height = 10;
         this.playerID = "";
     }
 

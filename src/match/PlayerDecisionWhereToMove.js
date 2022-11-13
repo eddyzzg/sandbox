@@ -36,17 +36,9 @@ export default class PlayerDecisionWhereToMove {
         this.index += this.possibilityOfMoveToGoal();
     }
 
-    /* TODO  jak tu przekazać instancje ball ?    \/
-     */
-    possibilityOfMoveToBall() {
-        /*
-        if (this.player.distance(ball) < 30) {
-            return 200;
-        } else {
-            return 20;
-        }*/
 
-        let possibility = 0;
+    possibilityOfMoveToBall() {
+
         if (this.player.hasBall === true) {
             return 0;
         }
@@ -62,18 +54,17 @@ export default class PlayerDecisionWhereToMove {
         } else {
             return 20;
         }
-
     }
 
     possibilityOfMoveToGoal() {
         if (this.player.position === "GK") {
-            return 2;
+            return 1;
         } else if (this.player.hasBall === true) {
-            return 150;
-        } else {
-            return 10;
+            return 90;
+        } else if(this.player.team.hasBall){
+            return 20;
         }
+            return 5;
+
     }
-
-
 }
