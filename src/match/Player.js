@@ -28,6 +28,8 @@ export default class Player extends BaseMatchElement {
         this.field = undefined;
         this.team = team;
         this.decision = "no decision";
+        this.animationFile="left";
+
     }
 
     setBallInfo(ball) {
@@ -127,10 +129,26 @@ export default class Player extends BaseMatchElement {
             offsetY = Math.floor(deltaY);
         }
 
+
+        this.setAnimationFile(offsetX,offsetY);
+
+
+
         this.positionX = this.positionX + offsetX;
         this.positionY = this.positionY + offsetY;
 
         // return this.executeMove(isInstantMove, this.decision);
+    }
+
+
+    setAnimationFile(offsetX,offsetY){
+        if (offsetX<0) {
+            this.animationFile="left";
+        } else if (offsetX>=0) {
+            this.animationFile="right";
+        } else if (offsetX+offsetY<1) {
+            this.animationFile="rest";
+        }
     }
 
     /**
