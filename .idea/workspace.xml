@@ -4,37 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d3d3ed9-da38-4e0b-bfc0-ff2834e03693" name="Default Changelist" comment="lekki lifting moveToDirectionOfXY">
+    <list default="true" id="d470b8ee-1ae5-49ee-9ade-527ea11d5fce" name="Changes" comment="asasdads">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/match/MatchEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/MatchEvent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/match/Player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Player.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/squad/player.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/player.hbs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="hbs" />
-        <option value="JavaScript File" />
-        <option value="HTML File" />
-        <option value="Less File" />
-      </list>
-    </option>
-  </component>
-  <component name="FormatOnSaveOptions">
-    <option name="myRunOnSave" value="true" />
-  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Conflicts" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProjectId" id="1OV8eoe3E3Hq3lDjqvhy5tsaKVW" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -123,16 +108,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.watch" />
-        <item itemvalue="JavaScript Debug.index.html" />
-        <item itemvalue="npm.build" />
-        <item itemvalue="npm.development" />
-        <item itemvalue="npm.start" />
+        <item itemvalue="npm.watch" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="SvnConfiguration">
-    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -153,21 +131,20 @@
       <workItem from="1667470760745" duration="1428000" />
       <workItem from="1667488683245" duration="55284000" />
       <workItem from="1668011908483" duration="15790000" />
-      <workItem from="1668185981422" duration="4713000" />
     </task>
     <task id="LOCAL-00001" summary="t">
       <created>1564057867467</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1564057867467</updated>
+      <updated>1668092138152</updated>
     </task>
-    <task id="LOCAL-00002" summary="t">
-      <created>1564057940926</created>
+    <task id="LOCAL-00002" summary="zaczynam robic konflikty">
+      <created>1668092603054</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1564057940926</updated>
+      <updated>1668092603054</updated>
     </task>
     <task id="LOCAL-00003" summary="less styles added">
       <created>1564062901520</created>
@@ -351,18 +328,22 @@
       <option name="project" value="LOCAL" />
       <updated>1667952104521</updated>
     </task>
-    <task id="LOCAL-00029" summary="dodano opis wykonywanej czynnosci przez pilkarza&#10;wywalono setInterval na rzecz promisów, wprowadzono czas trwania meczu&#10;dodano wizualna reprezentacje pól bramkowych">
-      <created>1668087437043</created>
+    <task id="LOCAL-00029" summary="zaczynam robic konflikty">
+      <created>1668093127230</created>
       <option name="number" value="00029" />
       <option name="presentableId" value="LOCAL-00029" />
       <option name="project" value="LOCAL" />
-      <updated>1668087437043</updated>
+      <updated>1668093127230</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="asasdads">
+      <created>1668344814193</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1668344814193</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -397,7 +378,8 @@
     <MESSAGE value="poprawiono zjebane podawanie" />
     <MESSAGE value="ziomki biegna do pily jezeli ma ja przeciwnik w odleglosci &lt;150" />
     <MESSAGE value="dodano getOpponentWithBallInRange() i tryToWinTheBall(), tera każdy przeciwnik w odległości &lt;30 od piłki ktorą posiada przeciwnik próbuje ją odebrać" />
-    <MESSAGE value="dodano opis wykonywanej czynnosci przez pilkarza&#10;wywalono setInterval na rzecz promisów, wprowadzono czas trwania meczu&#10;dodano wizualna reprezentacje pól bramkowych" />
-    <option name="LAST_COMMIT_MESSAGE" value="dodano opis wykonywanej czynnosci przez pilkarza&#10;wywalono setInterval na rzecz promisów, wprowadzono czas trwania meczu&#10;dodano wizualna reprezentacje pól bramkowych" />
+    <MESSAGE value="zaczynam robic konflikty" />
+    <MESSAGE value="asasdads" />
+    <option name="LAST_COMMIT_MESSAGE" value="asasdads" />
   </component>
 </project>
