@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d470b8ee-1ae5-49ee-9ade-527ea11d5fce" name="Changes" comment="pierwsze gify">
+    <list default="true" id="d470b8ee-1ae5-49ee-9ade-527ea11d5fce" name="Changes" comment="problem z setAnimationFile - działa tylko przy wprowadzeniu bezposrednio w konstruktorze">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/match/Player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Player.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/squad/player.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/player.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/img/back.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/img/blueplayer.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/img/blueplayer.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/img/redplayer.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/img/redplayer.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/player.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/player.less" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -363,7 +357,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668345855171</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="problem z setAnimationFile - działa tylko przy wprowadzeniu bezposrednio w konstruktorze">
+      <created>1668349906714</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1668349906714</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -402,6 +403,7 @@
     <MESSAGE value="zaczynam robic konflikty" />
     <MESSAGE value="asasdads" />
     <MESSAGE value="pierwsze gify" />
-    <option name="LAST_COMMIT_MESSAGE" value="pierwsze gify" />
+    <MESSAGE value="problem z setAnimationFile - działa tylko przy wprowadzeniu bezposrednio w konstruktorze" />
+    <option name="LAST_COMMIT_MESSAGE" value="problem z setAnimationFile - działa tylko przy wprowadzeniu bezposrednio w konstruktorze" />
   </component>
 </project>
