@@ -42,9 +42,6 @@ export default class PlayerDecisionWhereToMove {
     }
     
     possibilityOfMoveToBall() {
-        if (this.player.isGK) {
-            return 2;
-        }
         if (this.player.hasBall) {
             return 0;
         }
@@ -55,9 +52,6 @@ export default class PlayerDecisionWhereToMove {
     }
     
     possibilityOfMoveToPosition() {
-        if (this.player.isGK) {
-            return 20;
-        }
         if (this.player.hasBall) {
             return 0;
         }
@@ -68,9 +62,6 @@ export default class PlayerDecisionWhereToMove {
     }
     
     possibilityOfMoveToGoal() {
-        if (this.player.isGK) {
-            return 20;
-        }
         if (this.player.hasBall) {
             return 100;
         }

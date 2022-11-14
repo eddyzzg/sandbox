@@ -2,6 +2,8 @@ import playerHBS from '../squad/player.hbs';
 import BaseMatchElement from './BaseMatchElement';
 import PlayerDecisionEvent from "./PlayerDecisionEvent";
 import PlayerDecisionWhereToMove from "./PlayerDecisionWhereToMove"
+import GoalKeeperDecisionEvent from "./GoalKeeperDecisionEvent";
+import GoalKeeperDecisionWhereToMove from "./GoalKeeperDecisionWhereToMove";
 
 export default class Player extends BaseMatchElement {
     
@@ -89,10 +91,16 @@ export default class Player extends BaseMatchElement {
     }
     
     decide() {
+        if (this.isGK) {
+            return new GoalKeeperDecisionEvent(this).run();
+        }
         return new PlayerDecisionEvent(this).run();
     }
     
     decideWhereToMove() {
+        if (this.isGK) {
+            return new GoalKeeperDecisionWhereToMove(this).run();
+        }
         return new PlayerDecisionWhereToMove(this).run();
     }
     

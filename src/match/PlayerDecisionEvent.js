@@ -50,12 +50,6 @@ export default class PlayerDecisionEvent {
     }
     
     getPossibilityOfMove() {
-        if (this.player.isGK) {
-            if (this.player.hasBall) {
-                return 9;
-            }
-            return 100;
-        }
         if (this.player.hasBall) {
             return 65;
         }
@@ -63,12 +57,6 @@ export default class PlayerDecisionEvent {
     }
     
     getPossibilityOfPass() {
-        if (this.player.isGK) {
-            if (this.player.hasBall) {
-                return 90;
-            }
-            return 0;
-        }
         if (this.player.hasBall) {
             return 20;
         }
@@ -76,12 +64,6 @@ export default class PlayerDecisionEvent {
     }
     
     getPossibilityOfShoot() {
-        if (this.player.isGK) {
-            if (this.player.hasBall) {
-                return 1;
-            }
-            return 0;
-        }
         if (this.player.hasBall) {
             let field = this.player.field;
             let awayGoal = {positionX: field.awayGoalX, positionY: field.awayGoalY};

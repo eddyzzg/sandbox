@@ -47,7 +47,6 @@ export default class BaseMatchElement {
         const $element = this.getDOMSelector();
         this.beforeMove();
         return new Promise((resolve) => {
-            
             if (isInstantMove) {
                 $element.css('left', `${this.positionX}px`);
                 $element.css('top', `${this.positionY}px`);
