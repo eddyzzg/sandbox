@@ -243,7 +243,6 @@ export default class Player extends BaseMatchElement {
             } else {
                 return false;
             }
-            
         }
     }
     

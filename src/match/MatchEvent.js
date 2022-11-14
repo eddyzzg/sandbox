@@ -1,5 +1,6 @@
 import MatchEventConflictManager from "./MatchEventConflictManager";
 import {DECISION_WHERE_TO_MOVE} from './PlayerDecisionWhereToMove';
+import {DECISION} from './PlayerDecisionEvent';
 
 export default class MatchEvent {
     
@@ -45,16 +46,16 @@ export default class MatchEvent {
             let finalDecision = '';
             
             switch (decision) {
-                case 'move': {
+                case DECISION.MOVE: {
                     //TODO: przemyslec calculate dla pilki
                     finalDecision = this.calculateMoveDecision(player);
                     break;
                 }
-                case 'pass': {
+                case DECISION.PASS: {
                     this.calculatePassDecision(player);
                     break;
                 }
-                case 'shoot': {
+                case DECISION.SHOT: {
                     this.calculateShootDecision(player);
                     break;
                 }
@@ -70,18 +71,18 @@ export default class MatchEvent {
         const promises = [];
         this.getAllPlayers().forEach((player) => {
             switch (player.decision) {
-                case 'move': {
+                case DECISION.MOVE: {
                     promises.push(player.executeMove());
                     if (player.hasBall) {
                         promises.push(this.ball.executeMove());
                     }
                     break;
                 }
-                case 'pass': {
+                case DECISION.PASS: {
                     promises.push(this.ball.executeMove());
                     break;
                 }
-                case 'shoot': {
+                case DECISION.SHOT: {
                     promises.push(this.ball.executeMove());
                     break;
                 }
@@ -98,42 +99,45 @@ export default class MatchEvent {
     }
     
     calculateMoveDecision(player) {
-        let finalDecision;
+        let finalDecisionToShow;
         let decisionWhereToMove = player.decideWhereToMove();
-        //         player.decision = decisionWhereToMove;  // zmienna zawierajaca decyzje co ziomek chce zrobić,
-        //         player.showPlayerDecision(player);    // wyswietlenie co ziomek chce zrobic
         
-        if (decisionWhereToMove === DECISION_WHERE_TO_MOVE.MOVE_TO_BALL) {
-            player.moveInDirectionOfXY(this.ball.positionX, this.ball.positionY);
+        switch (decisionWhereToMove) {
+            case DECISION_WHERE_TO_MOVE.MOVE_TO_BALL:
+                player.moveInDirectionOfXY(this.ball.positionX, this.ball.positionY);
+                break;
             
-        } else if (decisionWhereToMove === DECISION_WHERE_TO_MOVE.MOVE_TO_POSITION) {
-            player.moveInDirectionOfXY(player.nominalPositionX, player.nominalPositionY);
+            case DECISION_WHERE_TO_MOVE.MOVE_TO_POSITION:
+                player.moveInDirectionOfXY(player.nominalPositionX, player.nominalPositionY);
+                break;
             
-        } else if (decisionWhereToMove === DECISION_WHERE_TO_MOVE.MOVE_TO_GOAL) {
-            if (player.isInAwayTeam) {
-                player.moveInDirectionOfXY(this.field.homeGoalX, this.field.homeGoalY + (this.field.goalHeight / 2));
-            } else {
-                player.moveInDirectionOfXY(this.field.awayGoalX, this.field.awayGoalY + (this.field.goalHeight / 2));
-            }
+            case DECISION_WHERE_TO_MOVE.MOVE_TO_GOAL:
+                if (player.isInAwayTeam) {
+                    player.moveInDirectionOfXY(this.field.homeGoalX, this.field.homeGoalY + (this.field.goalHeight / 2));
+                } else {
+                    player.moveInDirectionOfXY(this.field.awayGoalX, this.field.awayGoalY + (this.field.goalHeight / 2));
+                }
+                break;
         }
-        finalDecision = decisionWhereToMove;
-        
-        if (player.isInAwayTeam) {
-            if (player.getOpponentWithBallInRange(this.homeTeam) !== false) {
-                player.tryToWinTheBall(player, player.getOpponentWithBallInRange(this.homeTeam));
-                finalDecision = 'tryToWinTheBall';
-            }
-        } else {
-            if (player.getOpponentWithBallInRange(this.awayTeam) !== false) {
-                player.tryToWinTheBall(player, player.getOpponentWithBallInRange(this.awayTeam));
-                finalDecision = 'tryToWinTheBall';
-            }
-        }
-        
+        finalDecisionToShow = decisionWhereToMove;
+        finalDecisionToShow = this.tryToWinTheBall(player, finalDecisionToShow);
+        this.moveBallWithPlayer(player);
+        return finalDecisionToShow;
+    }
+    
+    moveBallWithPlayer(player) {
         if (player.hasBall === true) {
             this.ball.move(player.positionX, player.positionY);
         }
-        return finalDecision;
+    }
+    
+    tryToWinTheBall(player, finalDecisionToShow) {
+        let team = player.isInAwayTeam ? this.homeTeam : this.awayTeam;
+        if (player.getOpponentWithBallInRange(team)) {
+            player.tryToWinTheBall(player, player.getOpponentWithBallInRange(team));
+            finalDecisionToShow = 'tryToWinTheBall';
+        }
+        return finalDecisionToShow;
     }
     
     calculatePassDecision(player) {
