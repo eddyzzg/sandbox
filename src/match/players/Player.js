@@ -1,9 +1,9 @@
-import playerHBS from '../squad/player.hbs';
-import BaseMatchElement from './BaseMatchElement';
-import PlayerDecisionEvent from "./PlayerDecisionEvent";
-import PlayerDecisionWhereToMove from "./PlayerDecisionWhereToMove"
-import GoalKeeperDecisionEvent from "./GoalKeeperDecisionEvent";
-import GoalKeeperDecisionWhereToMove from "./GoalKeeperDecisionWhereToMove";
+import playerHBS from '../../squad/player.hbs';
+import BaseMatchElement from '../BaseMatchElement';
+import PlayerDecisionEvent from '../PlayerDecisionEvent';
+import PlayerDecisionWhereToMove from '../PlayerDecisionWhereToMove'
+import GoalKeeperDecisionEvent from '../GoalKeeperDecisionEvent';
+import GoalKeeperDecisionWhereToMove from '../GoalKeeperDecisionWhereToMove';
 
 export default class Player extends BaseMatchElement {
     
@@ -132,7 +132,7 @@ export default class Player extends BaseMatchElement {
      */
     moveInDirectionOfXY(positionX, positionY, isInstantMove = false) {
         let speed = this.definition.speed;
-        let {deltaX, deltaY} = this.getDeltas();
+        let {deltaX, deltaY} = this.getDeltas(positionX, positionY);
         
         let proportionX = deltaX / (Math.abs(deltaX) + Math.abs(deltaY));
         let proportionY = deltaY / (Math.abs(deltaX) + Math.abs(deltaY));

@@ -1,9 +1,9 @@
 import NamesGenerator from '../names/NamesGenerator';
 import PlayerDef from '../match/PlayerDef';
-import Player from '../match/Player';
+import Player from '../match/players/Player';
 
 export default class Team {
-
+    
     constructor(isAwayTeam = false) {
         /** @type {Map<Number, PlayerDef>} */
         this.squad = new Map();
@@ -16,7 +16,7 @@ export default class Team {
         this.hasBall = false;
         this.teamColor = isAwayTeam ? 'blue' : 'red';
     }
-
+    
     /**
      * For now we generate random team here
      */
@@ -30,14 +30,14 @@ export default class Team {
             this.squad.set(i, playerDef);
         }
     }
-
+    
     /**
      * @param {Number[]} numbers
      */
     setFirstTeamPlayersNumbers(numbers) {
         this.firstSquadDef = numbers;
     }
-
+    
     /**
      * Returns number of players from first team
      *
@@ -46,7 +46,7 @@ export default class Team {
     getFirstTeamPlayersNumbers() {
         return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
     }
-
+    
     getMatchPlayers() {
         this.firstSquadDef.forEach((playerNumber) => {
             const playerDef = this.squad.get(playerNumber - 1);
@@ -57,12 +57,12 @@ export default class Team {
         });
         return this.firstSquad;
     }
-
+    
     generatePosition(position, field) {
         let positionX = 0;
         let positionY = 0;
-
-
+        
+        
         switch (position) {
             case 'GK':
                 positionX = 0.033 * field.width; //40;
@@ -111,13 +111,13 @@ export default class Team {
         }
         return {positionX, positionY};
     }
-
+    
     generateNominalPosition(position, field) {
         let nominalPositionX = 0;
         let nominalPositionY = 0;
-
+        
         //TODO: getFormation
-
+        
         switch (position) {
             case 'GK':
                 nominalPositionX = 0.066 * field.width; //

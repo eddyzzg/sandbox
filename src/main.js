@@ -9,8 +9,8 @@ import NamesGenerator from './names/NamesGenerator';
 import Match from './match/Match';
 import matchWindow from './matchWindow.hbs';
 import {eventBus, events} from './lifecycle/EventBus';
-import PlayerDecisionEvent from "./match/PlayerDecisionEvent";
-import Player from "./match/Player";
+import PlayerDecisionEvent from './match/PlayerDecisionEvent';
+import Player from './match/players/Player';
 
 global.API = {};
 
