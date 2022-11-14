@@ -9,6 +9,8 @@ import NamesGenerator from './names/NamesGenerator';
 import Match from './match/Match';
 import matchWindow from './matchWindow.hbs';
 import {eventBus, events} from './lifecycle/EventBus';
+import PlayerDecisionEvent from "./match/PlayerDecisionEvent";
+import Player from "./match/Player";
 
 global.API = {};
 
@@ -98,9 +100,18 @@ function openFaceGenerator($container) {
  */
 function startMatch(homeTeam, awayTeam, $workspace) {
     $workspace.find('.match-container').html(matchWindow());
-
+    
+    tests(homeTeam, awayTeam);
+    
     const match = new Match(homeTeam, awayTeam);
     return match.prepare().then(() => {
         return match.start();
     });
+}
+
+function tests(homeTeam, awayTeam) {
+    let playerDef = homeTeam.squad.get(1);
+    const player = new Player(playerDef, homeTeam);
+    let playerDecisionEvent = new PlayerDecisionEvent(player);
+    playerDecisionEvent.validator();
 }

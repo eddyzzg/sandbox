@@ -1,70 +1,86 @@
+export const DECISION_WHERE_TO_MOVE = {
+    MOVE_TO_BALL: 'moveToBall',
+    MOVE_TO_POSITION: 'moveToPosition',
+    MOVE_TO_GOAL: 'moveToGoal'
+}
+
 export default class PlayerDecisionWhereToMove {
     constructor(player) {
         this.player = player;
-        this.decisionArray = [];
-        this.index = 0;
-        this.drawMoveToBall();
-        this.drawMoveToPosition();
-        this.drawMoveToGoal();
+        this.maxIndex = 100;
     }
-
-
+    
     run() {
-        const randomIndex = Math.ceil(Math.random() * (this.index - 1));
-        return this.decisionArray[randomIndex];
-    }
-
-
-    drawMoveToBall() {
-        for (let i = 0; i < this.possibilityOfMoveToBall(); i++) {
-            this.decisionArray[i + this.index] = "moveToBall";
+        const randomIndex = Math.round(Math.random() * 100);
+        const {moveToBallRange, moveToPosRange, moveToGoalRange} = this.createRanges();
+        
+        if (randomIndex >= moveToBallRange.min && randomIndex <= moveToBallRange.max) {
+            return DECISION_WHERE_TO_MOVE.MOVE_TO_BALL;
         }
-        this.index += this.possibilityOfMoveToBall();
-    }
-
-    drawMoveToPosition() {
-        for (let i = 0; i < this.possibilityOfMoveToPosition(); i++) {
-            this.decisionArray[i + this.index] = "moveToPosition";
+        if (randomIndex > moveToPosRange.min && randomIndex <= moveToPosRange.max) {
+            return DECISION_WHERE_TO_MOVE.MOVE_TO_POSITION;
         }
-        this.index += this.possibilityOfMoveToPosition();
-    }
-
-    drawMoveToGoal() {
-        for (let i = 0; i < this.possibilityOfMoveToGoal(); i++) {
-            this.decisionArray[i + this.index] = "moveToGoal";
+        if (randomIndex > moveToGoalRange.min && randomIndex <= moveToGoalRange.max) {
+            return DECISION_WHERE_TO_MOVE.MOVE_TO_GOAL;
         }
-        this.index += this.possibilityOfMoveToGoal();
     }
-
-
+    
+    createRanges() {
+        const moveToBallRange = {
+            min: 0,
+            max: this.possibilityOfMoveToBall()
+        };
+        const moveToPosRange = {
+            min: moveToBallRange.max,
+            max: moveToBallRange.max + this.possibilityOfMoveToPosition()
+        };
+        const moveToGoalRange = {
+            min: moveToPosRange.max,
+            max: moveToPosRange.max + this.possibilityOfMoveToGoal()
+        }
+        return {moveToBallRange, moveToPosRange, moveToGoalRange};
+    }
+    
     possibilityOfMoveToBall() {
-
-        if (this.player.hasBall === true) {
+        if (this.player.isGK) {
+            return 2;
+        }
+        if (this.player.hasBall) {
             return 0;
         }
-        if (((this.player.distance(this.player.ball)) < 150) && !this.player.team.hasBall) {     // idz do piły jeżeli ma ją przeciwnik w odległości <150
+        if (this.isCloseToOpponent()) {
             return 100;
         }
-        return 0;
+        return 20;
     }
-
+    
     possibilityOfMoveToPosition() {
-        if (this.player.position === "GK") {
-            return 80;
-        } else {
+        if (this.player.isGK) {
             return 20;
         }
+        if (this.player.hasBall) {
+            return 0;
+        }
+        if (this.isCloseToOpponent()) {
+            return 0;
+        }
+        return 70;
     }
-
+    
     possibilityOfMoveToGoal() {
-        if (this.player.position === "GK") {
-            return 1;
-        } else if (this.player.hasBall === true) {
-            return 90;
-        } else if(this.player.team.hasBall){
+        if (this.player.isGK) {
             return 20;
         }
-            return 5;
-
+        if (this.player.hasBall) {
+            return 100;
+        }
+        if (this.isCloseToOpponent()) {
+            return 0;
+        }
+        return 10;
+    }
+    
+    isCloseToOpponent() {
+        return this.player.distance(this.player.ball) < 150;
     }
 }
