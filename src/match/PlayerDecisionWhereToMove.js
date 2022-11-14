@@ -72,6 +72,6 @@ export default class PlayerDecisionWhereToMove {
     }
     
     isCloseToOpponent() {
-        return this.player.distance(this.player.ball) < 150;
+        return this.player.getDistanceTo(this.player.ball) < 150;
     }
 }

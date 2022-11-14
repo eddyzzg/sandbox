@@ -216,9 +216,9 @@ export default class Player extends BaseMatchElement {
      */
     getClosestTeammate(players, distance, closestPlayer) {
         players.forEach((player) => {
-            if (this.distance(player) < distance && this.id !== player.id) {
+            if (this.getDistanceTo(player) < distance && this.id !== player.id) {
                 closestPlayer = player;
-                distance = this.distance(player);
+                distance = this.getDistanceTo(player);
             }
         });
         return closestPlayer;
@@ -238,7 +238,7 @@ export default class Player extends BaseMatchElement {
                 }
             });
             
-            if (this.distance(closestOpponentPlayerWithBall) < 30) {
+            if (this.getDistanceTo(closestOpponentPlayerWithBall) < 30) {
                 return closestOpponentPlayerWithBall;
             } else {
                 return false;
@@ -254,7 +254,7 @@ export default class Player extends BaseMatchElement {
         }
     }
     
-    distance(object) {
+    getDistanceTo(object) {
         let deltaX = this.positionX - object.positionX;
         let deltaY = this.positionY - object.positionY;
         return Math.ceil(Math.sqrt(deltaX * deltaX + deltaY * deltaY));

@@ -71,14 +71,14 @@ export default class PlayerDecisionEvent {
             let distance = 0;
             
             if (this.player.isInAwayTeam) {
-                distance = ((field.width / 2) - (this.player.distance(homeGoal))) / 6;
+                distance = ((field.width / 2) - (this.player.getDistanceTo(homeGoal))) / 6;
                 if (distance < 0) {
                     distance = 0;
                 }
                 return distance;
                 
             } else if (!this.player.isInAwayTeam) {
-                distance = ((field.width / 2) - (this.player.distance(awayGoal))) / 6;
+                distance = ((field.width / 2) - (this.player.getDistanceTo(awayGoal))) / 6;
                 if (distance < 0) {
                     distance = 0;
                 }
