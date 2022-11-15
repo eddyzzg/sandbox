@@ -17,18 +17,13 @@ export default class Player extends BaseMatchElement {
         this.id = playerDef.id;
         this.position = playerDef.nominalPosition;
         this.isInAwayTeam = false;
-        
         this.startPositionX = 0;
         this.startPositionY = 0;
-        
         this.nominalPositionX = 1;
         this.nominalPositionY = 1;
-        
         this.hasBall = false;
-        
         this.definition = playerDef;
         this.ball = undefined;
-        
         /** @type {Field} */
         this.field = undefined;
         this.team = team;
@@ -273,5 +268,9 @@ export default class Player extends BaseMatchElement {
         } else {
             return Promise.resolve(false);
         }
+    }
+
+    generateFace (){
+
     }
 }

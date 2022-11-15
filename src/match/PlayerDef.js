@@ -3,6 +3,7 @@ export default class PlayerDef {
         this.id = id;
         this.name = name;
         this.nominalPosition = position;
+        this.faceSeed = 11111;     //  moustache, eyes, eyebrows, mouth, hair
         this.team = team;
         this.strength = Math.ceil(Math.random() * 100);
         this.speed = Math.ceil(Math.random() * 100) / 2;

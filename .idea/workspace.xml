@@ -5,21 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d470b8ee-1ae5-49ee-9ade-527ea11d5fce" name="Changes" comment="dodano goalEvent() ustawiający playerów na pozycjach nominalnych po bramie">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_11_2022_19_56_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_11_2022_19_56__Default_Changelist_.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/faces/FaceGenerator.hbs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/faces/img/eyebrows.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/faces/img/eyes.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/faces/img/hair.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/faces/img/head.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/faces/img/moustache.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/faces/img/mouth.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_11_2022_14_20__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/match/Ball.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Ball.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/match/BaseMatchElement.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/BaseMatchElement.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faces/FaceGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/faces/FaceGenerator.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/match/Match.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Match.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/match/MatchEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/MatchEvent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/match/MatchSpecialEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/MatchSpecialEvent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/match/Player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Player.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/match/PlayerDecisionEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/PlayerDecisionEvent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/match/PlayerDecisionWhereToMove.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/PlayerDecisionWhereToMove.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/match/ball.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/ball.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/squad/player.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/player.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/ball.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/ball.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/img/ball2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/img/ball2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/PlayerDef.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/PlayerDef.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/players/Player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/players/Player.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/matchWindow.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/matchWindow.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/field.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/field.less" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +36,10 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2HXtkHduqmiqYdJvlz4fYwJ64Uh" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -41,24 +47,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/premi/WebstormProjects/MANAGER/src/squad&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;Less&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/premi/WebstormProjects/ManagerListopad",
+    "list.type.of.created.stylesheet": "Less",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "rearrange.code.on.save": "true",
+    "settings.editor.selected.configurable": "actions.on.save",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\premi\WebstormProjects\MANAGER\src\squad" />
@@ -126,9 +132,10 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7d3d3ed9-da38-4e0b-bfc0-ff2834e03693" name="Default Changelist" comment="" />
+      <changelist id="d470b8ee-1ae5-49ee-9ade-527ea11d5fce" name="Changes" comment="dodano goalEvent() ustawiający playerów na pozycjach nominalnych po bramie" />
       <created>1564051502175</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -145,6 +152,8 @@
       <workItem from="1667470760745" duration="1428000" />
       <workItem from="1667488683245" duration="55284000" />
       <workItem from="1668011908483" duration="15790000" />
+      <workItem from="1668443399004" duration="368000" />
+      <workItem from="1668451937587" duration="22842000" />
     </task>
     <task id="LOCAL-00001" summary="t">
       <created>1564057867467</created>
@@ -400,6 +409,9 @@
     </task>
     <option name="localTasksCounter" value="37" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

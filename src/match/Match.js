@@ -3,6 +3,8 @@ import MatchEvent from './MatchEvent';
 import Ball from './Ball';
 import scoreboard from './scoreboard.hbs';
 import MatchSpecialEvent from "./MatchSpecialEvent";
+import faceHBS from '../faces/FaceGenerator.hbs';
+import FaceGenerator from '../faces/FaceGenerator';
 
 export default class Match {
     
@@ -35,10 +37,19 @@ export default class Match {
         const $scoreboardContainer = $("body .score-board");
         $scoreboardContainer.html(scoreboard(this));
     }
+
+
+
+    renderFace() {
+    let face = new FaceGenerator(123456,10);
+    face.renderFace();
+    }
+
     
     prepare() {
         this.field.render();
         this.renderScoreboard();
+        this.renderFace();
         this.addEventsListeners();
         this.homePlayers = this.homeTeam.getMatchPlayers();
         this.awayPlayers = this.awayTeam.getMatchPlayers();
