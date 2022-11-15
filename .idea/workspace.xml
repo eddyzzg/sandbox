@@ -4,23 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d470b8ee-1ae5-49ee-9ade-527ea11d5fce" name="Changes" comment="dodano goalEvent() ustawiający playerów na pozycjach nominalnych po bramie">
-      <change afterPath="$PROJECT_DIR$/src/faces/FaceGenerator.hbs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/faces/img/eyebrows.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/faces/img/eyes.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/faces/img/hair.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/faces/img/head.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/faces/img/moustache.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/faces/img/mouth.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_11_2022_14_20__Default_Changelist_.xml" beforeDir="false" />
+    <list default="true" id="d470b8ee-1ae5-49ee-9ade-527ea11d5fce" name="Changes" comment="generowanie mord">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faces/FaceGenerator.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/faces/FaceGenerator.hbs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/faces/FaceGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/faces/FaceGenerator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/match/Match.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Match.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/match/PlayerDef.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/PlayerDef.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/match/players/Player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/players/Player.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/matchWindow.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/matchWindow.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faces/img/eyes.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/faces/img/eyes.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faces/img/hair.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/faces/img/hair.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faces/img/moustache.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/faces/img/moustache.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faces/img/mouth.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/faces/img/mouth.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/field.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/field.less" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -153,7 +144,7 @@
       <workItem from="1667488683245" duration="55284000" />
       <workItem from="1668011908483" duration="15790000" />
       <workItem from="1668443399004" duration="368000" />
-      <workItem from="1668451937587" duration="22842000" />
+      <workItem from="1668451937587" duration="29759000" />
     </task>
     <task id="LOCAL-00001" summary="t">
       <created>1564057867467</created>
@@ -407,7 +398,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668355048983</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="generowanie mord">
+      <created>1668531409054</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1668531409054</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -425,7 +423,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="HANDLEBARS &amp; UTF8" />
     <MESSAGE value="GRIDSTACK ADDED" />
     <MESSAGE value="names database moved to json's" />
     <MESSAGE value="facegenerator and squadManager assigned for tests" />
@@ -450,6 +447,7 @@
     <MESSAGE value="problem z setAnimationFile - działa tylko przy wprowadzeniu bezposrednio w konstruktorze  - dodalem bieg w lewo i w prawo, ukryłem decision div" />
     <MESSAGE value="dodalem shot gif" />
     <MESSAGE value="dodano goalEvent() ustawiający playerów na pozycjach nominalnych po bramie" />
-    <option name="LAST_COMMIT_MESSAGE" value="dodano goalEvent() ustawiający playerów na pozycjach nominalnych po bramie" />
+    <MESSAGE value="generowanie mord" />
+    <option name="LAST_COMMIT_MESSAGE" value="generowanie mord" />
   </component>
 </project>
