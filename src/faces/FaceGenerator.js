@@ -1,26 +1,8 @@
-/* import Avatars from '@dicebear/avatars';
-import sprites from '@dicebear/avatars-male-sprites';
-
-export default class FaceGenerator {
-    static generateFace() {
-        let avatars = new Avatars(sprites());
-        return avatars.create(getRandomValue());
-    }
-}
-
-
-function getRandomValue() {
-    return new Date().getTime().toString();
-}*/
-
-
-//import playerHBS from '../../squad/player.hbs';
 import faceHBS from './FaceGenerator.hbs';
 
 
 
 export default class Face {
-
 
     constructor(faceSeed,id) {
         this.faceSeed = faceSeed;
@@ -37,7 +19,6 @@ export default class Face {
         this.hairHue= 0;
         this.moustacheHue= 0;
         this.moustacheBrightness = 100;
-
     }
 
 
@@ -60,7 +41,6 @@ export default class Face {
         this.mouthSpriteOffset = Math.floor((Math.random()*(39)))*this.faceElementSize*-1;
         this.moustacheSpriteOffset = Math.floor((Math.random()*(35)))*this.faceElementSize*-1;
         this.hairSpriteOffset = Math.floor((Math.random()*(36)))*this.faceElementSize*-1;
-
     }
 
     getSpritesNumber(facePart) {
