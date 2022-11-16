@@ -1,9 +1,11 @@
+import Face from "../faces/FaceGenerator";
+
 export default class PlayerDef {
     constructor(id, name, position, team) {
         this.id = id;
         this.name = name;
         this.nominalPosition = position;
-        this.faceSeed = 11111;     //  moustache, eyes, eyebrows, mouth, hair
+        this.face = new Face();     //  moustache, eyes, eyebrows, mouth, hair
         this.team = team;
         this.strength = Math.ceil(Math.random() * 100);
         this.speed = Math.ceil(Math.random() * 100) / 2;

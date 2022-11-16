@@ -28,9 +28,9 @@ export default class Face {
 
         if (Math.random()>0.3) {
             this.hairHue = Math.ceil(Math.random()*2)*10-15;
-            this.hairBrightness = Math.ceil(Math.random()*5)*20;
+            this.hairBrightness = Math.ceil(Math.random()*7)*20;
         } else {
-            this.hairBrightness = Math.ceil(Math.random()*3)*20+80;
+            this.hairBrightness = Math.ceil(Math.random()*3)*30+80;
             this.hairHue = Math.ceil(Math.random()*9)*40;
         }
 
@@ -54,8 +54,8 @@ export default class Face {
     }
 
 
-    renderFace() {
-        const $faceContainer = $("body .face-container");
+    renderFace($container) {
+
 
   //      let headSpriteNumber = new Promise(this.getSpritesNumber('head',resolve, reject));
         // this.headSpriteOffset = Math.floor((Math.random()*(this.getSpritesNumber('head'))))*this.faceElementSize*-1;
@@ -66,20 +66,20 @@ export default class Face {
         // this.hairSpriteOffset = Math.floor((Math.random()*(this.getSpritesNumber('hair'))))*this.faceElementSize*-1;
 
 
-this.generateFace();
-        $faceContainer.append(faceHBS(this));
         this.generateFace();
-        $faceContainer.append(faceHBS(this));
+        $container.append(faceHBS(this));
         this.generateFace();
-        $faceContainer.append(faceHBS(this));
+        $container.append(faceHBS(this));
         this.generateFace();
-        $faceContainer.append(faceHBS(this));
+        $container.append(faceHBS(this));
         this.generateFace();
-        $faceContainer.append(faceHBS(this));
+        $container.append(faceHBS(this));
         this.generateFace();
-        $faceContainer.append(faceHBS(this));
+        $container.append(faceHBS(this));
         this.generateFace();
-        $faceContainer.append(faceHBS(this));
+        $container.append(faceHBS(this));
+        this.generateFace();
+        $container.append(faceHBS(this));
     }
 
 

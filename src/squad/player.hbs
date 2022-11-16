@@ -7,6 +7,14 @@
              position:absolute;
              left:{{positionX}}px;
              top:{{positionY}}px;'>
+    <div class="faceContainer">
+        <img class="faceHeadElement" id="{{id}}" src="../../src/faces/img/head.png" style="left:{{definition.face.headSpriteOffset}}px; filter:brightness({{definition.face.skinBrightness}}%);"></img>
+        <img class="faceEyesElement" id="{{id}}" src="../../src/faces/img/eyes.png"  style="left:{{definition.face.eyesSpriteOffset}}px"></img>
+        <img class="faceEyebrowsElement" id="{{id}}" src="../../src/faces/img/eyebrows.png" style="left:{{definition.face.eyebrowsSpriteOffset}}px; filter:hue-rotate({{definition.face.moustacheHue}}deg) brightness({{definition.face.moustacheBrightness}}%);"></img>
+        <img class="faceMouthElement" id="{{id}}" src="../../src/faces/img/mouth.png" style="left:{{definition.face.mouthSpriteOffset}}px"></img>
+        <img class="faceMoustacheElement" id="{{id}}" src="../../src/faces/img/moustache.png" style="left:{{definition.face.moustacheSpriteOffset}}px; filter:hue-rotate({{definition.face.moustacheHue}}deg) brightness({{definition.face.moustacheBrightness}}%);"></img>
+        <img class="faceHairElement" id="{{id}}" src="../../src/faces/img/hair.png" style="left:{{definition.face.hairSpriteOffset}}px; filter:hue-rotate({{definition.face.hairHue}}deg) brightness({{definition.face.hairBrightness}}%);"></img>
+    </div>
 
     <div class="name">{{definition.name}}</div>
     <div class="decision" style="color:black; background-color:white;"></div>

@@ -42,14 +42,14 @@ export default class Match {
 
     renderFace() {
     let face = new FaceGenerator(123456,10);
-    face.renderFace();
+    face.renderFace($("body .face-container"));
     }
 
     
     prepare() {
         this.field.render();
         this.renderScoreboard();
-        this.renderFace();
+
         this.addEventsListeners();
         this.homePlayers = this.homeTeam.getMatchPlayers();
         this.awayPlayers = this.awayTeam.getMatchPlayers();

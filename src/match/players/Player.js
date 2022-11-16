@@ -271,6 +271,6 @@ export default class Player extends BaseMatchElement {
     }
 
     generateFace (){
-
+    this.definition.face.generateFace();
     }
 }

@@ -24,6 +24,7 @@ export default class Team {
         for (let i = 0; i < matchSquadNumberOfPlayersAllowed; i++) {
             const name = NamesGenerator.generateName();
             const playerDef = new PlayerDef(i, name, this.positions[i])
+            playerDef.face.generateFace();
             if (this.isAwayTeam) {
                 playerDef.id = i + matchSquadNumberOfPlayersAllowed;
             }
