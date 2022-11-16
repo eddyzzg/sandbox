@@ -24,23 +24,23 @@ export default class Face {
 
     generateFace() {
         this.skinBrightness = Math.ceil(Math.random()*5)*20;
-        this.moustacheBrightness = Math.ceil(Math.random()*3)*20;
+        this.moustacheBrightness = Math.ceil(Math.random()*3)*20-20;
 
-        if (Math.random()>0.2) {
-            this.hairHue = 50 + Math.ceil(Math.random()*5)*5;
-            this.hairBrightness = this.hairHue*2;
-        } else {
+        if (Math.random()>0.3) {
+            this.hairHue = Math.ceil(Math.random()*2)*10-15;
             this.hairBrightness = Math.ceil(Math.random()*5)*20;
+        } else {
+            this.hairBrightness = Math.ceil(Math.random()*3)*20+80;
             this.hairHue = Math.ceil(Math.random()*9)*40;
         }
 
-        this.moustacheHue =  10 + Math.ceil(Math.random()*4)*10;
-        this.headSpriteOffset = Math.floor((Math.random()*(1)))*this.faceElementSize*-1;
+        this.moustacheHue = Math.ceil(Math.random()*2)*10-15;
+        this.headSpriteOffset = Math.floor((Math.random()*(3)))*this.faceElementSize*-1;
         this.eyesSpriteOffset = Math.floor((Math.random()*(18)))*this.faceElementSize*-1;
         this.eyebrowsSpriteOffset = Math.floor((Math.random()*(28)))*this.faceElementSize*-1;
         this.mouthSpriteOffset = Math.floor((Math.random()*(39)))*this.faceElementSize*-1;
-        this.moustacheSpriteOffset = Math.floor((Math.random()*(35)))*this.faceElementSize*-1;
-        this.hairSpriteOffset = Math.floor((Math.random()*(36)))*this.faceElementSize*-1;
+        this.moustacheSpriteOffset = Math.floor((Math.random()*(50)))*this.faceElementSize*-1;
+        this.hairSpriteOffset = Math.floor((Math.random()*(43)))*this.faceElementSize*-1;
     }
 
     getSpritesNumber(facePart) {
