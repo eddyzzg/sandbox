@@ -1,12 +1,16 @@
 <div id="{{id}}" class="player"
-     style=' background-repeat: no-repeat;
-             background-image: url("../src/styles/img/{{shirtColor}}player{{animationFile}}.gif");
-             height:100px;
+     style=' height:100px;
              width:100px;
-             background-position:center top;
              position:absolute;
              left:{{positionX}}px;
              top:{{positionY}}px;'>
+
+
+    <div class="bodyContainer">
+        <img class="bodyShirtElement" id="{{id}}" src="../../src/faces/img/shirt.png" style="filter:hue-rotate({{definition.face.moustacheHue}}deg);"></img>
+        <img class="bodyBodyElement" id="{{id}}" src="../../src/faces/img/body.png"  style="filter:brightness({{definition.face.skinBrightness}}%);"></img>
+        <img class="bodyShortsElement" id="{{id}}" src="../../src/faces/img/shorts.png" style="filter:hue-rotate({{definition.face.moustacheHue}}deg);"></img>
+    </div>
     <div class="faceContainer">
         <img class="faceHeadElement" id="{{id}}" src="../../src/faces/img/head.png" style="left:{{definition.face.headSpriteOffset}}px; filter:brightness({{definition.face.skinBrightness}}%);"></img>
         <img class="faceEyesElement" id="{{id}}" src="../../src/faces/img/eyes.png"  style="left:{{definition.face.eyesSpriteOffset}}px"></img>

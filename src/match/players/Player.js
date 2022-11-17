@@ -40,8 +40,8 @@ export default class Player extends BaseMatchElement {
     }
     
     beforeMove() {
-        let $element = this.getDOMSelector();
-        $element.css('background-image', `url("../src/styles/img/${this.shirtColor}player${this.animationFile}.gif")`);
+     //   let $element = this.getDOMSelector();
+   //     $element.css('background-image', `url("../src/styles/img/${this.shirtColor}player${this.animationFile}.gif")`);
     }
     
     /**
