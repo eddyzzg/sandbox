@@ -17,6 +17,8 @@ export default class Player extends BaseMatchElement {
         this.id = playerDef.id;
         this.position = playerDef.nominalPosition;
         this.isInAwayTeam = false;
+        this.shirtColor=team.shirtColor;
+        this.shortsColor=team.shortsColor;
         this.startPositionX = 0;
         this.startPositionY = 0;
         this.nominalPositionX = 1;
@@ -28,7 +30,7 @@ export default class Player extends BaseMatchElement {
         this.field = undefined;
         this.team = team;
         this.decision = 'no decision';
-        this.animationFile = 'left';
+        this.animationFile = 'Run';
         this.isGK = this.position === 'GK';
     }
     
@@ -51,11 +53,13 @@ export default class Player extends BaseMatchElement {
         this.field = field;
     }
     
-    /**
-     * @param {String} color
+    /** kolor z palety 30 kolorów
+     * @param {integer} color1
+     * @param {integer} color2
      */
-    setShitColor(color) {
-        this.shirtColor = color;
+    setShirtColor(color1,color2) {
+        this.shirtColor = color1;
+        this.shortsColor = color2;
     }
     
     /**
@@ -143,8 +147,8 @@ export default class Player extends BaseMatchElement {
         if (Math.abs(deltaY) < speed) {
             offsetY = Math.floor(deltaY);
         }
+
         this.setAnimationFile(offsetX, offsetY);
-        
         this.positionX = this.positionX + offsetX;
         this.positionY = this.positionY + offsetY;
     }
@@ -171,14 +175,15 @@ export default class Player extends BaseMatchElement {
     
     setAnimationFile(offsetX, offsetY) {
         if (offsetX < 0) {
-            this.animationFile = "left";
+            this.animationFile = "Run";
         }
         if (offsetX >= 0) {
-            this.animationFile = "right";
+            this.animationFile = "Run";
         }
         if (Math.abs(offsetX) + Math.abs(offsetY) < 1) {
-            this.animationFile = "rest";
+            this.animationFile = "Rest";
         }
+        console.log(this.animationFile);
     }
     
     /**
@@ -270,7 +275,8 @@ export default class Player extends BaseMatchElement {
         }
     }
 
-    generateFace (){
-    this.definition.face.generateFace();
+    generatePlayerAvatarParameters (){
+    this.definition.avatar.generatePlayerAvatarParameters();
     }
+
 }

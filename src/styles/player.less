@@ -6,6 +6,8 @@
     position: absolute;
 
   }
+
+
   .name {
     color:white;
     font-size:12px;
@@ -15,6 +17,7 @@
     left:70px;
   }
   .bodyContainer {
+    image-rendering: pixelated;
     margin-left:25px;
     margin-top:0px;
     width:50px;
@@ -24,15 +27,39 @@
     position:absolute;
   }
 
-  .bodyShirtElement {
+
+
+  .shirt {
+    animation: animation 0.7s steps(6) infinite; /* The Animation */
+    width:50px;
+    height:45px;
+    position:absolute;
+  }
+  .shorts {
+    width:50px;
+    height:45px;
+    position:absolute;
+    animation: animation 0.7s steps(6) infinite; /* The Animation */
+  }
+  .body {
+    width:50px;
+    height:45px;
+    position:absolute;
+    animation: animation 0.7s steps(6) infinite; /* The Animation */
+  }
+  .boots {
+    width:50px;
+    height:45px;
+    position:absolute;
+    animation: animation 0.7s steps(6) infinite; /* The Animation */
+  }
+  @keyframes animation {
+    from{background-position-x:0px;}
+    to{background-position-x:-300px;}
 
   }
-  .bodyShortsElement {
-    margin-top:-45px;
-  }
-  .bodyBodyElement {
-    margin-top:-45px;
-  }
+
+
 
   .faceGenerator {
 
@@ -48,32 +75,32 @@
     position:absolute;
   }
 
-  .faceHeadElement {
+  .head {
     position:absolute;
     image-rendering: pixelated;
     object-position: 0px 0px;
   }
-  .faceEyesElement {
+  .eyes {
     position:absolute;
     image-rendering: pixelated;
     object-position: 0px 0px;
   }
-  .faceEyebrowsElement {
+  .eyebrows {
     position:absolute;
     image-rendering: pixelated;
     object-position: 0px 0px;
   }
-  .faceMouthElement {
+  .mouth {
     position:absolute;
     image-rendering: pixelated;
     object-position: 0px 0px;
   }
-  .faceMoustacheElement {
+  .moustache {
     position:absolute;
     image-rendering: pixelated;
     object-position: 0px 0px;
   }
-  .faceHairElement {
+  .hair {
     position:absolute;
     image-rendering: pixelated;
     object-position: 0px 0px;

@@ -4,12 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d470b8ee-1ae5-49ee-9ade-527ea11d5fce" name="Changes" comment="mordy wklejone na graczy">
+    <list default="true" id="d470b8ee-1ae5-49ee-9ade-527ea11d5fce" name="Changes" comment="zmiany w generowaniu mord i strojow">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/faces/img/hair.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/faces/img/hair.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faces/FaceGenerator.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/faces/face.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faces/FaceGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/faces/Avatar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faces/img/body.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faces/img/shirt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faces/img/shorts.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/klima/sandbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/klima/sandbox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/Match.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Match.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/PlayerDef.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/PlayerDef.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/match/players/Player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/players/Player.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/squad/Team.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/Team.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/squad/player.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/player.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/field.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/field.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/player.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/player.less" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -142,7 +150,7 @@
       <workItem from="1667488683245" duration="55284000" />
       <workItem from="1668011908483" duration="15790000" />
       <workItem from="1668443399004" duration="368000" />
-      <workItem from="1668451937587" duration="46110000" />
+      <workItem from="1668451937587" duration="74962000" />
     </task>
     <task id="LOCAL-00001" summary="t">
       <created>1564057867467</created>
@@ -431,7 +439,21 @@
       <option name="project" value="LOCAL" />
       <updated>1668611799966</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="usunięto gify, pojawiły się pierwsze sprity ciał piłkarzy">
+      <created>1668671306116</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1668671306116</updated>
+    </task>
+    <task id="LOCAL-00043" summary="zmiany w generowaniu mord i strojow">
+      <created>1668725758105</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1668725758105</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -449,8 +471,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="facegenerator and squadManager assigned for tests" />
-    <MESSAGE value="ble bele" />
     <MESSAGE value="squadGenerator" />
     <MESSAGE value="Edi srał i pisał" />
     <MESSAGE value="Gównokod" />
@@ -474,6 +494,8 @@
     <MESSAGE value="generowanie mord" />
     <MESSAGE value="generowanie mord usprawnione" />
     <MESSAGE value="mordy wklejone na graczy" />
-    <option name="LAST_COMMIT_MESSAGE" value="mordy wklejone na graczy" />
+    <MESSAGE value="usunięto gify, pojawiły się pierwsze sprity ciał piłkarzy" />
+    <MESSAGE value="zmiany w generowaniu mord i strojow" />
+    <option name="LAST_COMMIT_MESSAGE" value="zmiany w generowaniu mord i strojow" />
   </component>
 </project>

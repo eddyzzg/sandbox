@@ -1,4 +1,4 @@
-import FaceGenerator from "../faces/FaceGenerator";
+import FaceGenerator from "../faces/Avatar";
 import NamesGenerator from "../names/NamesGenerator";
 import tmp from './tmp.hbs';
 

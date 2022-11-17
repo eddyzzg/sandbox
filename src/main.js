@@ -4,7 +4,7 @@ import './style.less';
 import SquadManager from './squad/SquadManager';
 import Team from './squad/Team';
 import KlimaSandbox from './klima/sandbox';
-import FaceGenerator from './faces/FaceGenerator';
+import FaceGenerator from './faces/Avatar';
 import NamesGenerator from './names/NamesGenerator';
 import Match from './match/Match';
 import matchWindow from './matchWindow.hbs';
@@ -88,9 +88,9 @@ function openFaceGenerator($container) {
     klimaSandbox.init();
     
     const text = 'GENERATOR';
-    klimaSandbox.showTextInHTML(text);
-    klimaSandbox.showFace(FaceGenerator.generateFace());
-    klimaSandbox.showName(NamesGenerator.generateName());
+    // klimaSandbox.showTextInHTML(text);
+    // klimaSandbox.showFace(FaceGenerator.generateFace());
+    // klimaSandbox.showName(NamesGenerator.generateName());
 }
 
 /**
