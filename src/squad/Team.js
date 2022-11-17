@@ -14,7 +14,8 @@ export default class Team {
         /** @type {Boolean} */
         this.isAwayTeam = isAwayTeam;
         this.hasBall = false;
-        this.teamColor = isAwayTeam ? 'blue' : 'red';
+        this.shirtColor = isAwayTeam ?  26 : 0;
+        this.shortsColor = isAwayTeam ? 9 : 18;
     }
     
     /**
@@ -23,8 +24,8 @@ export default class Team {
     generateSquad(matchSquadNumberOfPlayersAllowed = 18) {
         for (let i = 0; i < matchSquadNumberOfPlayersAllowed; i++) {
             const name = NamesGenerator.generateName();
-            const playerDef = new PlayerDef(i, name, this.positions[i])
-            playerDef.face.generateFace();
+            const playerDef = new PlayerDef(i, name, this.positions[i],this.shirtColor,this.shortsColor)
+            playerDef.face.generatePlayerAvatarParameters();
             if (this.isAwayTeam) {
                 playerDef.id = i + matchSquadNumberOfPlayersAllowed;
             }
@@ -52,7 +53,7 @@ export default class Team {
         this.firstSquadDef.forEach((playerNumber) => {
             const playerDef = this.squad.get(playerNumber - 1);
             const player = new Player(playerDef, this);
-            player.setShitColor(this.teamColor);
+            player.setShirtColor(this.shirtColor,this.shortsColor);
             player.setIsInAwayTeam(this.isAwayTeam);
             this.firstSquad.push(player);
         });

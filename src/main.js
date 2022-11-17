@@ -88,9 +88,9 @@ function openFaceGenerator($container) {
     klimaSandbox.init();
     
     const text = 'GENERATOR';
-    klimaSandbox.showTextInHTML(text);
-    klimaSandbox.showFace(FaceGenerator.generateFace());
-    klimaSandbox.showName(NamesGenerator.generateName());
+    // klimaSandbox.showTextInHTML(text);
+    // klimaSandbox.showFace(FaceGenerator.generateFace());
+    // klimaSandbox.showName(NamesGenerator.generateName());
 }
 
 /**

@@ -17,6 +17,8 @@ export default class Player extends BaseMatchElement {
         this.id = playerDef.id;
         this.position = playerDef.nominalPosition;
         this.isInAwayTeam = false;
+        this.shirtColor=team.shirtColor;
+        this.shortsColor=team.shortsColor;
         this.startPositionX = 0;
         this.startPositionY = 0;
         this.nominalPositionX = 1;
@@ -51,11 +53,13 @@ export default class Player extends BaseMatchElement {
         this.field = field;
     }
     
-    /**
-     * @param {String} color
+    /** kolor z palety 30 kolorów
+     * @param {integer} color1
+     * @param {integer} color2
      */
-    setShitColor(color) {
-        this.shirtColor = color;
+    setShirtColor(color1,color2) {
+        this.shirtColor = color1;
+        this.shortsColor = color2;
     }
     
     /**
@@ -270,7 +274,8 @@ export default class Player extends BaseMatchElement {
         }
     }
 
-    generateFace (){
-    this.definition.face.generateFace();
+    generatePlayerAvatarParameters (){
+    this.definition.face.generatePlayerAvatarParameters();
     }
+
 }

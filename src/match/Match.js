@@ -40,16 +40,15 @@ export default class Match {
 
 
 
-    renderFace() {
-    let face = new FaceGenerator(123456,10);
-    face.renderFace($("body .face-container"));
-    }
+    // renderFace() {
+    // let face = new FaceGenerator();
+    // face.renderFace($("body .face-container"));
+    // }
 
     
     prepare() {
         this.field.render();
         this.renderScoreboard();
-
         this.addEventsListeners();
         this.homePlayers = this.homeTeam.getMatchPlayers();
         this.awayPlayers = this.awayTeam.getMatchPlayers();
