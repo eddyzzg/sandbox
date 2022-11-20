@@ -14,7 +14,7 @@ export default class Team {
         /** @type {Boolean} */
         this.isAwayTeam = isAwayTeam;
         this.hasBall = false;
-        this.shirtColor = isAwayTeam ?  26 : 0;     // kolory z palety 30 kolorów zadeklarownych w avatar.js
+        this.shirtColor = isAwayTeam ?  26 : 19;     // kolory z palety 30 kolorów zadeklarownych w avatar.js
         this.shortsColor = isAwayTeam ? 9 : 18;
     }
     

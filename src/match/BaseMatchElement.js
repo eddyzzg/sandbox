@@ -38,15 +38,9 @@ export default class BaseMatchElement {
     
     beforeMove() {
     }
-    
-    /**
-     * @param {Boolean} [isInstantMove]
-     * @returns {Promise<>}
-     */
-    executeMove(isInstantMove) {
-        const $element = this.getDOMSelector();
-        this.beforeMove();
 
+
+    setAnimation($element) {
         if (this.animationFile==="right") {
             $element.find(".shirt").css("background-position-y", "45px");
             $element.find(".shorts").css("background-position-y", "45px");
@@ -56,6 +50,8 @@ export default class BaseMatchElement {
             $element.find(".shorts").css("transform", "scale(1,1)");
             $element.find(".boots").css("transform", "scale(1,1)");
             $element.find(".body").css("transform", "scale(1,1)");
+
+            $element.find(".faceContainer").css("animation", " runRight 0.8s steps(8) infinite");
 
         }
         if (this.animationFile==="left") {
@@ -67,13 +63,26 @@ export default class BaseMatchElement {
             $element.find(".shorts").css("transform", "scale(-1,1)");
             $element.find(".boots").css("transform", "scale(-1,1)");
             $element.find(".body").css("transform", "scale(-1,1)");
+
+            $element.find(".faceContainer").css("animation", " runLeft 0.8s steps(8) infinite");
         }
         if (this.animationFile==="rest") {
             $element.find(".shirt").css("background-position-y", "0px");
             $element.find(".shorts").css("background-position-y", "0px");
             $element.find(".boots").css("background-position-y", "0px");
             $element.find(".body").css("background-position-y", "0px");
+            $element.find(".faceContainer").css("animation", " rest 0.8s steps(8) infinite");
         }
+    }
+    
+    /**
+     * @param {Boolean} [isInstantMove]
+     * @returns {Promise<>}
+     */
+    executeMove(isInstantMove) {
+        const $element = this.getDOMSelector();
+        this.beforeMove();
+        this.setAnimation($element);
 
 
         return new Promise((resolve) => {

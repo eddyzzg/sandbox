@@ -19,7 +19,7 @@
   .bodyContainer {
     image-rendering: pixelated;
     margin-left:25px;
-    margin-top:0px;
+    margin-top:2px;
     width:50px;
     height:45px;
     overflow:hidden;
@@ -79,7 +79,40 @@
     overflow:hidden;
     transform: scale(1);
     position:absolute;
+    animation: rest 0.8s steps(8) infinite;
   }
+
+  @keyframes runLeft {
+    0%  {top: 0px;}
+    14.2857142857%  {top: 1px;}
+    28.5714285714%  {top: 3px;}
+    42.8571428571% {top: 2px;}
+    57.1428571428% {top: 0px;}
+    71.4285714285% {top: 1px;}
+    85.7142857142% {top: 3px;}
+    100%   {top: 2px;}
+  }
+  @keyframes runRight {
+    0%  {top: 0px;}
+    14.2857142857%  {top: 1px;}
+    28.5714285714%  {top: 3px;}
+    42.8571428571% {top: 2px;}
+    57.1428571428% {top: 0px;}
+    71.4285714285% {top: 1px;}
+    85.7142857142% {top: 3px;}
+    100%   {top: 2px;}
+  }
+  @keyframes rest {
+    0%  {top: 0px;}
+    14.2857142857%  {top: 1px;}
+    28.5714285714%  {top: 2px; left:1px;}
+    42.8571428571% {top: 1px;}
+    57.1428571428% {top: 0px;}
+    71.4285714285% {top: 1px;}
+    85.7142857142% {top: 2px; left:-1px;}
+    100%   {top: 1px;}
+  }
+
 
   .head {
     position:absolute;

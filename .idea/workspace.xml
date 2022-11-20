@@ -4,18 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d470b8ee-1ae5-49ee-9ade-527ea11d5fce" name="Changes" comment="dodano animacje na bazie spritów">
+    <list default="true" id="d470b8ee-1ae5-49ee-9ade-527ea11d5fce" name="Changes" comment="różne animacje w zależności od kierunku biegu">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/faces/img/bodyRest.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/faces/img/bodyRun.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/faces/img/bootsRun.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/faces/img/shirtRest.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/faces/img/shirtRun.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/faces/img/shortsRest.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/faces/img/shortsRun.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/match/BaseMatchElement.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/BaseMatchElement.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/match/players/Player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/players/Player.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/squad/player.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/player.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/squad/Team.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/Team.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/player.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/player.less" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -148,7 +140,8 @@
       <workItem from="1667488683245" duration="55284000" />
       <workItem from="1668011908483" duration="15790000" />
       <workItem from="1668443399004" duration="368000" />
-      <workItem from="1668451937587" duration="80965000" />
+      <workItem from="1668451937587" duration="82415000" />
+      <workItem from="1668963613404" duration="3530000" />
     </task>
     <task id="LOCAL-00001" summary="t">
       <created>1564057867467</created>
@@ -465,7 +458,21 @@
       <option name="project" value="LOCAL" />
       <updated>1668941790733</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="różne animacje w zależności od kierunku biegu">
+      <created>1668958986109</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1668958986109</updated>
+    </task>
+    <task id="LOCAL-00047" summary="różne animacje w zależności od kierunku biegu">
+      <created>1668959005141</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1668959005141</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -483,7 +490,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Edi srał i pisał" />
     <MESSAGE value="Gównokod" />
     <MESSAGE value="Gównokod2" />
     <MESSAGE value="dodano reRender(), piłkarze losowo się poruszają" />
@@ -508,6 +514,7 @@
     <MESSAGE value="usunięto gify, pojawiły się pierwsze sprity ciał piłkarzy" />
     <MESSAGE value="zmiany w generowaniu mord i strojow" />
     <MESSAGE value="dodano animacje na bazie spritów" />
-    <option name="LAST_COMMIT_MESSAGE" value="dodano animacje na bazie spritów" />
+    <MESSAGE value="różne animacje w zależności od kierunku biegu" />
+    <option name="LAST_COMMIT_MESSAGE" value="różne animacje w zależności od kierunku biegu" />
   </component>
 </project>
