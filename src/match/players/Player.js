@@ -175,15 +175,14 @@ export default class Player extends BaseMatchElement {
     
     setAnimationFile(offsetX, offsetY) {
         if (offsetX < 0) {
-            this.animationFile = "Run";
+            this.animationFile = "left";
         }
         if (offsetX >= 0) {
-            this.animationFile = "Run";
+            this.animationFile = "right";
         }
         if (Math.abs(offsetX) + Math.abs(offsetY) < 1) {
-            this.animationFile = "Rest";
+            this.animationFile = "rest";
         }
-        console.log(this.animationFile);
     }
     
     /**

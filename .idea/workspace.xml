@@ -4,19 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d470b8ee-1ae5-49ee-9ade-527ea11d5fce" name="Changes" comment="zmiany w generowaniu mord i strojow">
+    <list default="true" id="d470b8ee-1ae5-49ee-9ade-527ea11d5fce" name="Changes" comment="dodano animacje na bazie spritów">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/faces/FaceGenerator.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/faces/face.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/faces/FaceGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/faces/Avatar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/faces/img/body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/faces/img/shirt.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/faces/img/shorts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/klima/sandbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/klima/sandbox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/match/Match.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Match.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/match/PlayerDef.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/PlayerDef.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faces/img/bodyRest.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faces/img/bodyRun.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faces/img/bootsRun.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faces/img/shirtRest.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faces/img/shirtRun.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faces/img/shortsRest.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faces/img/shortsRun.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/BaseMatchElement.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/BaseMatchElement.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/match/players/Player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/players/Player.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/squad/Team.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/Team.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/squad/player.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/player.hbs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/player.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/player.less" afterDir="false" />
     </list>
@@ -44,24 +42,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/premi/WebstormProjects/ManagerListopad",
-    "list.type.of.created.stylesheet": "Less",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "rearrange.code.on.save": "true",
-    "settings.editor.selected.configurable": "actions.on.save",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/premi/WebstormProjects/ManagerListopad&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;Less&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\premi\WebstormProjects\MANAGER\src\squad" />
@@ -150,7 +148,7 @@
       <workItem from="1667488683245" duration="55284000" />
       <workItem from="1668011908483" duration="15790000" />
       <workItem from="1668443399004" duration="368000" />
-      <workItem from="1668451937587" duration="74962000" />
+      <workItem from="1668451937587" duration="80965000" />
     </task>
     <task id="LOCAL-00001" summary="t">
       <created>1564057867467</created>
@@ -453,7 +451,21 @@
       <option name="project" value="LOCAL" />
       <updated>1668725758105</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="dodano animacje na bazie spritów">
+      <created>1668941764681</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1668941764681</updated>
+    </task>
+    <task id="LOCAL-00045" summary="dodano animacje na bazie spritów">
+      <created>1668941790733</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1668941790733</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -471,7 +483,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="squadGenerator" />
     <MESSAGE value="Edi srał i pisał" />
     <MESSAGE value="Gównokod" />
     <MESSAGE value="Gównokod2" />
@@ -496,6 +507,7 @@
     <MESSAGE value="mordy wklejone na graczy" />
     <MESSAGE value="usunięto gify, pojawiły się pierwsze sprity ciał piłkarzy" />
     <MESSAGE value="zmiany w generowaniu mord i strojow" />
-    <option name="LAST_COMMIT_MESSAGE" value="zmiany w generowaniu mord i strojow" />
+    <MESSAGE value="dodano animacje na bazie spritów" />
+    <option name="LAST_COMMIT_MESSAGE" value="dodano animacje na bazie spritów" />
   </component>
 </project>

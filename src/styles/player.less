@@ -23,40 +23,46 @@
     width:50px;
     height:45px;
     overflow:hidden;
-    transform: scale(1);
     position:absolute;
   }
 
 
 
   .shirt {
-    animation: animation 0.7s steps(6) infinite; /* The Animation */
+    animation: animation 0.8s steps(8) infinite;
     width:50px;
     height:45px;
     position:absolute;
+    background-position-y:0;                 // offset sprite od góry: stan spoczynku : 0px , bieg : 45px
+    transform: scale(1,1);
   }
   .shorts {
     width:50px;
     height:45px;
     position:absolute;
-    animation: animation 0.7s steps(6) infinite; /* The Animation */
+    animation: animation 0.8s steps(8) infinite;
+    background-position-y:0;  // offset sprite od góry: stan spoczynku : 0px , bieg : 45px
+    transform: scale(1,1);
   }
   .body {
     width:50px;
     height:45px;
     position:absolute;
-    animation: animation 0.7s steps(6) infinite; /* The Animation */
+    animation: animation 0.8s steps(8) infinite;
+    background-position-y:0;  // offset sprite od góry: stan spoczynku : 0px , bieg : 45px
+    transform: scale(1,1);
   }
   .boots {
     width:50px;
     height:45px;
     position:absolute;
-    animation: animation 0.7s steps(6) infinite; /* The Animation */
+    animation: animation 0.8s steps(8) infinite;
+    background-position-y:0;  // offset sprite od góry: stan spoczynku : 0px , bieg : 45px
+    transform: scale(1,1);
   }
   @keyframes animation {
-    from{background-position-x:0px;}
-    to{background-position-x:-300px;}
-
+    from{background-position-x:0px;}         // offset sprite od lewej: 8 klatek animacji, 50px każda
+    to{background-position-x:-400px;}
   }
 
 
