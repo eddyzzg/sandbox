@@ -1,7 +1,6 @@
-import MatchEvent from "./MatchEvent";
+import MatchEvent from "../MatchEvent";
 
-export default class MatchSpecialEvent extends MatchEvent {
-    
+export default class GoalMatchEvent extends MatchEvent {
     /**
      * @param {Player[]} home
      * @param {Player[]} away
@@ -12,19 +11,13 @@ export default class MatchSpecialEvent extends MatchEvent {
      */
     constructor(home, away, ball, field, match, matchSpecialEventsReports = []) {
         super(home, away, ball, field, match);
-        
-        this.matchEvents = matchSpecialEventsReports;
     }
     
-    run() {
+    create() {
         let promises = [];
-        this.matchEvents.forEach((event) => {
-            if (event.result === API.events.MATCH_EVENTS.AWAY_GOAL || event.result === API.events.MATCH_EVENTS.HOME_GOAL) {
-                this.calculateMoves();
-                promises.concat(this.executeMoves());
-            }
-        });
-        return Promise.all(promises);
+        this.calculateMoves();
+        promises.concat(this.executeMoves());
+        return promises;
     }
     
     calculateMoves() {
@@ -40,6 +33,7 @@ export default class MatchSpecialEvent extends MatchEvent {
             promises.push(player.executeMove());
         });
         promises.push(this.ball.executeMove());
+        promises.push(this.match.waitAWhileBeforeKickOff())
         return promises;
     }
     
@@ -50,5 +44,4 @@ export default class MatchSpecialEvent extends MatchEvent {
     calculateMoveBallToStartPosition() {
         this.ball.move(this.ball.startPositionX, this.ball.startPositionY);
     }
-    
 }

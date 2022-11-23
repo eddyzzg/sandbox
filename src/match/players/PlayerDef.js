@@ -1,19 +1,18 @@
-import Avatar from "../faces/Avatar";
+import Avatar from "../../faces/Avatar";
 
 export default class PlayerDef {
-    constructor(id, name, position, shirtColor,shortsColor) {
+    constructor(id, name, position, shirtColor, shortsColor) {
         this.id = id;
         this.name = name;
         this.nominalPosition = position;
-        this.avatar = new Avatar(this.id,shirtColor,shortsColor);
-
+        this.avatar = new Avatar(this.id, shirtColor, shortsColor);
+        
         this.strength = Math.ceil(Math.random() * 100);
         this.speed = Math.ceil(Math.random() * 100) / 2;
         this.power = Math.ceil(Math.random() * 100);
         this.passing = Math.ceil(Math.random() * 100);
         this.dribble = Math.ceil(Math.random() * 100);
         this.technique = Math.ceil(Math.random() * 100);
-        
     }
     
     setSpeed(value) {

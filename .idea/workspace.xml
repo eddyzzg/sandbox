@@ -4,16 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d470b8ee-1ae5-49ee-9ade-527ea11d5fce" name="Changes" comment="różne animacje w zależności od kierunku biegu">
+    <list default="true" id="52b56185-39f6-4c55-85c8-6b17efb4688c" name="Changes" comment="method rename">
+      <change afterPath="$PROJECT_DIR$/src/match/matchSpecialEvents/MatchSpecialEvent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/boilerplate-babel-webpack-master.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/boilerplate-babel-webpack-master.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/faces/Avatar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/faces/Avatar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/Ball.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Ball.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/match/BaseMatchElement.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/BaseMatchElement.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/GoalKeeperDecisionEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/players/GoalKeeperDecisionEvent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/GoalKeeperDecisionWhereToMove.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/players/GoalKeeperDecisionWhereToMove.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/Match.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/Match.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/MatchEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/MatchEvent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/MatchSpecialEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/matchSpecialEvents/GoalMatchEvent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/PlayerDecisionEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/players/PlayerDecisionEvent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/PlayerDecisionWhereToMove.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/players/PlayerDecisionWhereToMove.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/PlayerDef.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/players/PlayerDef.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/PlayerMentalDef.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/PlayerPhisicalDef.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/match/players/Player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/players/Player.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/squad/Team.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/Team.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/squad/player.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/squad/player.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/style.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/player.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/player.less" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -26,11 +50,15 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2HXtkHduqmiqYdJvlz4fYwJ64Uh" />
+  <component name="OptimizeOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="ProjectId" id="2HaZs1NPEiZuHFv1I7UuBIUO9Mv" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
@@ -50,22 +78,39 @@
     &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  &lt;component name=&quot;PropertiesComponent&quot;&gt;{
+  &amp;quot;keyToString&amp;quot;: {
+    &amp;quot;DefaultHtmlFileTemplate&amp;quot;: &amp;quot;HTML File&amp;quot;,
+    &amp;quot;RunOnceActivity.OpenProjectViewOnStart&amp;quot;: &amp;quot;true&amp;quot;,
+    &amp;quot;RunOnceActivity.ShowReadmeOnStart&amp;quot;: &amp;quot;true&amp;quot;,
+    &amp;quot;WebServerToolWindowFactoryState&amp;quot;: &amp;quot;false&amp;quot;,
+    &amp;quot;code.cleanup.on.save&amp;quot;: &amp;quot;true&amp;quot;,
+    &amp;quot;last_opened_file_path&amp;quot;: &amp;quot;C:/Users/bartosz.stanislawski/WebstormProjects/menago/src/match&amp;quot;,
+    &amp;quot;list.type.of.created.stylesheet&amp;quot;: &amp;quot;Less&amp;quot;,
+    &amp;quot;node.js.detected.package.eslint&amp;quot;: &amp;quot;true&amp;quot;,
+    &amp;quot;node.js.detected.package.tslint&amp;quot;: &amp;quot;true&amp;quot;,
+    &amp;quot;node.js.selected.package.eslint&amp;quot;: &amp;quot;(autodetect)&amp;quot;,
+    &amp;quot;node.js.selected.package.tslint&amp;quot;: &amp;quot;(autodetect)&amp;quot;,
+    &amp;quot;nodejs_package_manager_path&amp;quot;: &amp;quot;npm&amp;quot;,
+    &amp;quot;rearrange.code.on.save&amp;quot;: &amp;quot;true&amp;quot;,
+    &amp;quot;settings.editor.selected.configurable&amp;quot;: &amp;quot;actions.on.save&amp;quot;,
+    &amp;quot;vue.rearranger.settings.migration&amp;quot;: &amp;quot;true&amp;quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\bartosz.stanislawski\WebstormProjects\menago\src\match" />
+      <recent name="C:\Users\bartosz.stanislawski\WebstormProjects\menago\src\lifecycle" />
       <recent name="C:\Users\premi\WebstormProjects\MANAGER\src\squad" />
       <recent name="C:\Users\bartosz.stanislawski\WebstormProjects\sandbox" />
       <recent name="C:\WORKSPACE\sandbox\sandbox\src\squad" />
-      <recent name="C:\WORKSPACE\sandbox\sandbox\src\styles" />
-      <recent name="C:\WORKSPACE\sandbox\sandbox\webpack\style" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\bartosz.stanislawski\WebstormProjects\menago\src\match\matchSpecialEvents" />
+      <recent name="C:\Users\bartosz.stanislawski\WebstormProjects\menago\src\match\players" />
       <recent name="C:\WORKSPACE\sandbox\sandbox\src\names" />
       <recent name="C:\WORKSPACE\sandbox\sandbox\src\styles" />
       <recent name="C:\WORKSPACE\sandbox\sandbox\src\squad\img" />
-      <recent name="C:\WORKSPACE\sandbox\sandbox\public" />
-      <recent name="C:\WORKSPACE\sandbox\sandbox\src\squad" />
     </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.index.html">
@@ -122,7 +167,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d470b8ee-1ae5-49ee-9ade-527ea11d5fce" name="Changes" comment="dodano goalEvent() ustawiający playerów na pozycjach nominalnych po bramie" />
+      <changelist id="52b56185-39f6-4c55-85c8-6b17efb4688c" name="Changes" comment="method rename" />
       <created>1564051502175</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -139,9 +184,9 @@
       <workItem from="1667470760745" duration="1428000" />
       <workItem from="1667488683245" duration="55284000" />
       <workItem from="1668011908483" duration="15790000" />
-      <workItem from="1668443399004" duration="368000" />
-      <workItem from="1668451937587" duration="82415000" />
-      <workItem from="1668963613404" duration="3530000" />
+      <workItem from="1668525360525" duration="4518000" />
+      <workItem from="1668597926495" duration="71000" />
+      <workItem from="1669013993981" duration="13000" />
     </task>
     <task id="LOCAL-00001" summary="t">
       <created>1564057867467</created>
@@ -388,12 +433,12 @@
       <option name="project" value="LOCAL" />
       <updated>1668353406831</updated>
     </task>
-    <task id="LOCAL-00036" summary="dodano goalEvent() ustawiający playerów na pozycjach nominalnych po bramie">
-      <created>1668355048983</created>
+    <task id="LOCAL-00036" summary="dodalem szyne eventow">
+      <created>1668356447269</created>
       <option name="number" value="00036" />
       <option name="presentableId" value="LOCAL-00036" />
       <option name="project" value="LOCAL" />
-      <updated>1668355048983</updated>
+      <updated>1668356447269</updated>
     </task>
     <task id="LOCAL-00037" summary="generowanie mord">
       <created>1668531409054</created>
@@ -416,26 +461,26 @@
       <option name="project" value="LOCAL" />
       <updated>1668594463002</updated>
     </task>
-    <task id="LOCAL-00040" summary="generowanie mord usprawnione">
-      <created>1668600565199</created>
+    <task id="LOCAL-00040" summary="mala poprawka">
+      <created>1668432809576</created>
       <option name="number" value="00040" />
       <option name="presentableId" value="LOCAL-00040" />
       <option name="project" value="LOCAL" />
-      <updated>1668600565199</updated>
+      <updated>1668432809576</updated>
     </task>
-    <task id="LOCAL-00041" summary="mordy wklejone na graczy">
-      <created>1668611799966</created>
+    <task id="LOCAL-00041" summary="mala poprawka">
+      <created>1668433727817</created>
       <option name="number" value="00041" />
       <option name="presentableId" value="LOCAL-00041" />
       <option name="project" value="LOCAL" />
-      <updated>1668611799966</updated>
+      <updated>1668433727817</updated>
     </task>
-    <task id="LOCAL-00042" summary="usunięto gify, pojawiły się pierwsze sprity ciał piłkarzy">
-      <created>1668671306116</created>
+    <task id="LOCAL-00042" summary="method rename">
+      <created>1668434218226</created>
       <option name="number" value="00042" />
       <option name="presentableId" value="LOCAL-00042" />
       <option name="project" value="LOCAL" />
-      <updated>1668671306116</updated>
+      <updated>1668434218226</updated>
     </task>
     <task id="LOCAL-00043" summary="zmiany w generowaniu mord i strojow">
       <created>1668725758105</created>
@@ -472,7 +517,7 @@
       <option name="project" value="LOCAL" />
       <updated>1668959005141</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -503,10 +548,16 @@
     <MESSAGE value="dodano getOpponentWithBallInRange() i tryToWinTheBall(), tera każdy przeciwnik w odległości &lt;30 od piłki ktorą posiada przeciwnik próbuje ją odebrać" />
     <MESSAGE value="zaczynam robic konflikty" />
     <MESSAGE value="asasdads" />
+    <MESSAGE value="nowe pliki" />
     <MESSAGE value="pierwsze gify" />
     <MESSAGE value="problem z setAnimationFile - działa tylko przy wprowadzeniu bezposrednio w konstruktorze" />
     <MESSAGE value="problem z setAnimationFile - działa tylko przy wprowadzeniu bezposrednio w konstruktorze  - dodalem bieg w lewo i w prawo, ukryłem decision div" />
     <MESSAGE value="dodalem shot gif" />
+    <MESSAGE value="dodalem szyne eventow" />
+    <MESSAGE value="zminay w wyliczaniu prawdopodobienstwa" />
+    <MESSAGE value="Klasa decyzji bramkarza" />
+    <MESSAGE value="mala poprawka" />
+    <MESSAGE value="method rename" />
     <MESSAGE value="dodano goalEvent() ustawiający playerów na pozycjach nominalnych po bramie" />
     <MESSAGE value="generowanie mord" />
     <MESSAGE value="generowanie mord usprawnione" />

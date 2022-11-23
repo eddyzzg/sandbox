@@ -1,6 +1,6 @@
 import MatchEventConflictManager from "./MatchEventConflictManager";
-import {DECISION_WHERE_TO_MOVE} from './PlayerDecisionWhereToMove';
-import {DECISION} from './PlayerDecisionEvent';
+import {DECISION_WHERE_TO_MOVE} from './players/PlayerDecisionWhereToMove';
+import {DECISION} from './players/PlayerDecisionEvent';
 
 export default class MatchEvent {
     
@@ -17,7 +17,8 @@ export default class MatchEvent {
         this.ball = ball;
         this.field = field;
         this.matchSpecialEvents = [];
-        this.conflictManger = new MatchEventConflictManager(this.getAllPlayers(), this.ball, this.field, match);
+        this.match = match;
+        this.conflictManger = new MatchEventConflictManager(this.getAllPlayers(), this.ball, this.field, this.match);
     }
     
     getAllPlayers() {

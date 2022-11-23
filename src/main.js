@@ -9,7 +9,7 @@ import NamesGenerator from './names/NamesGenerator';
 import Match from './match/Match';
 import matchWindow from './matchWindow.hbs';
 import {eventBus, events} from './lifecycle/EventBus';
-import PlayerDecisionEvent from './match/PlayerDecisionEvent';
+import PlayerDecisionEvent from './match/players/PlayerDecisionEvent';
 import Player from './match/players/Player';
 
 global.API = {};
@@ -39,16 +39,45 @@ $(document).ready(function () {
     //$startMatchBtn.click();
     */
     
-    const $workspace = createWorkspace();
-    prepareApplication();
-    
-    let homeTeam = new Team();
-    let awayTeam = new Team(true);
-    homeTeam.generateSquad();
-    awayTeam.generateSquad();
-    
-    return startMatch(homeTeam, awayTeam, $workspace);
+    if (true) {
+        const $workspace = createWorkspace();
+        prepareApplication();
+        
+        let homeTeam = new Team();
+        let awayTeam = new Team(true);
+        homeTeam.generateSquad();
+        awayTeam.generateSquad();
+        
+        return startMatch(homeTeam, awayTeam, $workspace);
+    } else {
+        animationTest();
+    }
 });
+
+function animation() {
+    return new Promise((resolve) => {
+        const obj = document.getElementById('obj-id');
+        if (obj.style.top === '100px') {
+            obj.style.top = '0';
+        } else {
+            obj.style.top = '100px';
+        }
+        
+        window.animListener = () => {
+            obj.removeEventListener('transitionend', window.animListener)
+            resolve();
+        }
+        obj.addEventListener('transitionend', window.animListener);
+    });
+}
+
+function animationTest() {
+    return animation().then(() => {
+        return animation().then(() => {
+            return animation();
+        });
+    });
+}
 
 function prepareApplication() {
     API.eventBus = eventBus;

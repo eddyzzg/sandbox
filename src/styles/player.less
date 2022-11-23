@@ -1,4 +1,20 @@
 .player {
+  background-repeat: no-repeat;
+  height: 100px;
+  width: 100px;
+  background-position: center top;
+  position: absolute;
+
+  &.transitionEnabled {
+    top: 0;
+    left: 0;
+
+    transition-property: top, left;
+    transition-duration: 1.5s;
+    *transition-delay: 1s;
+    transition-timing-function: ease-in-out;
+  }
+
   .decision {
     color: red;
     font-weight: bolder;

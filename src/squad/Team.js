@@ -1,5 +1,5 @@
 import NamesGenerator from '../names/NamesGenerator';
-import PlayerDef from '../match/PlayerDef';
+import PlayerDef from '../match/players/PlayerDef';
 import Player from '../match/players/Player';
 
 export default class Team {
@@ -14,8 +14,13 @@ export default class Team {
         /** @type {Boolean} */
         this.isAwayTeam = isAwayTeam;
         this.hasBall = false;
+        this.playerStartingGame = undefined;
         this.shirtColor = isAwayTeam ?  26 : 19;     // kolory z palety 30 kolorów zadeklarownych w avatar.js
         this.shortsColor = isAwayTeam ? 9 : 18;
+    }
+    
+    setPlayerStartingGame(player) {
+        this.playerStartingGame = player;
     }
     
     /**

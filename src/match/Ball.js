@@ -2,7 +2,7 @@ import ballTemplate from './ball.hbs'
 import BaseMatchElement from "./BaseMatchElement";
 
 export default class Ball extends BaseMatchElement {
-
+    
     constructor() {
         super();
         this.startPositionX = 0;
@@ -13,21 +13,19 @@ export default class Ball extends BaseMatchElement {
         this.height = 10;
         this.playerID = "";
     }
-
-    /**
-     * @returns {jQuery}
-     */
-    getDOMSelector() {
+    
+    getJQuerySelector() {
         return $('#ball.ball');
     }
-
-    /**
-     * @returns {Function}
-     */
+    
+    getDOMSelector() {
+        return `ball`;
+    }
+    
     getTemplate() {
         return ballTemplate;
     }
-
+    
     /**
      * @param {Number} positionX
      * @param {Number} positionY
@@ -37,8 +35,8 @@ export default class Ball extends BaseMatchElement {
         this.positionX = positionX;
         this.positionY = positionY;
         // return this.executeMove(isInstantMove);
-
+        
     }
-
- 
+    
+    
 }

@@ -1,9 +1,9 @@
 import playerHBS from '../../squad/player.hbs';
 import BaseMatchElement from '../BaseMatchElement';
-import PlayerDecisionEvent from '../PlayerDecisionEvent';
-import PlayerDecisionWhereToMove from '../PlayerDecisionWhereToMove'
-import GoalKeeperDecisionEvent from '../GoalKeeperDecisionEvent';
-import GoalKeeperDecisionWhereToMove from '../GoalKeeperDecisionWhereToMove';
+import PlayerDecisionEvent from './PlayerDecisionEvent';
+import PlayerDecisionWhereToMove from './PlayerDecisionWhereToMove'
+import GoalKeeperDecisionEvent from './GoalKeeperDecisionEvent';
+import GoalKeeperDecisionWhereToMove from './GoalKeeperDecisionWhereToMove';
 
 export default class Player extends BaseMatchElement {
     
@@ -41,9 +41,9 @@ export default class Player extends BaseMatchElement {
         this.ball = ball;
     }
     
-    beforeMove() {
-     //   let $element = this.getDOMSelector();
-   //     $element.css('background-image', `url("../src/styles/img/${this.shirtColor}player${this.animationFile}.gif")`);
+    beforeExecuteMove() {
+        // let $element = this.getJQuerySelector();
+        // $element.css('background-image', `url("../src/styles/img/${this.shirtColor}player${this.animationFile}.gif")`);
     }
     
     /**
@@ -71,11 +71,15 @@ export default class Player extends BaseMatchElement {
     
     getAnimationTime() {
         //TODO: this.definition.speed * AVERAGE_ANIMATION_SPEED_RATIO
-        return 400;
+        return 600;
+    }
+    
+    getJQuerySelector() {
+        return $(`#${this.id}.player`);
     }
     
     getDOMSelector() {
-        return $(`#${this.id}.player`);
+        return `${this.id}`;
     }
     
     /**
@@ -106,30 +110,17 @@ export default class Player extends BaseMatchElement {
     /**
      * @param {Number} positionX
      * @param {Number} positionY
-     * @param {Boolean} [isInstantMove]
-     * @returns {Promise<>}
      */
-    move(positionX, positionY, isInstantMove = false) {
-    }
-    
-    /**
-     * @param {Number} positionX
-     * @param {Number} positionY
-     * @param {Boolean} [isInstantMove]
-     */
-    moveToXY(positionX, positionY, isInstantMove = false) {
+    moveToXY(positionX, positionY) {
         this.positionX = positionX;
         this.positionY = positionY;
-        
-        // return this.executeMove(isInstantMove);
     }
     
     /**
      * @param {Number} positionX
      * @param {Number} positionY
-     * @param {Boolean} [isInstantMove]
      */
-    moveInDirectionOfXY(positionX, positionY, isInstantMove = false) {
+    moveInDirectionOfXY(positionX, positionY) {
         let speed = this.definition.speed;
         let {deltaX, deltaY} = this.getDeltas(positionX, positionY);
         
