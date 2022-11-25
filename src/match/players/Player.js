@@ -17,8 +17,8 @@ export default class Player extends BaseMatchElement {
         this.id = playerDef.id;
         this.position = playerDef.nominalPosition;
         this.isInAwayTeam = false;
-        this.shirtColor=team.shirtColor;
-        this.shortsColor=team.shortsColor;
+        this.shirtColor = team.shirtColor;
+        this.shortsColor = team.shortsColor;
         this.startPositionX = 0;
         this.startPositionY = 0;
         this.nominalPositionX = 1;
@@ -32,6 +32,11 @@ export default class Player extends BaseMatchElement {
         this.decision = 'no decision';
         this.animationFile = 'Run';
         this.isGK = this.position === 'GK';
+    }
+    
+    getLogName() {
+        let teamName = this.team.isAwayTeam ? 'AWAYTEAM' : 'HOMETEAM';
+        return `${this.id}_${this.definition.name}_${teamName}`;
     }
     
     /**
@@ -57,7 +62,7 @@ export default class Player extends BaseMatchElement {
      * @param {integer} color1
      * @param {integer} color2
      */
-    setShirtColor(color1,color2) {
+    setShirtColor(color1, color2) {
         this.shirtColor = color1;
         this.shortsColor = color2;
     }
@@ -138,7 +143,7 @@ export default class Player extends BaseMatchElement {
         if (Math.abs(deltaY) < speed) {
             offsetY = Math.floor(deltaY);
         }
-
+        
         this.setAnimationFile(offsetX, offsetY);
         this.positionX = this.positionX + offsetX;
         this.positionY = this.positionY + offsetY;
@@ -264,9 +269,9 @@ export default class Player extends BaseMatchElement {
             return Promise.resolve(false);
         }
     }
-
-    generatePlayerAvatarParameters (){
-    this.definition.avatar.generatePlayerAvatarParameters();
+    
+    generatePlayerAvatarParameters() {
+        this.definition.avatar.generatePlayerAvatarParameters();
     }
-
+    
 }

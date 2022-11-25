@@ -1,6 +1,7 @@
 import MatchEventConflictManager from "./MatchEventConflictManager";
 import {DECISION_WHERE_TO_MOVE} from './players/PlayerDecisionWhereToMove';
 import {DECISION} from './players/PlayerDecisionEvent';
+import {ConsoleEvent} from "./MatchTools";
 
 export default class MatchEvent {
     
@@ -33,6 +34,8 @@ export default class MatchEvent {
     showPlayerDecision(player) {
         let $decisionContainer = $(`#${player.id}`).find('.decision');
         $decisionContainer.html(player.finalDecision);
+        
+        this.match.tools.logConsoleEvent(new ConsoleEvent(player.getLogName(), this.match.currentIndex, player.finalDecision));
     }
     
     run() {
@@ -64,6 +67,7 @@ export default class MatchEvent {
             
             player.decision = decision;  // zmienna zawierajaca decyzje co ziomek chce zrobić,
             player.finalDecision = `${decision} / ${finalDecision}`;  // zmienna zawierajaca decyzje co ziomek chce zrobić,
+            
             this.showPlayerDecision(player);    // wyswietlenie co ziomek chce zrobic
         });
     }

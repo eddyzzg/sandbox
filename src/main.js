@@ -4,8 +4,6 @@ import './style.less';
 import SquadManager from './squad/SquadManager';
 import Team from './squad/Team';
 import KlimaSandbox from './klima/sandbox';
-import FaceGenerator from './faces/Avatar';
-import NamesGenerator from './names/NamesGenerator';
 import Match from './match/Match';
 import matchWindow from './matchWindow.hbs';
 import {eventBus, events} from './lifecycle/EventBus';

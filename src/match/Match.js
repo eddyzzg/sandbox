@@ -3,8 +3,7 @@ import MatchEvent from './MatchEvent';
 import Ball from './Ball';
 import scoreboard from './scoreboard.hbs';
 import MatchSpecialEvent from "./matchSpecialEvents/MatchSpecialEvent";
-import faceHBS from '../faces/face.hbs';
-import avatar from '../faces/Avatar';
+import MatchTools from "./MatchTools";
 
 export default class Match {
     
@@ -31,20 +30,29 @@ export default class Match {
         
         this.homePlayerStarterPosX = 606;
         this.homePlayerStarterPosY = 401;
+        
+        this.tools = new MatchTools(this);
+        this.isPaused = false;
+    }
+    
+    pauseMatch() {
+        this.isPaused = true;
+    }
+    
+    resumeMatch() {
+        this.isPaused = false;
+        this.start();
     }
     
     renderScoreboard() {
         const $scoreboardContainer = $("body .score-board");
         $scoreboardContainer.html(scoreboard(this));
     }
-
-
-
+    
     // renderFace() {
     // let face = new FaceGenerator();
     // face.renderFace($("body .face-container"));
     // }
-
     
     prepare() {
         this.field.render();
@@ -86,21 +94,23 @@ export default class Match {
     }
     
     start() {
-        const matchEvent = new MatchEvent(this.homePlayers, this.awayPlayers, this.ball, this.field, this);
-        return matchEvent.run().then(() => {
-            const matchSpecialEventsReports = matchEvent.matchSpecialEvents;
-            const matchSpecialEvent = new MatchSpecialEvent(this.homePlayers, this.awayPlayers, this.ball, this.field, this, matchSpecialEventsReports);
-            
-            return matchSpecialEvent.run().then(() => {
-                const maxEventCount = this.matchDuration * this.eventsPerMinute;
-                if (this.currentIndex <= maxEventCount) {
-                    this.currentIndex++;
-                    this.renderScoreboard();
-                    return this.start();
-                }
-                alert("MECZ SKONCZONY !");
+        if (!this.isPaused) {
+            const matchEvent = new MatchEvent(this.homePlayers, this.awayPlayers, this.ball, this.field, this);
+            return matchEvent.run().then(() => {
+                const matchSpecialEventsReports = matchEvent.matchSpecialEvents;
+                const matchSpecialEvent = new MatchSpecialEvent(this.homePlayers, this.awayPlayers, this.ball, this.field, this, matchSpecialEventsReports);
+                
+                return matchSpecialEvent.run().then(() => {
+                    const maxEventCount = this.matchDuration * this.eventsPerMinute;
+                    if (this.currentIndex <= maxEventCount) {
+                        this.currentIndex++;
+                        this.renderScoreboard();
+                        return this.start();
+                    }
+                    alert("MECZ SKONCZONY !");
+                });
             });
-        });
+        }
     }
     
     placePlayersOnField() {

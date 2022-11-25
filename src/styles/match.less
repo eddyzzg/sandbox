@@ -1,0 +1,68 @@
+@media (max-width: 1850px) {
+  .score-board {
+    position: relative !important;
+  }
+
+  .control-buttons {
+    position: relative !important;
+  }
+
+  .console {
+    position: relative !important;
+  }
+}
+
+.score-board {
+  position: absolute;
+  right: 0;
+}
+
+.control-buttons {
+  top: 50px;
+  position: absolute;
+  right: 0;
+  width: 350px;
+  height: 50px;
+  text-align: right;
+
+  .control-btn {
+    width: 50px;
+    font-weight: bold;
+    color: #363636ee;
+  }
+}
+
+.console {
+  font-family: Consolas, serif;
+  top: 100px;
+  position: absolute;
+  right: 0;
+  border: 1px solid #2d2d2d;
+  width: 435px;
+  height: 800px;
+  overflow-y: auto;
+  background: #c8c8c8;
+
+  .console-lines {
+    padding: 2px 2px 10px 2px;
+
+    th {
+      color: #393939;
+      font-size: 12px;
+      padding-bottom: 7px;
+      border-bottom: 1px solid #bbbbbb;
+      padding-right: 11px;
+    }
+
+    [classname*="when"] {
+    }
+
+    [classname*="who"] {
+      color: red;
+    }
+
+    [classname*="what"] {
+      color: green;
+    }
+  }
+}
