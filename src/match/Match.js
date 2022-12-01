@@ -38,11 +38,13 @@ export default class Match {
 
     pauseMatch() {
         this.isPaused = true;
+        return !this.isPaused;
     }
 
     resumeMatch() {
         this.isPaused = false;
         this.start();
+        return !this.isPaused;
     }
 
     showNames() {
@@ -58,6 +60,7 @@ export default class Match {
             }
             this.visibleNames = true;
         }
+        return this.visibleNames;
     }
 
 

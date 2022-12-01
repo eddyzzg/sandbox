@@ -26,9 +26,43 @@
   text-align: right;
 
   .control-btn {
-    width: 50px;
-    font-weight: bold;
-    color: #363636ee;
+    //width: 50px;
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+
+    .do-play {
+      display: none;
+    }
+
+    .do-pause {
+      display: block;
+    }
+
+    &.is-playing {
+      background-color: #f44336;;
+
+      .do-play {
+        display: block;
+      }
+
+      .do-pause {
+        display: none;
+      }
+    }
+
+    &.showNames {
+      background-color: #008CBA;
+
+      &.off {
+        background-color: #f44336;
+      }
+    }
   }
 }
 
@@ -37,11 +71,10 @@
   top: 100px;
   position: absolute;
   right: 0;
-  border: 1px solid #2d2d2d;
   width: 435px;
   height: 800px;
   overflow-y: auto;
-  background: #c8c8c8;
+  background: transparent;
 
   .console-lines {
     padding: 2px 2px 10px 2px;
@@ -50,7 +83,7 @@
       color: #393939;
       font-size: 12px;
       padding-bottom: 7px;
-      border-bottom: 1px solid #bbbbbb;
+      border-bottom: 1px solid transparent;
       padding-right: 11px;
     }
 
@@ -58,7 +91,7 @@
     }
 
     [classname*="who"] {
-      color: red;
+      color: #747474;
     }
 
     [classname*="what"] {

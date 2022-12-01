@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+    <list default="true" id="52b56185-39f6-4c55-85c8-6b17efb4688c" name="Changes" comment="dodalem match toolsy">
     <list default="true" id="d470b8ee-1ae5-49ee-9ade-527ea11d5fce" name="Changes" comment="głowa dołącza do animowanego ciała, ale cos sie pierdoli">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/match/BaseMatchElement.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/match/BaseMatchElement.js" afterDir="false" />
@@ -445,19 +446,19 @@
       <option name="project" value="LOCAL" />
       <updated>1668594463002</updated>
     </task>
-    <task id="LOCAL-00040" summary="mala poprawka">
-      <created>1668432809576</created>
+    <task id="LOCAL-00040" summary="matach special event">
+      <created>1669197925222</created>
       <option name="number" value="00040" />
       <option name="presentableId" value="LOCAL-00040" />
       <option name="project" value="LOCAL" />
-      <updated>1668432809576</updated>
+      <updated>1669197925222</updated>
     </task>
-    <task id="LOCAL-00041" summary="mala poprawka">
-      <created>1668433727817</created>
+    <task id="LOCAL-00041" summary="dodalem match toolsy">
+      <created>1669383622564</created>
       <option name="number" value="00041" />
       <option name="presentableId" value="LOCAL-00041" />
       <option name="project" value="LOCAL" />
-      <updated>1668433727817</updated>
+      <updated>1669383622564</updated>
     </task>
     <task id="LOCAL-00042" summary="method rename">
       <created>1668434218226</created>
@@ -501,7 +502,7 @@
       <option name="project" value="LOCAL" />
       <updated>1668959005141</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -519,10 +520,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Gównokod" />
-    <MESSAGE value="Gównokod2" />
-    <MESSAGE value="dodano reRender(), piłkarze losowo się poruszają" />
-    <MESSAGE value="dodano player.decide() - podejmowanie decyzji&#10;dodano ball.reRender()&#10;dodano trzy podstawowe decyzje, z czego dwie działają: losowy ruch, podanie do najbliższego zawodnika. Strzał wyswietla tylko console.log('shot!');" />
     <MESSAGE value="dodano player.decide() - podejmowanie decyzji. dostepne sa trzy opcje, z czego dwie działają: losowy ruch, podanie do najbliższego zawodnika. Strzał wyswietla tylko console.log('shot!');&#10;dodano ball.reRender()&#10;dodano grafike pilki" />
     <MESSAGE value="dodano PlayerDecisionWhereToMove i generowanie nominalPosition" />
     <MESSAGE value="Ziomeczki biegają targani podstawowymi pragnieniami : ustaw sie na pozycji, idz na bramke przeciwnika, idz do piłki. Zjebało się za to podawanie piłki" />
@@ -550,6 +547,9 @@
     <MESSAGE value="zmiany w generowaniu mord i strojow" />
     <MESSAGE value="dodano animacje na bazie spritów" />
     <MESSAGE value="różne animacje w zależności od kierunku biegu" />
-    <option name="LAST_COMMIT_MESSAGE" value="różne animacje w zależności od kierunku biegu" />
+    <MESSAGE value="metach special event" />
+    <MESSAGE value="matach special event" />
+    <MESSAGE value="dodalem match toolsy" />
+    <option name="LAST_COMMIT_MESSAGE" value="dodalem match toolsy" />
   </component>
 </project>

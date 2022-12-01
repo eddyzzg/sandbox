@@ -16,33 +16,36 @@ export default class MatchTools {
         const self = this;
 
         /** @type {HTMLDivElement} */
-        const pauseBtn = this.container.getElementsByClassName('pause')[0];
-        /** @type {HTMLDivElement} */
-        const playBtn = this.container.getElementsByClassName('play')[0];
+        const pausePlayBtn = this.container.getElementsByClassName('pause-play')[0];
         /** @type {HTMLDivElement} */
         const showNamesBtn = this.container.getElementsByClassName('showNames')[0];
 
-        pauseBtn.addEventListener('click', (event) => {
-            self.pauseMatch();
-        });
-        playBtn.addEventListener('click', (event) => {
-            self.resumeMatch();
+        pausePlayBtn.addEventListener('click', (event) => {
+            self.togglePlayPause();
+            
+            $(pausePlayBtn).toggleClass('is-playing');
         });
         showNamesBtn.addEventListener('click', (event) => {
             self.showNames();
+    
+            $(showNamesBtn).toggleClass('off');
         });
+    }
+    
+    togglePlayPause() {
+        return this.match.isPaused ? this.resumeMatch() : this.pauseMatch();
     }
 
     pauseMatch() {
-        this.match.pauseMatch();
+        return this.match.pauseMatch();
     }
 
     resumeMatch() {
-        this.match.resumeMatch();
+        return this.match.resumeMatch();
     }
 
     showNames() {
-        this.match.showNames();
+        return this.match.showNames();
     }
 
     /**
