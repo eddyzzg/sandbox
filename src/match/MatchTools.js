@@ -52,9 +52,10 @@ export default class MatchTools {
      * @param {ConsoleEvent} event
      */
     logConsoleEvent(event) {
-        let tableRow = event.create();
-
-        $(this.console).find('.console-lines').append(tableRow);
+        const tableRow = event.create();
+        const consoleLinesContainer = this.console.getElementsByClassName('console-lines')[0];
+    
+        consoleLinesContainer.appendChild(tableRow);
     }
 }
 
