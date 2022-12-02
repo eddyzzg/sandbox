@@ -12,6 +12,7 @@ export default class Ball extends BaseMatchElement {
         this.width = 10;
         this.height = 10;
         this.playerID = "";
+        this.isBall = true;
     }
     
     getJQuerySelector() {
@@ -34,8 +35,6 @@ export default class Ball extends BaseMatchElement {
     move(positionX, positionY, isInstantMove = false) {
         this.positionX = positionX;
         this.positionY = positionY;
-        // return this.executeMove(isInstantMove);
-        
     }
     
     

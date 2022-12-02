@@ -5,14 +5,16 @@ import Player from '../match/players/Player';
 export default class Team {
     
     constructor(isAwayTeam = false) {
+        /** @type {Boolean} */
+        this.isAwayTeam = isAwayTeam;
+        
         /** @type {Map<Number, PlayerDef>} */
         this.squad = new Map();
         /** @type {Player[]} */
         this.firstSquad = [];
         this.positions = ["GK", "LD", "CLD", "CRD", "RD", "LM", "CLM", "CRM", "RM", "RF", "LF"];
         this.firstSquadDef = this.getFirstTeamPlayersNumbers();
-        /** @type {Boolean} */
-        this.isAwayTeam = isAwayTeam;
+        
         this.hasBall = false;
         this.playerStartingGame = undefined;
         this.shirtColor = isAwayTeam ?  26 : 19;     // kolory z palety 30 kolorów zadeklarownych w avatar.js
@@ -51,6 +53,7 @@ export default class Team {
      * @returns {number[]}
      */
     getFirstTeamPlayersNumbers() {
+        // return this.isAwayTeam ? [] : [1];
         return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
     }
     
@@ -68,7 +71,6 @@ export default class Team {
     generatePosition(position, field) {
         let positionX = 0;
         let positionY = 0;
-        
         
         switch (position) {
             case 'GK':

@@ -32,16 +32,16 @@ export default class MatchEvent {
     }
     
     showPlayerDecision(player) {
-        let $decisionContainer = $(`#${player.id}`).find('.decision');
-        $decisionContainer.html(player.finalDecision);
-        
         this.match.tools.logConsoleEvent(new ConsoleEvent(player.getLogName(), this.match.currentIndex, player.finalDecision));
     }
     
     run() {
         this.calculateDecisions();
         this.resolveConflicts();
-        return Promise.all(this.executeMoves());
+        const promises = this.executeMoves();
+        
+        console.log(promises);
+        return Promise.all(promises);
     }
     
     calculateDecisions() {
@@ -77,18 +77,18 @@ export default class MatchEvent {
         this.getAllPlayers().forEach((player) => {
             switch (player.decision) {
                 case DECISION.MOVE: {
-                    promises.push(player.executeMove());
+                    promises.push(player.executeMove(true));
                     if (player.hasBall) {
-                        promises.push(this.ball.executeMove());
+                        promises.push(this.ball.executeMove(true));
                     }
                     break;
                 }
                 case DECISION.PASS: {
-                    promises.push(this.ball.executeMove());
+                    promises.push(this.ball.executeMove(true));
                     break;
                 }
                 case DECISION.SHOT: {
-                    promises.push(this.ball.executeMove());
+                    promises.push(this.ball.executeMove(true));
                     break;
                 }
             }

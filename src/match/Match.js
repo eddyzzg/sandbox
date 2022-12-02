@@ -81,11 +81,14 @@ export default class Match {
         this.homePlayers = this.homeTeam.getMatchPlayers();
         this.awayPlayers = this.awayTeam.getMatchPlayers();
         this.informPlayersAboutTheBallAndField();
-
-        return this.placePlayersOnField().then(() => {
-            this.renderBall();
-            return this.placeForwardPlayerAndBallOnTheMiddleOfTheField().then(() => {
-                return this.waitAWhileBeforeKickOff();
+    
+        return this.renderTeams().then(() => {
+            return this.placePlayersOnField().then(() => {
+                return this.renderBall().then(() => {
+                    return this.placeForwardPlayerAndBallOnTheMiddleOfTheField().then(() => {
+                        return this.waitAWhileBeforeKickOff();
+                    });
+                })
             });
         });
     }
@@ -117,18 +120,18 @@ export default class Match {
         if (!this.isPaused) {
             const matchEvent = new MatchEvent(this.homePlayers, this.awayPlayers, this.ball, this.field, this);
             return matchEvent.run().then(() => {
-                const matchSpecialEventsReports = matchEvent.matchSpecialEvents;
-                const matchSpecialEvent = new MatchSpecialEvent(this.homePlayers, this.awayPlayers, this.ball, this.field, this, matchSpecialEventsReports);
-
-                return matchSpecialEvent.run().then(() => {
-                    const maxEventCount = this.matchDuration * this.eventsPerMinute;
-                    if (this.currentIndex <= maxEventCount) {
-                        this.currentIndex++;
-                        this.renderScoreboard();
-                        return this.start();
-                    }
-                    alert("MECZ SKONCZONY !");
-                });
+                // const matchSpecialEventsReports = matchEvent.matchSpecialEvents;
+                // const matchSpecialEvent = new MatchSpecialEvent(this.homePlayers, this.awayPlayers, this.ball, this.field, this, matchSpecialEventsReports);
+                return this.start();
+                // return matchSpecialEvent.run().then(() => {
+                //     const maxEventCount = this.matchDuration * this.eventsPerMinute;
+                //     if (this.currentIndex <= maxEventCount) {
+                //         this.currentIndex++;
+                //         this.renderScoreboard();
+                //         return this.start();
+                //     }
+                //     alert("MECZ SKONCZONY !");
+                // });
             });
         }
     }
@@ -136,16 +139,30 @@ export default class Match {
     placePlayersOnField() {
         const $field = this.field.getDOMSelector();
         const animationsPromises = [];
-
+    
         this.placeHomeTeamOnField($field, animationsPromises);
         this.placeAwayTeamOnField($field, animationsPromises);
 
         return Promise.all(animationsPromises);
     }
+    
+    renderTeams() {
+        const $field = this.field.getDOMSelector();
+        
+        this.renderPlayers(this.homePlayers, $field);
+        this.renderPlayers(this.awayPlayers, $field);
+    
+        return new Promise((resolve) => setTimeout(resolve, 500));
+    }
+    
+    renderPlayers(team, $field) {
+        team.forEach((player) => {
+            player.render($field);
+        });
+    }
 
     placeHomeTeamOnField($field, animationsPromises) {
         this.homePlayers.forEach((player) => {
-            player.render($field);
             const positions = this.homeTeam.generateNominalPosition(player.position, this.field);
             player.setNominalPosition(positions.nominalPositionX, positions.nominalPositionY);
 
@@ -154,14 +171,12 @@ export default class Match {
             player.startPositionY = startPosition.positionY;
             player.moveToXY(player.startPositionX, player.startPositionY);
             animationsPromises.push(player.executeMove());
-
         });
     }
 
     placeAwayTeamOnField($field, animationsPromises) {
         this.awayPlayers.forEach((player) => {
             player.setRightStartTeam();
-            player.render($field);
             const positions = this.homeTeam.generateNominalPosition(player.position, this.field);
             player.setNominalPosition(1200 - positions.nominalPositionX, positions.nominalPositionY);
 
@@ -190,6 +205,7 @@ export default class Match {
 
     renderBall() {
         this.ball.render(this.field.getDOMSelector());
+        return new Promise((resolve) => setTimeout(resolve, 100));
     }
 
     dispose() {

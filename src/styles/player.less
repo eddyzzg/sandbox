@@ -5,6 +5,59 @@
   background-position: center top;
   position: absolute;
 
+  &.right-animation {
+    .shirt {
+      background-position-y: 45px;
+      transform: scale(1,1);
+    }
+    .shorts {
+      background-position-y: 45px;
+      transform: scale(1,1);
+    }
+    .body {
+      background-position-y: 45px;
+      transform: scale(1,1);
+    }
+    .boots {
+      background-position-y: 45px;
+      transform: scale(1,1);
+    }
+  }
+
+  &.left-animation {
+    .shirt {
+      background-position-y: 45px;
+      transform: scale(-1,1);
+    }
+    .shorts {
+      background-position-y: 45px;
+      transform: scale(-1,1);
+    }
+    .body {
+      background-position-y: 45px;
+      transform: scale(-1,1);
+    }
+    .boots {
+      background-position-y: 45px;
+      transform: scale(-1,1);
+    }
+  }
+
+  &.rest-animation {
+    .shirt {
+      background-position-y: 0;
+    }
+    .shorts {
+      background-position-y: 0;
+    }
+    .body {
+      background-position-y: 0;
+    }
+    .boots {
+      background-position-y: 0;
+    }
+  }
+
   &.transitionEnabled {
     top: 0;
     left: 0;
@@ -41,8 +94,6 @@
     overflow:hidden;
     position:absolute;
   }
-
-
 
   .shirt {
     animation: animation 0.8s steps(8) infinite;
@@ -166,5 +217,22 @@
 
   }
 
+  .run-class() {
+    -webkit-animation: linear infinite;
+    -webkit-animation-name: run;
+    -webkit-animation-duration: 5s;
+  }
+
+  @-webkit-keyframes run {
+    0% {
+      left: 0;
+    }
+    50% {
+      left: 100%;
+    }
+    100% {
+      left: 0;
+    }
+  }
 
 }

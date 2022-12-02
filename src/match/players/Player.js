@@ -266,7 +266,7 @@ export default class Player extends BaseMatchElement {
             opponent.setHasBall(false);
             return this.ball.move(player.positionX, player.positionY);
         } else {
-            return Promise.resolve(false);
+            return false;
         }
     }
     
