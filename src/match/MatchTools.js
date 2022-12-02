@@ -54,8 +54,7 @@ export default class MatchTools {
     logConsoleEvent(event) {
         const tableRow = event.create();
         const consoleLinesContainer = this.console.getElementsByClassName('console-lines')[0];
-    
-        consoleLinesContainer.appendChild(tableRow);
+        consoleLinesContainer.innerHTML += tableRow;
     }
 }
 
@@ -67,10 +66,10 @@ export class ConsoleEvent {
     }
 
     create() {
-        return `<tr className="console-lines">
-            <th className="console-event when"> ${this.when} </th>
-            <th className="console-event who"> ${this.who} </th>
-            <th className="console-event what"> ${this.what} </th>
+        return `<tr class="console-lines">
+            <th class="console-event when"> ${this.when} </th>
+            <th class="console-event who"> ${this.who} </th>
+            <th class="console-event what"> ${this.what} </th>
         </tr>`;
     }
 }
