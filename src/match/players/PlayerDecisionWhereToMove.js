@@ -7,24 +7,35 @@ export const DECISION_WHERE_TO_MOVE = {
 export default class PlayerDecisionWhereToMove {
     constructor(player) {
         this.player = player;
-        this.maxIndex = 100;
+        //    this.maxIndex = 100;
     }
-    
+
     run() {
-        const randomIndex = Math.round(Math.random() * 100);
         const {moveToBallRange, moveToPosRange, moveToGoalRange} = this.createRanges();
-        
+        const randomIndex = Math.round(Math.random() * moveToGoalRange.max);
+
         if (randomIndex >= moveToBallRange.min && randomIndex <= moveToBallRange.max) {
+            this.player.destinationX = this.player.ball.positionX;
+            this.player.destinationY = this.player.ball.positionY;
             return DECISION_WHERE_TO_MOVE.MOVE_TO_BALL;
         }
         if (randomIndex > moveToPosRange.min && randomIndex <= moveToPosRange.max) {
+            this.player.destinationX = this.player.nominalPositionX;
+            this.player.destinationY = this.player.nominalPositionY;
             return DECISION_WHERE_TO_MOVE.MOVE_TO_POSITION;
         }
         if (randomIndex > moveToGoalRange.min && randomIndex <= moveToGoalRange.max) {
+            // if (this.player.isInAwayTeam) {
+            //     this.player.destinationX=this.player.field.homeGoalX;
+            //     this.player.destinationY=this.player.field.homeGoalY + (this.player.field.goalHeight / 2);
+            // } else {
+            //     this.player.destinationX=this.player.field.awayGoalX;
+            //     this.player.destinationY=this.player.field.awayGoalY + (this.player.field.goalHeight / 2);
+            // }
             return DECISION_WHERE_TO_MOVE.MOVE_TO_GOAL;
         }
     }
-    
+
     createRanges() {
         const moveToBallRange = {
             min: 0,
@@ -40,38 +51,32 @@ export default class PlayerDecisionWhereToMove {
         }
         return {moveToBallRange, moveToPosRange, moveToGoalRange};
     }
-    
+
     possibilityOfMoveToBall() {
-        if (this.player.hasBall) {
-            return 0;
-        }
-        if (this.isCloseToOpponent()) {
+        if (!this.player.hasBall && this.isCloseToOpponent()) {
             return 100;
         }
-        return 20;
+        return 0;
     }
-    
+
     possibilityOfMoveToPosition() {
-        if (this.player.hasBall) {
-            return 0;
-        }
-        if (this.isCloseToOpponent()) {
-            return 0;
-        }
-        return 70;
-    }
-    
-    possibilityOfMoveToGoal() {
-        if (this.player.hasBall) {
-            return 100;
-        }
-        if (this.isCloseToOpponent()) {
+        if (this.player.hasBall || this.isCloseToOpponent()) {
             return 0;
         }
         return 10;
     }
-    
+
+    possibilityOfMoveToGoal() {
+        if (this.player.hasBall) {
+            return 100;
+        }
+        return 0;
+    }
+
     isCloseToOpponent() {
-        return this.player.getDistanceTo(this.player.ball) < 150;
+        if (this.player.team.hasBall !== true) {
+            return this.player.getDistanceTo(this.player.ball) < 100;
+        }
+        return false;
     }
 }

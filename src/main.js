@@ -140,5 +140,5 @@ function tests(homeTeam, awayTeam) {
     let playerDef = homeTeam.squad.get(1);
     const player = new Player(playerDef, homeTeam);
     let playerDecisionEvent = new PlayerDecisionEvent(player);
-    playerDecisionEvent.validator();
+    // playerDecisionEvent.validator();
 }

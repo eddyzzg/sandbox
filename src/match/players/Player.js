@@ -21,8 +21,12 @@ export default class Player extends BaseMatchElement {
         this.shortsColor = team.shortsColor;
         this.startPositionX = 0;
         this.startPositionY = 0;
+        this.destinationX=0;
+        this.destinationY=0;
         this.nominalPositionX = 1;
         this.nominalPositionY = 1;
+        this.offsetX = undefined;
+        this.offsetY = undefined;
         this.hasBall = false;
         this.definition = playerDef;
         this.ball = undefined;
@@ -98,20 +102,21 @@ export default class Player extends BaseMatchElement {
         this.positionX = 1200;
     }
     
-    decide() {
-        if (this.isGK) {
-            return new GoalKeeperDecisionEvent(this).run();
-        }
-        return new PlayerDecisionEvent(this).run();
+    decide(homeTeam,awayTeam) {
+        // if (this.isGK) {
+        //     return new GoalKeeperDecisionEvent(this).run();
+        // }
+
+        return new PlayerDecisionEvent(this,homeTeam,awayTeam).run();
     }
     
     decideWhereToMove() {
-        if (this.isGK) {
-            return new GoalKeeperDecisionWhereToMove(this).run();
-        }
+        // if (this.isGK) {
+        //     return new GoalKeeperDecisionWhereToMove(this).run();
+        // }
         return new PlayerDecisionWhereToMove(this).run();
     }
-    
+
     /**
      * @param {Number} positionX
      * @param {Number} positionY
@@ -147,6 +152,8 @@ export default class Player extends BaseMatchElement {
         this.setAnimationFile(offsetX, offsetY);
         this.positionX = this.positionX + offsetX;
         this.positionY = this.positionY + offsetY;
+        this.offsetX=offsetX;
+        this.offsetY=offsetY;
     }
     
     getDeltas(positionX, positionY) {
@@ -192,8 +199,10 @@ export default class Player extends BaseMatchElement {
         this.setHasBall(false);
         closestPlayer.setHasBall(true);
         return ball.move(closestPlayer.positionX, closestPlayer.positionY);
-    };
-    
+    }
+
+
+
     /**
      *
      * @param {Boolean} boolean
@@ -254,7 +263,9 @@ export default class Player extends BaseMatchElement {
         let deltaY = this.positionY - object.positionY;
         return Math.ceil(Math.sqrt(deltaX * deltaX + deltaY * deltaY));
     }
-    
+
+
+
     setNominalPosition(x, y) {
         this.nominalPositionX = x;
         this.nominalPositionY = y;
@@ -263,7 +274,9 @@ export default class Player extends BaseMatchElement {
     tryToWinTheBall(player, opponent) {
         if (Math.random() * (player.definition.technique + player.definition.dribble + player.definition.speed) > Math.random() * (opponent.definition.technique + opponent.definition.dribble + opponent.definition.speed)) {
             player.setHasBall(true);
+            player.definition.speed=50;   //diagnostics
             opponent.setHasBall(false);
+            opponent.definition.speed=30;   //diagnostics
             return this.ball.move(player.positionX, player.positionY);
         } else {
             return Promise.resolve(false);

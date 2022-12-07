@@ -8,7 +8,7 @@ export default class PlayerDef {
         this.avatar = new Avatar(this.id, shirtColor, shortsColor);
         
         this.strength = Math.ceil(Math.random() * 100);
-        this.speed = Math.ceil(Math.random() * 100) / 2;
+        this.speed = 30; // Math.ceil(Math.random() * 100) / 2;     // diagnostics
         this.power = Math.ceil(Math.random() * 100);
         this.passing = Math.ceil(Math.random() * 100);
         this.dribble = Math.ceil(Math.random() * 100);

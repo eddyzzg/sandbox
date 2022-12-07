@@ -16,7 +16,9 @@ export default class MatchEventConflictManager {
             
             if (!positionConflict.success) {
                 //TODO: do statystyk wygrana/przegrana batalia o miejsce
-                positionConflict.executePositionBattle();
+                if (!this.players.conflictWin) {
+                    positionConflict.executePositionBattle();
+                }
             }
         });
     }
@@ -66,7 +68,11 @@ export default class MatchEventConflictManager {
     checkMyPositionWithRest(inPlayer) {
         const inPosX = inPlayer.positionX;
         const inPosY = inPlayer.positionY;
-        
+        const areaOccupiedByInPlayerX = {from: inPlayer.positionX, to: inPlayer.positionX + playerWidth};
+        const areaOccupiedByInPlayerY = {from: inPlayer.positionY, to: inPlayer.positionY + playerHeight};
+
+
+
         const conflictReport = new PositionXConflictReport(inPlayer);
         this.players.forEach((player) => {
             if (player.id !== inPlayer.id) {
@@ -75,6 +81,8 @@ export default class MatchEventConflictManager {
                 
                 if (inPosX >= areaOccupiedByPlayerX.from && inPosX <= areaOccupiedByPlayerX.to) {
                     if (inPosY >= areaOccupiedByPlayerY.from && inPosY <= areaOccupiedByPlayerY.to) {
+
+                       // let delta = getConflictedDeltaXY(areaOccupiedByPlayerX,areaOccupiedByPlayerY,areaOccupiedByInPlayerX,areaOccupiedByInPlayerY);
                         conflictReport.addConflict(player);
                     }
                 }
@@ -82,7 +90,14 @@ export default class MatchEventConflictManager {
         });
         return conflictReport;
     }
+
+    getConflictedDeltaXY(areaOccupiedByPlayerX,areaOccupiedByPlayerY,areaOccupiedByInPlayerX,areaOccupiedByInPlayerY) {
+        // TODO wyliczyć o ile na siebie nachodzo
+    }
 }
+
+
+
 
 class MatchSpecialEventReport {
     constructor(match) {
@@ -121,19 +136,39 @@ class PositionXConflictReport {
         this.conflictedPlayers.every((conflictedPlayer) => {
             if (this.player.id !== conflictedPlayer.id) {
                 if (strength > conflictedPlayer.definition.strength) {
-                    conflictedPlayer.positionX = conflictedPlayer.positionX - playerWidth;
-                    conflictedPlayer.positionY = conflictedPlayer.positionY - playerHeight;
                     return true;
                 } else {
                     success = false;
-                    
-                    this.player.positionX = this.player.positionX - playerWidth;
-                    this.player.positionY = this.player.positionY - playerHeight;
-                    
+
+                    let battleLostOffsetX=this.player.offsetX;
+                    let battleLostOffsetY=this.player.offsetY;
+                    if (this.player.offsetX>15) {
+                        battleLostOffsetX=15;
+                    }
+                    if (this.player.offsetX<-15) {
+                        battleLostOffsetX=-15;
+                    }
+                    if (this.player.offsetY>15) {
+                        battleLostOffsetY=15;
+                    }
+                    if (this.player.offsetY<-15) {
+                        battleLostOffsetY=-15;
+                    }
+
+
+                    this.player.positionX = this.player.positionX - battleLostOffsetX;
+                    this.player.positionY = this.player.positionY - battleLostOffsetY;
+                    this.player.offsetX=0;
+                    this.player.offsetY=0;
+                    conflictedPlayer.conflictWin = true;
                     return false;
                 }
             }
         });
         return success;
+    }
+
+    getLostConflictPosition() {
+        this.player
     }
 }

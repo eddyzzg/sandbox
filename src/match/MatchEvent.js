@@ -46,7 +46,8 @@ export default class MatchEvent {
     
     calculateDecisions() {
         this.getAllPlayers().forEach((player) => {
-            let decision = player.decide();
+
+            let decision = player.decide(this.homeTeam,this.awayTeam);
             let finalDecision = '';
             
             switch (decision) {
@@ -107,23 +108,27 @@ export default class MatchEvent {
         let finalDecisionToShow;
         let decisionWhereToMove = player.decideWhereToMove();
         
-        switch (decisionWhereToMove) {
-            case DECISION_WHERE_TO_MOVE.MOVE_TO_BALL:
-                player.moveInDirectionOfXY(this.ball.positionX, this.ball.positionY);
-                break;
-            
-            case DECISION_WHERE_TO_MOVE.MOVE_TO_POSITION:
-                player.moveInDirectionOfXY(player.nominalPositionX, player.nominalPositionY);
-                break;
-            
-            case DECISION_WHERE_TO_MOVE.MOVE_TO_GOAL:
-                if (player.isInAwayTeam) {
-                    player.moveInDirectionOfXY(this.field.homeGoalX, this.field.homeGoalY + (this.field.goalHeight / 2));
-                } else {
-                    player.moveInDirectionOfXY(this.field.awayGoalX, this.field.awayGoalY + (this.field.goalHeight / 2));
-                }
-                break;
-        }
+        // switch (decisionWhereToMove) {
+        //     case DECISION_WHERE_TO_MOVE.MOVE_TO_BALL:
+        //         player.moveInDirectionOfXY(decisionWhereToMove.destinationX, decisionWhereToMove.destinationY);
+        //         break;
+        //
+        //     case DECISION_WHERE_TO_MOVE.MOVE_TO_POSITION:
+        //         player.moveInDirectionOfXY(player.nominalPositionX, player.nominalPositionY);
+        //         break;
+        //
+        //     case DECISION_WHERE_TO_MOVE.MOVE_TO_GOAL:
+        //         if (player.isInAwayTeam) {
+        //             player.moveInDirectionOfXY(this.field.homeGoalX, this.field.homeGoalY + (this.field.goalHeight / 2));
+        //         } else {
+        //             player.moveInDirectionOfXY(this.field.awayGoalX, this.field.awayGoalY + (this.field.goalHeight / 2));
+        //         }
+        //         break;
+        // }
+
+
+        player.moveInDirectionOfXY(player.destinationX,player.destinationY);
+
         finalDecisionToShow = decisionWhereToMove;
         finalDecisionToShow = this.tryToWinTheBall(player, finalDecisionToShow);
         this.moveBallWithPlayer(player);

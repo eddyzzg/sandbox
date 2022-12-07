@@ -177,6 +177,8 @@ export default class Match {
         const promises = [];
         const forwardPlayer = this.homePlayers[10];
         forwardPlayer.setHasBall(true);
+        forwardPlayer.definition.speed = 50;  // diagnostics
+
         forwardPlayer.moveToXY(this.homePlayerStarterPosX, this.homePlayerStarterPosY);
         promises.push(forwardPlayer.executeMove());
 
