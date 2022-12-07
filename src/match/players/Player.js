@@ -21,12 +21,8 @@ export default class Player extends BaseMatchElement {
         this.shortsColor = team.shortsColor;
         this.startPositionX = 0;
         this.startPositionY = 0;
-        this.destinationX=0;
-        this.destinationY=0;
         this.nominalPositionX = 1;
         this.nominalPositionY = 1;
-        this.offsetX = undefined;
-        this.offsetY = undefined;
         this.hasBall = false;
         this.definition = playerDef;
         this.ball = undefined;
@@ -201,6 +197,14 @@ export default class Player extends BaseMatchElement {
         return ball.move(closestPlayer.positionX, closestPlayer.positionY);
     }
 
+
+    pass(player, destination, ball) {
+
+        this.setHasBall(false);
+        player.passTarget.setHasBall(true);
+        return ball.move(player.passTarget.positionX, player.passTarget.positionY);
+
+    }
 
 
     /**

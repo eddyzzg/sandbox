@@ -9,6 +9,7 @@ export default class PlayerDef {
         
         this.strength = Math.ceil(Math.random() * 100);
         this.speed = 30; // Math.ceil(Math.random() * 100) / 2;     // diagnostics
+        this.vision = 50;  // diagnostics
         this.power = Math.ceil(Math.random() * 100);
         this.passing = Math.ceil(Math.random() * 100);
         this.dribble = Math.ceil(Math.random() * 100);

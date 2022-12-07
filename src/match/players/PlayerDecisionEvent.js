@@ -12,8 +12,8 @@ export default class PlayerDecisionEvent {
         this.awayTeam = awayTeam;
         this.homeTeam = homeTeam;
         //       this.maxIndex = 100;
-        
-        this.tools = new GamePlayTools(this);
+
+        this.tools = new GamePlayTools(player);
     }
 
     //diagnostic functionality
@@ -56,6 +56,8 @@ export default class PlayerDecisionEvent {
     }
 
     getPossibilityOfMove() {
+
+
         if (this.player.hasBall) {
             if (this.player.isInAwayTeam) {
                 return this.getBestRunningDestination(this.homeTeam);
@@ -63,7 +65,7 @@ export default class PlayerDecisionEvent {
                 return this.getBestRunningDestination(this.awayTeam)
             }
         } else
-            return 10;
+            return 1;
     }
 
 
@@ -85,8 +87,8 @@ export default class PlayerDecisionEvent {
 
         let runningDestinations = this.tools.getRunningDestinations(this.player, goalCenterCoordinates, r);
         runningDestinations.forEach((destination) => {
-            if (bestTunnelValue < this.tools.getTunnelValue(oppositePlayers, destination)) {
-                bestTunnelValue = this.tools.getTunnelValue(oppositePlayers, destination);
+            if (bestTunnelValue < this.tools.getRunningTunnelValue(oppositePlayers, destination)) {
+                bestTunnelValue = this.tools.getRunningTunnelValue(oppositePlayers, destination);
                 this.player.destinationX = destination.positionX;
                 this.player.destinationY = destination.positionY;
 
@@ -96,11 +98,38 @@ export default class PlayerDecisionEvent {
         return bestTunnelValue;
     }
 
+    getBestPossibilityOfPass() {
+
+    }
 
     getPossibilityOfPass() {
+        let vision = this.player.definition.vision * 5;   // ustalenie zasięgu widzenia ziomków do podania
+        let bestPossibilityofPass = 0;
         if (this.player.hasBall) {
-            return 0;   // diagnostics
+            //          this.tools.getHighPassTunnelValue(oppositePlayers,destination);
+            if (this.player.isInAwayTeam) {
+                this.awayTeam.forEach((destination) => {
+                    if (vision > this.player.getDistanceTo(destination)) {
+                        if (bestPossibilityofPass < this.tools.getLowPassTunnelValue(this.homeTeam, destination)) {
+                            bestPossibilityofPass = this.tools.getLowPassTunnelValue(this.homeTeam, destination);
+                            this.player.passTarget = destination;
+                        }
+                    }
+                });
+
+            } else {
+                this.homeTeam.forEach((destination) => {
+                    if (vision > this.player.getDistanceTo(destination)) {
+                        if (bestPossibilityofPass < this.tools.getLowPassTunnelValue(this.homeTeam, destination)) {
+                            bestPossibilityofPass = this.tools.getLowPassTunnelValue(this.homeTeam, destination);
+                            this.player.passTarget = destination;
+                        }
+                    }
+                });
+            }
+            return bestPossibilityofPass;
         }
+
         return 0;
     }
 
