@@ -264,8 +264,6 @@ export default class Player extends BaseMatchElement {
         return Math.ceil(Math.sqrt(deltaX * deltaX + deltaY * deltaY));
     }
 
-
-
     setNominalPosition(x, y) {
         this.nominalPositionX = x;
         this.nominalPositionY = y;
