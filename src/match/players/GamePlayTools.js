@@ -146,7 +146,7 @@ export default class GamePlayTools {
     }
 
     getLowPassTunnelValue(oppositePlayers, destination) {
-        let opponentDistanceLimit = 75; // poniżej tej wartości odległość przeciwnika od tunelu wpływa na jego ocenę
+        let opponentDistanceLimit = 40; // poniżej tej wartości odległość przeciwnika od tunelu wpływa na jego ocenę
         let tunnelValue = 50;
 
         let a = this.getDistanceFromTo(this.player, destination); // boki trójkąta gracz - cel
