@@ -110,7 +110,7 @@ export default class PlayerDecisionEvent {
             //          this.tools.getHighPassTunnelValue(oppositePlayers,destination);
             if (this.player.isInAwayTeam) {
                 this.awayTeam.forEach((destination) => {
-                    if ((vision > this.player.getDistanceTo(destination))&&((this.player.id!==destination.id))) {
+                    if ((vision > this.player.getDistanceTo(destination))&&((this.player.definition.id!==destination.definition.id))) {
                         possibilityOfPass=this.tools.getLowPassTunnelValue(this.homeTeam, destination);
                         if (bestPossibilityOfPass < possibilityOfPass) {
                             bestPossibilityOfPass = possibilityOfPass
@@ -121,7 +121,7 @@ export default class PlayerDecisionEvent {
 
             } else {
                 this.homeTeam.forEach((destination) => {
-                    if ((vision > this.player.getDistanceTo(destination))&&((this.player.id!==destination.id))) {
+                    if ((vision > this.player.getDistanceTo(destination))&&((this.player.definition.id!==destination.definition.id))) {
                         possibilityOfPass=this.tools.getLowPassTunnelValue(this.homeTeam, destination);
                         if (bestPossibilityOfPass < possibilityOfPass) {
                             bestPossibilityOfPass = possibilityOfPass

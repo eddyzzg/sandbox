@@ -146,7 +146,7 @@ export default class GamePlayTools {
     }
 
     getLowPassTunnelValue(oppositePlayers, destination) {
-        let opponentDistanceLimit = 40; // poniżej tej wartości odległość przeciwnika od tunelu wpływa na jego ocenę
+        let opponentDistanceLimit = 50; // poniżej tej wartości odległość przeciwnika od tunelu wpływa na jego ocenę
         let tunnelValue = 50;
 
         let a = this.getDistanceFromTo(this.player, destination); // boki trójkąta gracz - cel
@@ -171,18 +171,19 @@ export default class GamePlayTools {
                     tunnelValue = tunnelValue - (opponentDistanceLimit - triangleHeight);    // zmniejszamy wartość kanału o współczynnik bliskości przeciwnika do kanału
                 }
             }
+
             if (tunnelValue <= 0) {
                 tunnelValue = 0;
             }
         });
-
+        console.log("podanie do:" ,destination.definition.name,"czystość kanału:",tunnelValue);
         if (0 < tunnelValue + this.getTeammatePositionValue(this.player, destination)) {
             tunnelValue = tunnelValue + this.getTeammatePositionValue(this.player, destination);
         } else {
             tunnelValue = 0;
         }
 
-        console.log(destination.definition.name,tunnelValue);
+        console.log("ostateczna wartość kanału:",tunnelValue);
         return tunnelValue;
 
     }
