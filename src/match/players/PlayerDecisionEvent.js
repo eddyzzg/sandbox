@@ -104,14 +104,16 @@ export default class PlayerDecisionEvent {
 
     getPossibilityOfPass() {
         let vision = this.player.definition.vision * 5;   // ustalenie zasięgu widzenia ziomków do podania
-        let bestPossibilityofPass = 0;
+        let bestPossibilityOfPass = 0;
+        let possibilityOfPass = 0;
         if (this.player.hasBall) {
             //          this.tools.getHighPassTunnelValue(oppositePlayers,destination);
             if (this.player.isInAwayTeam) {
                 this.awayTeam.forEach((destination) => {
-                    if (vision > this.player.getDistanceTo(destination)) {
-                        if (bestPossibilityofPass < this.tools.getLowPassTunnelValue(this.homeTeam, destination)) {
-                            bestPossibilityofPass = this.tools.getLowPassTunnelValue(this.homeTeam, destination);
+                    if ((vision > this.player.getDistanceTo(destination))&&((this.player.id!==destination.id))) {
+                        possibilityOfPass=this.tools.getLowPassTunnelValue(this.homeTeam, destination);
+                        if (bestPossibilityOfPass < possibilityOfPass) {
+                            bestPossibilityOfPass = possibilityOfPass
                             this.player.passTarget = destination;
                         }
                     }
@@ -119,15 +121,16 @@ export default class PlayerDecisionEvent {
 
             } else {
                 this.homeTeam.forEach((destination) => {
-                    if (vision > this.player.getDistanceTo(destination)) {
-                        if (bestPossibilityofPass < this.tools.getLowPassTunnelValue(this.homeTeam, destination)) {
-                            bestPossibilityofPass = this.tools.getLowPassTunnelValue(this.homeTeam, destination);
+                    if ((vision > this.player.getDistanceTo(destination))&&((this.player.id!==destination.id))) {
+                        possibilityOfPass=this.tools.getLowPassTunnelValue(this.homeTeam, destination);
+                        if (bestPossibilityOfPass < possibilityOfPass) {
+                            bestPossibilityOfPass = possibilityOfPass
                             this.player.passTarget = destination;
                         }
                     }
                 });
             }
-            return bestPossibilityofPass;
+            return bestPossibilityOfPass;
         }
 
         return 0;

@@ -168,7 +168,7 @@ export default class GamePlayTools {
                 triangleField = Math.sqrt(halfOfTrianglePerimeter * (halfOfTrianglePerimeter - a) * (halfOfTrianglePerimeter - b) * (halfOfTrianglePerimeter - c));
                 triangleHeight = 2 * triangleField / a;
                 if (triangleHeight < opponentDistanceLimit) {
-                    tunnelValue = tunnelValue - (opponentDistanceLimit - triangleHeight);
+                    tunnelValue = tunnelValue - (opponentDistanceLimit - triangleHeight);    // zmniejszamy wartość kanału o współczynnik bliskości przeciwnika do kanału
                 }
             }
             if (tunnelValue <= 0) {
@@ -179,14 +179,10 @@ export default class GamePlayTools {
         if (0 < tunnelValue + this.getTeammatePositionValue(this.player, destination)) {
             tunnelValue = tunnelValue + this.getTeammatePositionValue(this.player, destination);
         } else {
-            if (tunnelValue>0) {
-                tunnelValue=1;
-            }
-            if (tunnelValue<0) {
-                tunnelValue=0;
-            }
+            tunnelValue = 0;
         }
-        console.log(tunnelValue);
+
+        console.log(destination.definition.name,tunnelValue);
         return tunnelValue;
 
     }
