@@ -2,8 +2,6 @@ import playerHBS from '../../squad/player.hbs';
 import BaseMatchElement from '../BaseMatchElement';
 import PlayerDecisionEvent from './PlayerDecisionEvent';
 import PlayerDecisionWhereToMove from './PlayerDecisionWhereToMove'
-import GoalKeeperDecisionEvent from './GoalKeeperDecisionEvent';
-import GoalKeeperDecisionWhereToMove from './GoalKeeperDecisionWhereToMove';
 
 export default class Player extends BaseMatchElement {
     
@@ -48,7 +46,7 @@ export default class Player extends BaseMatchElement {
     
     beforeExecuteMove() {
         // let $element = this.getJQuerySelector();
-        // $element.css('background-image', `url("../src/styles/img/${this.shirtColor}player${this.animationFile}.gif")`);
+        // $element.css('background-image', `url('../src/styles/img/${this.shirtColor}player${this.animationFile}.gif')`);
     }
     
     /**
@@ -98,12 +96,12 @@ export default class Player extends BaseMatchElement {
         this.positionX = 1200;
     }
     
-    decide(homeTeam,awayTeam) {
+    decide(homeTeam, awayTeam) {
         // if (this.isGK) {
         //     return new GoalKeeperDecisionEvent(this).run();
         // }
-
-        return new PlayerDecisionEvent(this,homeTeam,awayTeam).run();
+        
+        return new PlayerDecisionEvent(this, homeTeam, awayTeam).run();
     }
     
     decideWhereToMove() {
@@ -112,7 +110,7 @@ export default class Player extends BaseMatchElement {
         // }
         return new PlayerDecisionWhereToMove(this).run();
     }
-
+    
     /**
      * @param {Number} positionX
      * @param {Number} positionY
@@ -135,10 +133,12 @@ export default class Player extends BaseMatchElement {
         let offsetX = proportionX * speed;
         let offsetY = proportionY * speed;
         
-        deltaX = positionX - this.positionX;   //  powrót do precyzyjnych różnic celem wyeliminowania niepotrzebnych ruchów
+        //  powrót do precyzyjnych różnic celem wyeliminowania niepotrzebnych ruchów
+        deltaX = positionX - this.positionX;
         deltaY = positionY - this.positionY;
         
-        if (Math.abs(deltaX) < speed) {      // jeżeli player jest blisko celu przesunie się tylko o ile trzeba
+        // jeżeli player jest blisko celu przesunie się tylko o ile trzeba
+        if (Math.abs(deltaX) < speed) {
             offsetX = Math.floor(deltaX);
         }
         if (Math.abs(deltaY) < speed) {
@@ -148,8 +148,8 @@ export default class Player extends BaseMatchElement {
         this.setAnimationFile(offsetX, offsetY);
         this.positionX = this.positionX + offsetX;
         this.positionY = this.positionY + offsetY;
-        this.offsetX=offsetX;
-        this.offsetY=offsetY;
+        this.offsetX = offsetX;
+        this.offsetY = offsetY;
     }
     
     getDeltas(positionX, positionY) {
@@ -174,13 +174,13 @@ export default class Player extends BaseMatchElement {
     
     setAnimationFile(offsetX, offsetY) {
         if (offsetX < 0) {
-            this.animationFile = "left";
+            this.animationFile = 'left';
         }
         if (offsetX >= 0) {
-            this.animationFile = "right";
+            this.animationFile = 'right';
         }
         if (Math.abs(offsetX) + Math.abs(offsetY) < 1) {
-            this.animationFile = "rest";
+            this.animationFile = 'rest';
         }
     }
     
@@ -196,15 +196,13 @@ export default class Player extends BaseMatchElement {
         closestPlayer.setHasBall(true);
         return ball.move(closestPlayer.positionX, closestPlayer.positionY);
     }
-
-
+    
     pass(player, ball) {     // TODO  coś tu albo w wybieraniu celu podania sie pierdoli - czasem jest błąd przy podaniu, zazwyczaj do bocznego obroncy
         this.setHasBall(false);
         player.passTarget.setHasBall(true);
         return ball.move(player.passTarget.positionX, player.passTarget.positionY);
     }
-
-
+    
     /**
      *
      * @param {Boolean} boolean
@@ -265,7 +263,7 @@ export default class Player extends BaseMatchElement {
         let deltaY = this.positionY - object.positionY;
         return Math.ceil(Math.sqrt(deltaX * deltaX + deltaY * deltaY));
     }
-
+    
     setNominalPosition(x, y) {
         this.nominalPositionX = x;
         this.nominalPositionY = y;
@@ -274,9 +272,9 @@ export default class Player extends BaseMatchElement {
     tryToWinTheBall(player, opponent) {
         if (Math.random() * (player.definition.technique + player.definition.dribble + player.definition.speed) > Math.random() * (opponent.definition.technique + opponent.definition.dribble + opponent.definition.speed)) {
             player.setHasBall(true);
-            player.definition.speed=50;   //diagnostics
+            player.definition.speed = this.config.getParam('playerWithBall');   //diagnostics
             opponent.setHasBall(false);
-            opponent.definition.speed=30;   //diagnostics
+            opponent.definition.speed = this.config.getParam('playerWithoutBall');   //diagnostics
             return this.ball.move(player.positionX, player.positionY);
         } else {
             return Promise.resolve(false);

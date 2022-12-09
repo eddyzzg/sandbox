@@ -1,10 +1,12 @@
-import matchConfigurationDefault from './DefaultConfig.json';
+import matchConfigurationDefault from './defaultConfig.json';
 
 export default class MatchConfig {
-    showConfig
-    
     constructor() {
         this.params = this.loadDefaultParams();
+    }
+    
+    showConfigurationPanel() {
+    
     }
     
     loadDefaultParams() {
