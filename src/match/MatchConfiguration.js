@@ -10,8 +10,7 @@ export default class MatchConfig {
     }
     
     loadDefaultParams() {
-        const parsedJson = JSON.parse(matchConfigurationDefault)
-        return new Map(Object.entries(parsedJson));
+        return new Map(Object.entries(matchConfigurationDefault));
     }
     
     getParam(name) {
