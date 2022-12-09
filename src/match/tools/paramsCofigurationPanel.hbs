@@ -1,0 +1,10 @@
+<div class="configuration-panel">
+    <form>
+        {{#each params}}
+            <div class="{{this.name}}-container">
+                <label for="{{this.name}}-conf-input">{{this.name}}: </label>
+                <input type="text" id="{{this.name}}-conf-input" name="{{this.name}}" value="{{this.value}}"/>
+            </div>
+        {{/each}}
+    </form>
+</div>
