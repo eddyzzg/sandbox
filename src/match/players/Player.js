@@ -272,9 +272,9 @@ export default class Player extends BaseMatchElement {
     tryToWinTheBall(player, opponent) {
         if (Math.random() * (player.definition.technique + player.definition.dribble + player.definition.speed) > Math.random() * (opponent.definition.technique + opponent.definition.dribble + opponent.definition.speed)) {
             player.setHasBall(true);
-            player.definition.speed = this.config.getParam('playerWithBall');   //diagnostics
+            player.definition.speed = API.getGlobalParam('playerWithBall');   //diagnostics
             opponent.setHasBall(false);
-            opponent.definition.speed = this.config.getParam('playerWithoutBall');   //diagnostics
+            opponent.definition.speed = API.getGlobalParam('playerWithoutBall');   //diagnostics
             return this.ball.move(player.positionX, player.positionY);
         } else {
             return Promise.resolve(false);

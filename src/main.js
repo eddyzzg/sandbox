@@ -10,7 +10,21 @@ import {eventBus, events} from './lifecycle/EventBus';
 import PlayerDecisionEvent from './match/players/PlayerDecisionEvent';
 import Player from './match/players/Player';
 
+const configNotInitError = 'GLOBAL CONFIG NOT INIT !';
+
 global.API = {};
+global.API.getGlobalParam = (name) => {
+    if (API.match && API.match.config) {
+        return API.match.config.getParam(name);
+    }
+    return configNotInitError;
+}
+global.API.setGlobalParam = (name, value) => {
+    if (API.match && API.match.config) {
+        return API.match.config.setParam(name, value);
+    }
+    return configNotInitError;
+}
 
 $(document).ready(function () {
     /*
