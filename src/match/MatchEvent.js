@@ -150,13 +150,13 @@ export default class MatchEvent {
         return finalDecisionToShow;
     }
     
-    calculatePassDecision(player,destination) {
+    calculatePassDecision(player) {
         // if (player.isInAwayTeam) {
         //     player.passToClosestTeammate(this.awayTeam, this.ball);
         // } else {
         //     player.passToClosestTeammate(this.homeTeam, this.ball);
         // }
-        player.pass(player,destination,this.ball);
+        player.pass(player,this.ball);
     }
     
     calculateShootDecision(player) {

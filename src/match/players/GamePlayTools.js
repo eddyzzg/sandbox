@@ -122,7 +122,7 @@ export default class GamePlayTools {
 
     getHighPassTunnelValue(oppositePlayers, destination) {
         let opponentDistanceLimit = 75; // poniżej tej wartości odległość przeciwnika od gracza i od celu wpływa na jego ocenę
-        let tunnelValue = 30;  // wartość podania górą zawsze będzie mniej preferowana, niż podanie dołem (40 vs 50);
+        let tunnelValue = 30;  // wartość podania górą zawsze będzie mniej preferowana, niż podanie dołem (30 vs 50);
         let opponentDistanceFromPlayer = 0;
         let opponentDistanceFromDestination = 0;
 
@@ -176,14 +176,13 @@ export default class GamePlayTools {
                 tunnelValue = 0;
             }
         });
-        console.log("podanie do:" ,destination.definition.name,"czystość kanału:",tunnelValue);
+
         if (0 < tunnelValue + this.getTeammatePositionValue(this.player, destination)) {
             tunnelValue = tunnelValue + this.getTeammatePositionValue(this.player, destination);
         } else {
             tunnelValue = 0;
         }
 
-        console.log("ostateczna wartość kanału:",tunnelValue);
         return tunnelValue;
 
     }

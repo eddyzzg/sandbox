@@ -198,12 +198,10 @@ export default class Player extends BaseMatchElement {
     }
 
 
-    pass(player, destination, ball) {
-
+    pass(player, ball) {     // TODO  coś tu albo w wybieraniu celu podania sie pierdoli - czasem jest błąd przy podaniu, zazwyczaj do bocznego obroncy
         this.setHasBall(false);
         player.passTarget.setHasBall(true);
         return ball.move(player.passTarget.positionX, player.passTarget.positionY);
-
     }
 
 
