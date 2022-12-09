@@ -1,6 +1,6 @@
 import MatchEventConflictManager from "./MatchEventConflictManager";
 import {DECISION} from './players/PlayerDecisionEvent';
-import {ConsoleEvent} from "./MatchTools";
+import {ConsoleEvent} from "./tools/MatchTools";
 
 export default class MatchEvent {
     

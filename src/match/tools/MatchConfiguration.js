@@ -5,8 +5,14 @@ export default class MatchConfig {
         this.params = this.loadDefaultParams();
     }
     
-    showConfigurationPanel() {
-    
+    /**
+     * @param {HTMLDivElement} buttonsContainer
+     */
+    showConfigurationPanel(buttonsContainer) {
+        //add button
+        $(buttonsContainer).append();
+        
+        //get my container and render there
     }
     
     loadDefaultParams() {

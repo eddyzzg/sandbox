@@ -14,14 +14,14 @@ const configNotInitError = 'GLOBAL CONFIG NOT INIT !';
 
 global.API = {};
 global.API.getGlobalParam = (name) => {
-    if (API.match && API.match.config) {
-        return API.match.config.getParam(name);
+    if (API.match && API.match.tools && API.match.tools.config) {
+        return API.match.tools.config.getParam(name);
     }
     return configNotInitError;
 }
 global.API.setGlobalParam = (name, value) => {
-    if (API.match && API.match.config) {
-        return API.match.config.setParam(name, value);
+    if (API.match && API.match.tools && API.match.tools.config) {
+        return API.match.tools.config.setParam(name, value);
     }
     return configNotInitError;
 }

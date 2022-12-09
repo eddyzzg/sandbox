@@ -1,10 +1,9 @@
 import Field from './Field';
 import MatchEvent from './MatchEvent';
 import Ball from './Ball';
-import scoreboard from './scoreboard.hbs';
+import scoreboard from './tools/scoreboard.hbs';
 import MatchSpecialEvent from "./matchSpecialEvents/MatchSpecialEvent";
-import MatchTools from "./MatchTools";
-import MatchConfig from "./MatchConfiguration";
+import MatchTools from "./tools/MatchTools";
 
 export default class Match {
     
@@ -35,8 +34,6 @@ export default class Match {
         this.tools = new MatchTools(this);
         this.isPaused = false;
         this.visibleNames = true;
-        
-        this.config = new MatchConfig();
         
         /** @type {Match} - pin to window */
         API.match = this;
