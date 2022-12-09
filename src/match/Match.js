@@ -4,7 +4,7 @@ import Ball from './Ball';
 import scoreboard from './scoreboard.hbs';
 import MatchSpecialEvent from "./matchSpecialEvents/MatchSpecialEvent";
 import MatchTools from "./MatchTools";
-import MatchConfig from "./matchConfiguration";
+import MatchConfig from "./MatchConfiguration";
 
 export default class Match {
     
