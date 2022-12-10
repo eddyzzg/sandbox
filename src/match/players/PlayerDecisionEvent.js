@@ -12,7 +12,6 @@ export default class PlayerDecisionEvent {
         this.awayTeam = awayTeam;
         this.homeTeam = homeTeam;
         //       this.maxIndex = 100;
-
         this.tools = new GamePlayTools(player);
     }
 
@@ -56,8 +55,6 @@ export default class PlayerDecisionEvent {
     }
 
     getPossibilityOfMove() {
-
-
         if (this.player.hasBall) {
             if (this.player.isInAwayTeam) {
                 return this.getBestRunningDestination(this.homeTeam);
@@ -67,7 +64,6 @@ export default class PlayerDecisionEvent {
         } else
             return 1;
     }
-
 
     getBestRunningDestination(oppositePlayers) {
         const goalCenterCoordinates = {
@@ -91,10 +87,8 @@ export default class PlayerDecisionEvent {
                 bestTunnelValue = this.tools.getRunningTunnelValue(oppositePlayers, destination);
                 this.player.destinationX = destination.positionX;
                 this.player.destinationY = destination.positionY;
-
             }
         });
-
         return bestTunnelValue;
     }
 
@@ -110,46 +104,38 @@ export default class PlayerDecisionEvent {
         if (this.player.hasBall) {
             if (this.player.isInAwayTeam) {
                 this.awayTeam.forEach((destination) => {
-
                     if ((vision > this.player.getDistanceTo(destination)) && ((this.player.definition.id !== destination.definition.id))) {
                         possibilityOfLowPass = this.tools.getLowPassTunnelValue(this.homeTeam, destination);
                         possibilityOfHighPass = this.tools.getHighPassTunnelValue(this.homeTeam, destination);
-                        if (bestPossibilityOfPass < possibilityOfLowPass) {
-                            bestPossibilityOfPass = possibilityOfLowPass
-                            this.player.passTarget = destination;                  // Chuj wie czemu to działa, te zmienne nie są zadeklarowane w konstruktorze
-                            this.player.passType = "low";                          // chyba trzeba to jakoś inaczej ogarnąć
-                        }
-                        if (bestPossibilityOfPass < possibilityOfHighPass) {
-                            bestPossibilityOfPass = possibilityOfHighPass
-                            this.player.passTarget = destination;
-                            this.player.passType = "high";
-                        }
+                        bestPossibilityOfPass = this.setPassTypeAndTarget(bestPossibilityOfPass, possibilityOfLowPass, destination, possibilityOfHighPass);
                     }
                 });
-
             } else {
                 this.homeTeam.forEach((destination) => {
                     if ((vision > this.player.getDistanceTo(destination)) && ((this.player.definition.id !== destination.definition.id))) {
                         possibilityOfLowPass = this.tools.getLowPassTunnelValue(this.awayTeam, destination);
                         possibilityOfHighPass = this.tools.getHighPassTunnelValue(this.awayTeam, destination);
-                        if (bestPossibilityOfPass < possibilityOfLowPass) {
-                            bestPossibilityOfPass = possibilityOfLowPass
-                            this.player.passTarget = destination;
-                            this.player.passType = "low";
-                        }
-                        if (bestPossibilityOfPass < possibilityOfHighPass) {
-                            bestPossibilityOfPass = possibilityOfHighPass
-                            this.player.passTarget = destination;
-                            this.player.passType = "high";
-                        }
+                        bestPossibilityOfPass = this.setPassTypeAndTarget(bestPossibilityOfPass, possibilityOfLowPass, destination, possibilityOfHighPass);
                     }
                 });
             }
-
             return bestPossibilityOfPass;
         }
-
         return 0;
+    }
+
+    setPassTypeAndTarget(bestPossibilityOfPass, possibilityOfLowPass, destination, possibilityOfHighPass) {
+        if (bestPossibilityOfPass < possibilityOfLowPass) {
+            bestPossibilityOfPass = possibilityOfLowPass
+            this.player.passTarget = destination;                  // Chuj wie czemu to działa, te zmienne nie są zadeklarowane w konstruktorze
+            this.player.passType = "low";                          // chyba trzeba to jakoś inaczej ogarnąć
+        }
+        if (bestPossibilityOfPass < possibilityOfHighPass) {
+            bestPossibilityOfPass = possibilityOfHighPass
+            this.player.passTarget = destination;
+            this.player.passType = "high";
+        }
+        return bestPossibilityOfPass;
     }
 
     getPossibilityOfShoot() {

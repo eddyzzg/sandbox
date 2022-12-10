@@ -1,25 +1,34 @@
+import MatchConfig from "./MatchConfiguration";
+
 export default class MatchTools {
     constructor(match) {
         /** @type {HTMLDivElement} */
         this.container = document.getElementsByClassName('control-buttons')[0];
-
+        
         /** @type {Match} */
         this.match = match;
-
+        
         /** @type {HTMLDivElement} */
         this.console = document.getElementsByClassName('console')[0];
-
+        
+        this.config = new MatchConfig();
+        
         this.init();
     }
-
+    
     init() {
+        this.config.showConfigurationPanel(this.container);
+        this.addButtonsListeners();
+    }
+    
+    addButtonsListeners() {
         const self = this;
-
+        
         /** @type {HTMLDivElement} */
         const pausePlayBtn = this.container.getElementsByClassName('pause-play')[0];
         /** @type {HTMLDivElement} */
         const showNamesBtn = this.container.getElementsByClassName('showNames')[0];
-
+        
         pausePlayBtn.addEventListener('click', (event) => {
             self.togglePlayPause();
             
@@ -27,7 +36,7 @@ export default class MatchTools {
         });
         showNamesBtn.addEventListener('click', (event) => {
             self.showNames();
-    
+            
             $(showNamesBtn).toggleClass('off');
         });
     }
@@ -35,19 +44,19 @@ export default class MatchTools {
     togglePlayPause() {
         return this.match.isPaused ? this.resumeMatch() : this.pauseMatch();
     }
-
+    
     pauseMatch() {
         return this.match.pauseMatch();
     }
-
+    
     resumeMatch() {
         return this.match.resumeMatch();
     }
-
+    
     showNames() {
         return this.match.showNames();
     }
-
+    
     /**
      * @param {ConsoleEvent} event
      */
@@ -64,7 +73,7 @@ export class ConsoleEvent {
         this.when = when;
         this.what = what;
     }
-
+    
     create() {
         return `<tr class="console-lines">
             <th class="console-event when"> ${this.when} </th>

@@ -1,7 +1,6 @@
 import MatchEventConflictManager from "./MatchEventConflictManager";
-import {DECISION_WHERE_TO_MOVE} from './players/PlayerDecisionWhereToMove';
 import {DECISION} from './players/PlayerDecisionEvent';
-import {ConsoleEvent} from "./MatchTools";
+import {ConsoleEvent} from "./tools/MatchTools";
 
 export default class MatchEvent {
     
@@ -46,8 +45,8 @@ export default class MatchEvent {
     
     calculateDecisions() {
         this.getAllPlayers().forEach((player) => {
-
-            let decision = player.decide(this.homeTeam,this.awayTeam);
+            
+            let decision = player.decide(this.homeTeam, this.awayTeam);
             let finalDecision = '';
             
             switch (decision) {
@@ -105,31 +104,9 @@ export default class MatchEvent {
     }
     
     calculateMoveDecision(player) {
-        let finalDecisionToShow;
-        let decisionWhereToMove = player.decideWhereToMove();
+        let finalDecisionToShow = player.decideWhereToMove();
+        player.moveInDirectionOfXY(player.destinationX, player.destinationY);
         
-        // switch (decisionWhereToMove) {
-        //     case DECISION_WHERE_TO_MOVE.MOVE_TO_BALL:
-        //         player.moveInDirectionOfXY(decisionWhereToMove.destinationX, decisionWhereToMove.destinationY);
-        //         break;
-        //
-        //     case DECISION_WHERE_TO_MOVE.MOVE_TO_POSITION:
-        //         player.moveInDirectionOfXY(player.nominalPositionX, player.nominalPositionY);
-        //         break;
-        //
-        //     case DECISION_WHERE_TO_MOVE.MOVE_TO_GOAL:
-        //         if (player.isInAwayTeam) {
-        //             player.moveInDirectionOfXY(this.field.homeGoalX, this.field.homeGoalY + (this.field.goalHeight / 2));
-        //         } else {
-        //             player.moveInDirectionOfXY(this.field.awayGoalX, this.field.awayGoalY + (this.field.goalHeight / 2));
-        //         }
-        //         break;
-        // }
-
-
-        player.moveInDirectionOfXY(player.destinationX,player.destinationY);
-
-        finalDecisionToShow = decisionWhereToMove;
         finalDecisionToShow = this.tryToWinTheBall(player, finalDecisionToShow);
         this.moveBallWithPlayer(player);
         return finalDecisionToShow;
@@ -151,12 +128,7 @@ export default class MatchEvent {
     }
     
     calculatePassDecision(player) {
-        // if (player.isInAwayTeam) {
-        //     player.passToClosestTeammate(this.awayTeam, this.ball);
-        // } else {
-        //     player.passToClosestTeammate(this.homeTeam, this.ball);
-        // }
-        player.pass(player,this.ball);
+        player.pass(player, this.ball);
     }
     
     calculateShootDecision(player) {
