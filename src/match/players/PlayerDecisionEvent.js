@@ -130,7 +130,7 @@ export default class PlayerDecisionEvent {
             } else {
                 this.homeTeam.forEach((destination) => {
                     if ((vision > this.player.getDistanceTo(destination)) && ((this.player.definition.id !== destination.definition.id))) {
-                        possibilityOfHighPass = this.tools.getLowPassTunnelValue(this.awayTeam, destination);
+                        possibilityOfLowPass = this.tools.getLowPassTunnelValue(this.awayTeam, destination);
                         possibilityOfHighPass = this.tools.getHighPassTunnelValue(this.awayTeam, destination);
                         if (bestPossibilityOfPass < possibilityOfLowPass) {
                             bestPossibilityOfPass = possibilityOfLowPass
@@ -153,29 +153,56 @@ export default class PlayerDecisionEvent {
     }
 
     getPossibilityOfShoot() {
-    return 0;
-    // diagnostyka podań
+
         if (this.player.hasBall) {
-            let field = this.player.field;
-            let awayGoal = {positionX: field.awayGoalX, positionY: field.awayGoalY};
-            let homeGoal = {positionX: field.homeGoalX, positionY: field.homeGoalY};
-            let distance = 0;
+
+
+            let possibilityOfShoot = 0;
+            const goalCenterCoordinates = {
+                positionX: 0,
+                positionY: 0
+            };
+
+            if (this.player.isInAwayTeam) {     // ustalenie lokalizacji bramki w zaleznosci od druzyny zawodnika
+                goalCenterCoordinates.positionX = this.player.field.homeGoalX - this.player.field.goalWidth / 2;
+                goalCenterCoordinates.positionY = this.player.field.homeGoalY + this.player.field.goalHeight / 2;
+            } else {
+                goalCenterCoordinates.positionX = this.player.field.awayGoalX + this.player.field.goalWidth / 2;
+                goalCenterCoordinates.positionY = this.player.field.awayGoalY + this.player.field.goalHeight / 2;
+            }
+
 
             if (this.player.isInAwayTeam) {
-                distance = ((field.width / 2) - (this.player.getDistanceTo(homeGoal))) / 12;
-                if (distance < 0) {
-                    distance = 0;
-                }
-                return distance;
-
-            } else if (!this.player.isInAwayTeam) {
-                distance = ((field.width / 2) - (this.player.getDistanceTo(awayGoal))) / 12;
-                if (distance < 0) {
-                    distance = 0;
-                }
-                return distance;
+                possibilityOfShoot = this.tools.getLowShootTunnelValue(this.homeTeam, goalCenterCoordinates);
+            } else {
+                possibilityOfShoot = this.tools.getLowShootTunnelValue(this.awayTeam, goalCenterCoordinates);
             }
+
+
+            console.log(possibilityOfShoot);
+            return possibilityOfShoot;
         }
+        // if (this.player.hasBall) {
+        //     let field = this.player.field;
+        //     let awayGoal = {positionX: field.awayGoalX, positionY: field.awayGoalY};
+        //     let homeGoal = {positionX: field.homeGoalX, positionY: field.homeGoalY};
+        //     let distance = 0;
+        //
+        //     if (this.player.isInAwayTeam) {
+        //         distance = ((field.width / 2) - (this.player.getDistanceTo(homeGoal))) / 12;
+        //         if (distance < 0) {
+        //             distance = 0;
+        //         }
+        //         return distance;
+        //
+        //     } else if (!this.player.isInAwayTeam) {
+        //         distance = ((field.width / 2) - (this.player.getDistanceTo(awayGoal))) / 12;
+        //         if (distance < 0) {
+        //             distance = 0;
+        //         }
+        //         return distance;
+        //     }
+        // }
         return 0;
     }
 

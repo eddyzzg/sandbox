@@ -187,4 +187,41 @@ export default class GamePlayTools {
 
     }
 
+    getLowShootTunnelValue(oppositePlayers, destination) {    // pierdolnięta na szybko, skopiowana funkcja z podawania
+
+        let opponentDistanceLimit = 50; // poniżej tej wartości odległość przeciwnika od tunelu wpływa na jego ocenę
+        let tunnelValue = 50;
+
+        let a = this.getDistanceFromTo(this.player, destination); // boki trójkąta gracz - cel
+        let b = 0;                                                // gracz - przeciwnik
+        let c = 0;                                                // cel - przeciwnik
+
+        /**
+         * zmienne potrzebne do wyliczenia wysokości trójkąta gracz - przeciwnik - cel
+         **/
+        let halfOfTrianglePerimeter = 0;
+        let triangleField = 0;
+        let triangleHeight = 50;
+
+        oppositePlayers.forEach((oppositePlayer) => {
+            b = this.player.getDistanceTo(oppositePlayer);
+            c = this.getDistanceFromTo(oppositePlayer, destination);
+            if (b < a && c < a) {                                       // nie bierzemy pod uwagę przeciwników umiejscowionych dalej od gracza i celu, niż gracz i cel są oddaleni od siebie
+                halfOfTrianglePerimeter = (a + b + c) / 2;
+                triangleField = Math.sqrt(halfOfTrianglePerimeter * (halfOfTrianglePerimeter - a) * (halfOfTrianglePerimeter - b) * (halfOfTrianglePerimeter - c));
+                triangleHeight = 2 * triangleField / a;
+                if (triangleHeight < opponentDistanceLimit) {
+                    tunnelValue = tunnelValue - (opponentDistanceLimit - triangleHeight);    // zmniejszamy wartość kanału o współczynnik bliskości przeciwnika do kanału
+                }
+            }
+
+            if (tunnelValue <= 0) {
+                tunnelValue = 0;
+            }
+        });
+
+        if (tunnelValue > 45) {
+            return tunnelValue;
+        } else return 0;
+    }
 }
