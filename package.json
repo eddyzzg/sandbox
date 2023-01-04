@@ -58,7 +58,7 @@
     "animo-core": "^1.0.8",
     "gridstack": "^0.4.0",
     "handlebars": "^4.1.2",
-    "handlebars-loader": "^1.7.1",
+    "handlebars-loader": "^1.7.3",
     "html-encoding-sniffer": "^1.0.2",
     "lodash": "^4.17.15",
     "merge-images": "^2.0.0",
