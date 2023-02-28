@@ -139,10 +139,7 @@ export default class PlayerDecisionEvent {
     }
 
     getPossibilityOfShoot() {
-
         if (this.player.hasBall) {
-
-
             let possibilityOfShoot = 0;
             const goalCenterCoordinates = {
                 positionX: 0,
@@ -156,14 +153,11 @@ export default class PlayerDecisionEvent {
                 goalCenterCoordinates.positionX = this.player.field.awayGoalX + this.player.field.goalWidth / 2;
                 goalCenterCoordinates.positionY = this.player.field.awayGoalY + this.player.field.goalHeight / 2;
             }
-
-
             if (this.player.isInAwayTeam) {
                 possibilityOfShoot = this.tools.getLowShootTunnelValue(this.homeTeam, goalCenterCoordinates);
             } else {
                 possibilityOfShoot = this.tools.getLowShootTunnelValue(this.awayTeam, goalCenterCoordinates);
             }
-
 
             console.log(possibilityOfShoot);
             return possibilityOfShoot;

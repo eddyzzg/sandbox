@@ -142,8 +142,10 @@ function openFaceGenerator($container) {
 function startMatch(homeTeam, awayTeam, $workspace) {
     $workspace.find('.match-container').html(matchWindow());
     
-    tests(homeTeam, awayTeam);
+    // trySomeMovesOnCanvas();
     
+    tests(homeTeam, awayTeam);
+
     const match = new Match(homeTeam, awayTeam);
     return match.prepare().then(() => {
         return match.start();
@@ -155,4 +157,186 @@ function tests(homeTeam, awayTeam) {
     const player = new Player(playerDef, homeTeam);
     let playerDecisionEvent = new PlayerDecisionEvent(player);
     // playerDecisionEvent.validator();
+}
+
+function trySomeMovesOnCanvas() {
+    let canvas = document.getElementById('field_canvas');
+    let canvas1 = document.getElementById('player_canvas');
+    canvas.classList.remove('hidden');
+    canvas1.classList.remove('hidden');
+    
+    let ctx = canvas.getContext('2d');
+    
+    canvas.width = 1200;
+    canvas.height = 700;
+    
+    ctx.fillStyle = 'black';
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = 'black';
+    
+    const field = new FieldGUI(canvas);
+    const players = field.players;
+    
+    //move left
+    // const promises = []
+    // players.forEach((player) => {
+    //     let moveToDestination = randomIntFromInterval(0, 1200);
+    //     let playerMove = player.moveTo(moveToDestination, 0);
+    //     promises.push(playerMove);
+    // });
+    // Promise.all(promises);
+    
+    players[0].moveTo(randomIntFromInterval(0, 1200), 0).then(() => {
+        players[1].moveTo(randomIntFromInterval(0, 1200), 0)
+    });
+    
+    function animate() {
+        if (!field.stop) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            field.render(ctx);
+        }
+        window.requestAnimationFrame(animate);
+    }
+    animate();
+}
+
+class FieldGUI {
+    constructor(canvas) {
+        this.canvas = canvas;
+        this.width = this.canvas.width;
+        this.height = this.canvas.height;
+        this.players = this.createPlayers();
+        this.stop = false;
+    }
+    
+    createPlayers() {
+        const players = [];
+        for (let i=0; i<2; i++) {
+            players.push(new PlayerGUI(i, this, 0, i * 70));
+        }
+        return players;
+    }
+    
+    render(context) {
+        this.players.forEach((player) => {
+            player.draw(context);
+            player.update();
+        });
+    }
+    
+    animateMove() {
+        this.stop = false;
+    }
+    
+    stopAnimationMove() {
+        let allObjectAnimationDone = true;
+        this.players.forEach((player) => {
+            if (player.moveXDone !== true || player.moveYDone !== true) {
+                allObjectAnimationDone = false;
+            }
+        });
+        
+        if (allObjectAnimationDone) {
+            this.stop = true;
+        }
+    }
+}
+
+class PlayerGUI {
+    constructor(id, field, startX, startY) {
+        this.id = id;
+        this.field = field;
+        this.currentX = startX;
+        this.currentY = startY;
+        this.collisionRadius = 30;
+        this.speed = 10;
+        
+        this.moveXDone = false;
+        this.moveYDone = false;
+        
+        this.directionX = undefined;
+        this.directionY = undefined;
+    }
+    draw(context) {
+        context.beginPath()
+        context.arc(this.currentX, this.currentY, this.collisionRadius,0, Math.PI * 2);
+        context.save();
+        context.globalAlpha = 0.5;
+        context.fill();
+        context.restore();
+        context.stroke();
+    }
+    
+    update() {
+        if (this.directionX === 'right') {
+            if (this.currentX <= this.borderX) {
+                this.currentX += this.speed;
+            } else {
+                this.moveXDone = true;
+            }
+        } else if (this.directionX === 'left') {
+            if (this.currentX >= this.borderX) {
+                this.currentX -= this.speed;
+            } else {
+                this.moveXDone = true;
+            }
+        } else {
+            this.moveXDone = true;
+        }
+    
+        if (this.directionY === 'top') {
+            if (this.currentY >= this.borderY) {
+                this.currentY -= this.speed;
+            } else {
+                this.moveYDone = true;
+            }
+        } else if (this.directionY === 'bottom') {
+            if (this.currentY <= this.borderY) {
+                this.currentY += this.speed;
+            } else {
+                this.moveYDone = true;
+            }
+        } else {
+            this.moveYDone = true;
+        }
+        
+        if (this.moveXDone && this.moveYDone) {
+            this.field.stopAnimationMove();
+            
+            if (this.emitDone) {
+                this.emitDone();
+            }
+        }
+    }
+    
+    moveTo(x, y) {
+        return new Promise((resolve) => {
+            this.moveXDone = false;
+            this.moveYDone = false;
+            
+            if (x !== 0) {
+                this.directionX = this.currentX < x ? 'right' : 'left';
+            } else {
+                this.directionX = undefined;
+            }
+            if (y !== 0) {
+                this.directionY = this.currentY < y ? 'top' : 'bottom';
+            } else {
+                this.directionY = undefined;
+            }
+    
+            this.emitDone = resolve;
+            this.field.animateMove();
+    
+            this.borderX = this.currentX + x;
+            this.borderY = this.currentY + y;
+            
+            console.log('this.borderX')
+            console.log(this.borderX)
+        });
+    }
+}
+
+function randomIntFromInterval(min, max) { // min and max included
+    return Math.floor(Math.random() * (max - min + 1) + min)
 }
